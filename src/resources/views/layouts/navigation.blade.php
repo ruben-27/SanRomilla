@@ -18,50 +18,50 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/inscription" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('inscription')" :active="request()->routeIs('inscription')">
+                   
                         {{ __('Inscription') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/donation" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('donation')" :active="request()->routeIs('donation')">
+                   
                         {{ __('Fila0') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/event" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('event')" :active="request()->routeIs('event')">
+                    
                         {{ __('Event') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/colaborator" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('colaborator')" :active="request()->routeIs('colaborator')">
+                   
                         {{ __('Colaborator') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/clasification" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('clasification')" :active="request()->routeIs('clasification')">
+                  
                         {{ __('Clasification') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/category" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('category')" :active="request()->routeIs('category')">
+                  
                         {{ __('Category') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/route" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('route')" :active="request()->routeIs('route')">
+                   
                         {{ __('route') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <x-nav-link href="/sponsors" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('sponsors')" :active="request()->routeIs('sponsors')">
+                    
                         {{ __('Sponsors') }}
                     </x-nav-link>
                 </div>
