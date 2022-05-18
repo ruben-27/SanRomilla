@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->middleware(['auth'])->name('dashboard');
 Route::get('/inscription', function () {
     return view('inscription');
 });
@@ -50,8 +51,5 @@ Route::get('/documentation', function () {
 Route::get('/modify', function () {
     return view('modify');
 });
-/*Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');*/
 
 require __DIR__.'/auth.php';
