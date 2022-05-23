@@ -30,7 +30,7 @@
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
-            </div>
+            </div>            
 
             <!-- Remember Me -->
             <div class="block mt-4">
@@ -40,7 +40,7 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end mt-4 mb-5">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
@@ -51,6 +51,9 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
+
+            <!-- Google -->
+            <a href="{{ url('auth/google') }}" id="g_id_onload" class="g_id_signin"></a>
         </form>
     </x-auth-card>
 </x-guest-layout>
