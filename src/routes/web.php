@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Colaborator;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,5 +61,9 @@ Route::get('/documentation', function () {
 Route::get('/modify', function () {
     return view('modify');
 })->middleware(['auth'])->name('modify');
+
+Route::get('/prueba', function () {
+    return Colaborator::prueba();
+})->middleware(['auth'])->name('prueba');
 
 require __DIR__.'/auth.php';

@@ -10,7 +10,8 @@
                 <h1>Gestión colaboradores</h1>
             </div>
         </div>
-        <div><button type="button" class="btn btn-primary mb-5" name="enviar" onclick="mostrarInsertar()"><i class="bi bi-plus"></i>Nuevo colaborador</button></div>
+        <div><button type="button" class="btn btn-primary mb-5" name="enviar" id="sumbit"><i class="bi bi-plus"></i>Nuevo colaborador</button></div>
+        <div><button type="button" class="btn btn-primary mb-5" name="enviar" id="prueba"><i class="bi bi-plus"></i>Nuevo colaborador</button></div>
         <div class="m-0">
             <table id="example" class="table table-hover table-responsive">
                 <thead>
