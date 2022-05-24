@@ -23,43 +23,43 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/inscription', function () {
-    return view('inscription');
+    return view('private.inscription.inscription');
 })->middleware(['auth'])->name('inscription');
 
 Route::get('/donation', function () {
-    return view('donation');
+    return view('private.donation.donation');
 })->middleware(['auth'])->name('donation');
 
 Route::get('/event', function () {
-    return view('event');
+    return view('private.event.event');
 })->middleware(['auth'])->name('event');
 
 Route::get('/colaborator', function () {
-    return view('colaborator');
+    return view('private.colaborator.colaborator');
 })->middleware(['auth'])->name('colaborator');
 
 Route::get('/clasification', function () {
-    return view('clasification');
+    return view('private.clasification.clasification');
 })->middleware(['auth'])->name('clasification');
 
 Route::get('/category', function () {
-    return view('category');
+    return view('private.category.category');
 })->middleware(['auth'])->name('category');
 
 Route::get('/route', function () {
-    return view('route');
+    return view('private.route.route');
 })->middleware(['auth'])->name('route');
 
 Route::get('/sponsors', function () {
-    return view('sponsors');
+    return view('private.sponsors.sponsors');
 })->middleware(['auth'])->name('sponsors');
 
 Route::get('/documentation', function () {
-    return view('documentation');
+    return view('private.documentation.documentation');
 })->middleware(['auth'])->name('documentation');
 
 Route::get('/modify', function () {
-    return view('modify');
+    return view('private.modify_password.modify');
 })->middleware(['auth'])->name('modify');
 
 Route::get('/prueba', function () {

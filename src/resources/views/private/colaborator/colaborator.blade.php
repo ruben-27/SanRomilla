@@ -1,9 +1,13 @@
 <x-app-layout>
+    <x-slot name="script">
+        {{ __('colaborator') }}
+    </x-slot>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Colaborator') }}
         </h2>
     </x-slot>
+   
     <div id="tabla" class="container" >
         <div class="jumbotron jumbotron-fluid">
             <div class="mt-5 mb-5">
