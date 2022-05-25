@@ -15,4 +15,7 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
-]);
+])
+.js('resources/js/colaborator.js', 'public/js')
+.js('resources/js/donation.js', 'public/js')
+.js('resources/js/inscription.js', 'public/js');

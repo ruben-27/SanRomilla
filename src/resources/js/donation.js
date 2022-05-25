@@ -1,10 +1,4 @@
-require('./bootstrap');
 
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
 
 /*----------- JS San Romilla ------------*/
 
@@ -353,10 +347,5 @@ function insertar() {
         location.reload();
     });
 }
-
-
-
-
-
 
 
