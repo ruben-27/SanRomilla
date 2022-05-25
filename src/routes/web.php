@@ -13,6 +13,10 @@ use App\Http\Controllers\Colaborator;
 |
 */
 
+// Route::get('/', function () {
+//     return view('auth.error-google-login');
+// });
+
 Route::get('/', function () {
     return view('welcome');
 });

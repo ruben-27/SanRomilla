@@ -40,7 +40,7 @@ class GoogleSocialiteController extends Controller
                 return redirect('/dashboard');
       
             }else{
-                return redirect('/login');
+                return view('auth.error-google-login');
                 // $newUser = User::create([
                 //     'name' => $user->name,
                 //     'last_name' => 'google',
