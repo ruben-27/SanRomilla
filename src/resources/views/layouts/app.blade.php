@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
-        <?php  ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src=<?php echo'"'. asset('js/'."{$script}". '.js').'"'?> defer></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
