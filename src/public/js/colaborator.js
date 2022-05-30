@@ -51,7 +51,7 @@ $(document).ready(function () {
 
   $('#example').DataTable({
     "ajax": {
-      "url": "acciones.php?accion=" + accion,
+      "url": 'http://localhost:8080/colaborator_datatable',
       "method": "POST",
       "data": {
         funcion: funcion
@@ -269,11 +269,11 @@ var es = {
   "info": "Mostrando _START_ a _END_ de _TOTAL_ registros"
 }; //Función que muestra el formulario de registro de colaboradores
 
-function mostrarInsertar() {
+function showInsert() {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'mostrar_insertar'; //Petición
 
-  $.post('acciones.php?accion=' + accion, function (data) {
+  $.post('http://localhost:8080/colaborator_showInsert', function (data) {
     $('#mostrarInsertar').html(data);
     $('#mostrarInsertar').css('display', 'block');
     $('#tabla').css('display', 'none');
@@ -283,7 +283,7 @@ function mostrarInsertar() {
 } //Función que valida el registro de colaboradores
 
 
-function validarInsertar() {
+function validateInsert() {
   $("#insertar").validate({
     rules: {
       nombre: {
@@ -347,7 +347,7 @@ function validarInsertar() {
 
     },
     submitHandler: function submitHandler() {
-      insertar();
+      insert();
     }
   }); //Validaciones personalizadas que no entran dentro de la librería
 
@@ -363,13 +363,13 @@ function validarInsertar() {
 } //Función que realiza la petición para el registro de colaboradores
 
 
-function insertar() {
+function insert() {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'insertar'; //Variable que guarda los datos del formulario
 
   var str = $("#insertar").serialize(); //Petición
 
-  $.post('acciones.php?accion=' + accion, str, function (data) {
+  $.post('http://localhost:8080/colaborator_insert', str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error en la consulta
@@ -385,11 +385,11 @@ function insertar() {
 } //Función que muestra el formulario de edición de colaboradores
 
 
-function mostrarEditar(id) {
+function showEdit(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'mostrar_editar'; //Petición
 
-  $.post('acciones.php?id=' + id + '&accion=' + accion, function (data) {
+  $.post('http://localhost:8080/colaborator_showEdit', function (data) {
     $('#editar').html(data);
     $('#editar').css('display', 'block');
     $('#tabla').css('display', 'none');
@@ -398,7 +398,7 @@ function mostrarEditar(id) {
 } //Función que valida la edición de colaboradores
 
 
-function validarEditar(id) {
+function validateEdit(id) {
   $("#submitenviar").validate({
     rules: {
       nombre: {
@@ -444,7 +444,7 @@ function validarEditar(id) {
 
     },
     submitHandler: function submitHandler() {
-      editar(id);
+      edit(id);
     }
   }); //Validaciones personalizadas que no entran dentro de la librería
 
@@ -460,13 +460,13 @@ function validarEditar(id) {
 } //Función que realiza la petición para la edición de colaboradores
 
 
-function editar(id) {
+function edit(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'editar'; //Variable que guarda los datos del formulario
 
   var str = $("#submitenviar").serialize(); //Petición
 
-  $.post('acciones.php?id=' + id + '&accion=' + accion, str, function (data) {
+  $.post('http://localhost:8080/colaborator_edit', str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error consulta
@@ -481,11 +481,11 @@ function editar(id) {
 } //Función que muestra un cuadro de mensaje con la confirmación de la eliminación del colaborador
 
 
-function cuadroEliminar(id) {
+function removeAction(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'cuadro_eliminar'; //Petición
 
-  $.post('acciones.php?id=' + id + '&accion=' + accion, function (data) {
+  $.post('http://localhost:8080/colaborator_RemoveAction' + accion, function (data) {
     $('#eliminar').html(data);
     $('#eliminar').css('display', 'block');
     $('#editar').css('display', 'none');
@@ -493,17 +493,17 @@ function cuadroEliminar(id) {
 } //Función que oculta el cuadro de mensaje con la confirmación de la eliminación del colaborador
 
 
-function cancelarEliminar() {
+function cancelRemove() {
   $('#eliminar').css('display', 'none');
   $('#editar').css('display', 'none');
 } //Función que realiza la petición de eliminar colaborador al pulsar "aceptar"
 
 
-function aceptarEliminar(id) {
+function acceptRemove(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'aceptar_eliminar'; //Petición
 
-  $.post('acciones.php?id=' + id + '&accion=' + accion, function (data) {
+  $.post('http://localhost:8080/colaborator_AcceptRemove', function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error consulta

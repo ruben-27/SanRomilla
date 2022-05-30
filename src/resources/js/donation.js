@@ -17,7 +17,7 @@ $(document).ready(function() {
     //Función que realiza la petición y muestra los registros devueltos
     $('#example').DataTable({
         "ajax": {
-            "url":"acciones.php?accion="+accion,
+            "url":"'http://localhost:8080/donation_consult/",
             "method": "POST",
             "data":{funcion:funcion}
         },
@@ -238,11 +238,11 @@ let es = {
     "info": "Mostrando _START_ a _END_ de _TOTAL_ registros"
 };
 //Función que muestra el formulario de registro de donaciones
-function mostrarInsertar() {
+function showInsert() {
     //Variable que guarda la acción que queramos hacer al realizar la petición
     var accion='mostrar_insertar';
     //Petición
-    $.post('acciones.php?accion='+accion,function(data){
+    $.post('http://localhost:8080/donation_showInsert',function(data){
         $('#mostrarInsertar').html(data);
         $('#mostrarInsertar').css('display','block');
         $('#tabla').css('display','none');
@@ -251,7 +251,7 @@ function mostrarInsertar() {
     });
 }
 //Función que valida el registro de donaciones
-function validarInsertar(){
+function validateInsert(){
     $("#insertar").validate({
         rules: {
             nombre : {
@@ -297,7 +297,7 @@ function validarInsertar(){
             },
             //Función que realiza una acción si la validación es correcta
         },submitHandler: function() {
-            donacion();
+            donation();
         }
     });
     //Validaciones personalizadas que no entran dentro de la librería
@@ -319,24 +319,24 @@ function validarInsertar(){
     }, "*Este campo es tipo numérico");
 }
 //Función que muestra el cuadro de mensaje de confirmación de la donación con el precio total
-function donacion() {
+function donation() {
     //Variable que guarda la acción que queramos hacer al realizar la petición
     var accion='donacion';
     //Variable que guarda los datos del formulario
     var str = $("#insertar").serialize();
     //Petición
-    $.post('acciones.php?accion='+accion,str,function(data){
+    $.post('http://localhost:8080/donation_donation/'+"",str,function(data){
         $('#cuadroTramitar').html(data);
         $('#cuadroTramitar').css('display','block');
     });
 }
 //Función que oculta el cuadro de mensaje de confirmación de la donación si pulsa "cancelar"
-function cancelar(){
+function cancel(){
     $('#cuadroTramitar').css('display','none');
     $('#cuadroTramitar').css('display','none');
 }
 //Función que realiza la petición para el registro de donaciones
-function insertar() {
+function insert() {
     //Variable que guarda la acción que queramos hacer al realizar la petición
     var accion='insertar';
     //Variable que guarda los datos del formulario

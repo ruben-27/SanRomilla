@@ -13,7 +13,7 @@
                     <h1>Gestión inscripciones</h1>
                 </div>
             </div>
-            <div><button id="inscripcion" type="button" class="btn btn-primary mb-5" name="enviar" onclick="mostrarInsertar()"><i class="bi bi-plus"></i>Nueva inscripción</button></div>
+            <div><button id="inscripcion" type="button" class="btn btn-primary mb-5" name="enviar" onclick="showInsert()"><i class="bi bi-plus"></i>Nueva inscripción</button></div>
             <div id="cuadro_inscripcion1" class="alert alert-warning mb-5" role="alert">El proceso  de inscripción se habilitará cuando el plazo esté abierto.</div>
             <div id="cuadro_inscripcion2" class="alert alert-warning mb-5" role="alert">El proceso  de inscripción ha finalizado.</div>
             <div class="table-responsive" >

@@ -1,18 +1,16 @@
-
-/*----------- JS San Romilla ------------*/
-
 /*
     Alumno: Marta Broncano Suárez
     Asignatura: Proyecto San Romilla
     Curso: 20-21
     Descripción: Archivo que contiene las funciones que se van a emplear para la gestión de los colaboradores
 */
-
 //Función que realiza una petición para averiguar x datos en base a la fecha de nacimiento
-function fecha_inscripcion(){
-    var accion='fecha_inscripcion'; //Variable que guarda la acción que queramos hacer al realizar la petición
+$("#inscripcion").click(showInsert())
+
+function inscription_date(){
+    var accion='inscription_date'; //Variable que guarda la acción que queramos hacer al realizar la petición
     //Petición
-    $.post('acciones.php?accion='+accion,function(data){
+    $.post('http://localhost:8080/inscription_date',function(data){
         //Método que realiza diferentes acciones según la respuesta devuelta
         switch (data.trim()) {
             case 'ok': //Plazo inscripción abierto
@@ -34,13 +32,13 @@ function fecha_inscripcion(){
 }
 //Función que al cargar el documento hace una petición para consultar los registros de la baase de datos y mostrarlos
 $(document).ready(function() {
-    fecha_inscripcion();
+    inscription_date();
     var accion='consultar'; //Variable que guarda la acción que queramos hacer al realizar la petición
     var funcion='listar'; //Variable que recoge el nombre de la función
     //Función que realiza la petición y muestra los registros devueltos
     $('#example').DataTable({
         "ajax": {
-            "url":"acciones.php?accion="+accion,
+            "url":"http://localhost:8080/inscription_datatable",
             "method": "POST",
             "data":{funcion:funcion}
         },
@@ -265,22 +263,21 @@ let es = {
     },
     "info": "Mostrando _START_ a _END_ de _TOTAL_ registros"
 
-
 };
 
 var i=0;//Inicialización de variable que usaremos para realizar la inserción dinámica
 //Función que carga las tallas de las camisetas disponibles en el formulario
-function formulario(){
+function form(){
     var accion='cargar_talla';
-    $.ajax({url:'acciones.php?accion='+accion,success:function(data){
+    $.ajax({url:'http://localhost:8080/inscription_form',success:function(data){
         //console.log(data)
-        formulario2(JSON.parse(data));
+        form2(JSON.parse(data));
     }});
 
 };
 
 //Función que contiene la estructura del formulario dinámico
-function formulario2(data){
+function form2(data){
     console.log(data)
     let tabla='<table class="table mb-5" id="table'+i+'">' +
         '<tr class="borde">'+
@@ -344,7 +341,7 @@ function formulario2(data){
         var str=$("#formulario").serialize();//Variable que guarda los datos del formulario
         var fecha_id = $(this).attr("id");//Método que guarda el id seleccionado
         //Petición
-        $.post('acciones.php?accion='+accion+'&fecha_id='+fecha_id,str,function(data){
+        $.post('http://localhost:8080/inscriptionForm2'+'/fecha_id='+fecha_id,str,function(data){
             var precio=data;
             $('#donacion'+fecha_id+'').attr("value",precio); //Método que añade valor al elemento selecionado
             $('#donacion'+fecha_id+'').attr("placeholder","Indique el importe (mínimo "+precio+"€)"); //Método que añade placeholder al elemento selecionado
@@ -352,15 +349,15 @@ function formulario2(data){
     })
 }
 //Función que muestra el formulario de registro de inscripciones
-function mostrarInsertar() {
+function showInsert() {
     var accion='mostrar_insertar';//Variable que guarda la acción que queramos hacer al realizar la petición
     //Petición
-    $.post('acciones.php?accion='+accion,function(data){
+    $.post('http://localhost:8080/inscription_showInsert',function(data){
         $('#mostrarInsertar').html(data);
-        $(formulario()).html(data);
+        $(form()).html(data);
         $('.btn_remove').css('display','none');
         $('#add').click(function(){
-            formulario();
+            form();
         });
         $('#mostrarInsertar').css('display','block');
         $('#tabla').css('display','none');
@@ -368,24 +365,24 @@ function mostrarInsertar() {
     });
 }
 //Función que carga el cuadro de diálogo de los términos
-function terminos(){
+function terms(){
     var accion='terminos';//Variable que guarda la acción que queramos hacer al realizar la petición
     //Petición
-    $.post('acciones.php?accion='+accion,function(data){
+    $.post('http://localhost:8080/terms',function(data){
             $('#cuadroTerminos').html(data);
             $('#cuadroTerminos').css('display','block');
     });
 }
 //Función que oculta el cuadro de mensaje de términos
-function ocultarTerminos(){
+function hideterms(){
     $('#cuadroTerminos').css('display','none');
 }
 //Función que muestra un cuadro de mensaje con el total del precio de la compra
-function totalCompra(){
+function totalBought(){
     var accion='total_compra';//Variable que guarda la acción que queramos hacer al realizar la petición
     var str = $("#formulario").serialize();//Variable que guarda los datos del formulario
     //Petición
-    $.post('acciones.php?accion='+accion,str,function(data){
+    $.post('http://localhost:8080/totalBought',str,function(data){
         //Condición que realiza diferentes acciones según la respuesta devuelta
         if(data.trim()==='ko'){//Precio incorrecto
             alert("El importe de la donación no puede ser menor al precio del dorsal")
@@ -396,15 +393,15 @@ function totalCompra(){
     });
 }
 //Función que oculta el cuadro de mensaje de confirmación de inscripciones si pulsa "volver"
-function seguirComprando(){
+function keepShopping(){
     $('#cuadroTramitar').css('display','none');
 }
 //Función que realiza la petición para el registro de inscripciones
-function insertar() {
+function insert() {
     var accion='insertar'; //Variable que guarda la acción que queramos hacer al realizar la petición
     var str = $("#formulario").serialize(); //Variable que guarda los datos del formulario
     //Petición
-    $.post('acciones.php?accion='+accion,str,function(data){
+    $.post('http://localhost:8080/inscription_insert',str,function(data){
         var condiciones = $("#aceptar").is(":checked"); //Comprobación del campo check marcado
         //Condición que realiza diferentes acciones según la respuesta devuelta
         if(data.trim()==='no'){//Importe de donación menor al establecido
@@ -426,17 +423,17 @@ function insertar() {
     });
 }
 //Función que muestra el formulario de edición de inscripciones
-function mostrarEditar(id){
+function showEdit(id){
     var accion='mostrar_editar'; //Variable que guarda la acción que queramos hacer al realizar la petición
     //Petición
-    $.post('acciones.php?id='+id+'&accion='+accion,function(data){
+    $.post('http://localhost:8080/inscription_showEdit/'+id,function(data){
         $('#editar').html(data);
         $('#editar').css('display','block');
         $('#tabla').css('display','none');
     });
 }
 //Función que valida la edición de inscripciones
-function validarEditar(id){
+function validateEdit(id){
     $("#submitenviar").validate({
         rules: {
             nombre : {
@@ -496,7 +493,7 @@ function validarEditar(id){
             }
         //Función que realiza una acción si la validación es correcta
         },submitHandler: function() {
-            editar(id);
+            edit(id);
         }
     });
     //Validaciones personalizadas que no entran dentro de la librería
@@ -526,11 +523,11 @@ function validarEditar(id){
     }, "*Sólo números");
 }
 //Función que realiza la petición para la edición de inscripciones
-function editar(id){
+function edit(id){
     var accion='editar'; //Variable que guarda la acción que queramos hacer al realizar la petición
     var str = $("#submitenviar").serialize(); //Variable que guarda los datos del formulario
     //Petición
-    $.post('acciones.php?id='+id+'&accion='+accion,str,function(data){
+    $.post('http://localhost:8080/inscription_edit/'+id,str,function(data){
         //Condición que realiza diferentes acciones según la respuesta devuelta
         if(data.trim()==='ko'){ //Error consulta
             alert("Ha habido un error al realizar la petición solicitada intentelo de nuevo");

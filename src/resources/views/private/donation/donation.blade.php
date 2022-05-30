@@ -13,7 +13,7 @@
                         <h1>Gestión donaciones</h1>
                     </div>
                 </div>
-                <div><button type="button" class="btn btn-primary mb-5" name="enviar" onclick="mostrarInsertar()"><i class="bi bi-plus"></i>Nueva donación</button></div>
+                <div><button type="button" class="btn btn-primary mb-5" name="enviar" onclick="showInsert()"><i class="bi bi-plus"></i>Nueva donación</button></div>
                 <div class="m-0">
                     <table id="example" class="table table-hover table-responsive">
                         <thead>

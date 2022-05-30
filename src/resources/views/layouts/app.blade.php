@@ -17,6 +17,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src=<?php echo'"'. asset('js/'."{$script}". '.js').'"'?> defer></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src=" https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+       
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

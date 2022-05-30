@@ -44,7 +44,7 @@ $(document).ready(function() {
     //Función que realiza la petición y muestra los registros devueltos
     $('#example').DataTable({
         "ajax": {
-            "url":'http://localhost:8080/colaborator_datatable',
+            "url":"acciones.php?accion="+accion,
             "method": "POST",
             "data":{funcion:funcion}
         },
@@ -271,7 +271,7 @@ function showInsert() {
     //Variable que guarda la acción que queramos hacer al realizar la petición
     var accion='mostrar_insertar';
     //Petición
-    $.post('http://localhost:8080/colaborator_showInsert',function(data){
+    $.post('acciones.php?accion='+accion,function(data){
         $('#mostrarInsertar').html(data);
         $('#mostrarInsertar').css('display','block');
         $('#tabla').css('display','none');
@@ -367,7 +367,7 @@ function insert() {
     //Variable que guarda los datos del formulario
     var str = $("#insertar").serialize();
     //Petición
-    $.post('http://localhost:8080/colaborator_insert',str,function(data){
+    $.post('acciones.php?accion='+accion,str,function(data){
         //Condición que realiza diferentes acciones según la respuesta devuelta
         if(data.trim()==='ko'){ //Error en la consulta
            alert("El correo introducido ya está asigando");
@@ -384,7 +384,7 @@ function showEdit(id){
     //Variable que guarda la acción que queramos hacer al realizar la petición
     var accion='mostrar_editar';
     //Petición
-    $.post('http://localhost:8080/colaborator_showEdit',function(data){
+    $.post('acciones.php?id='+id+'&accion='+accion,function(data){
         $('#editar').html(data);
         $('#editar').css('display','block');
         $('#tabla').css('display','none');
@@ -464,7 +464,7 @@ function edit(id){
     //Variable que guarda los datos del formulario
     var str = $("#submitenviar").serialize();
     //Petición
-    $.post('http://localhost:8080/colaborator_edit',str,function(data){
+    $.post('acciones.php?id='+id+'&accion='+accion,str,function(data){
         //Condición que realiza diferentes acciones según la respuesta devuelta
         if(data.trim()==='ko'){//Error consulta
             alert("Ha habido un error al realizar la petición solicitada intentelo de nuevo");
@@ -480,7 +480,7 @@ function removeAction(id){
     //Variable que guarda la acción que queramos hacer al realizar la petición
     var accion='cuadro_eliminar';
     //Petición
-    $.post('http://localhost:8080/colaborator_RemoveAction'+accion,function(data){
+    $.post('acciones.php?id='+id+'&accion='+accion,function(data){
         $('#eliminar').html(data);
         $('#eliminar').css('display','block');
         $('#editar').css('display','none');
@@ -496,7 +496,7 @@ function acceptRemove(id){
     //Variable que guarda la acción que queramos hacer al realizar la petición
     var accion='aceptar_eliminar'
     //Petición
-    $.post('http://localhost:8080/colaborator_AcceptRemove',function(data){
+    $.post('acciones.php?id='+id+'&accion='+accion,function(data){
         //Condición que realiza diferentes acciones según la respuesta devuelta
         if(data.trim()==='ko'){//Error consulta
             alert("Ha habido un error al realizar la petición solicitada intentelo de nuevo");
