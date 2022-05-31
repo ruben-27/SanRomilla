@@ -17,19 +17,31 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             [
                 'name' => 'ROLE_IMAGES',
-                'description' => 'Can upload and delete images'
+                'description' => 'Can create & delete images'
             ],
             [
-                'name' => 'ROLE_CREATE_USERS',
-                'description' => 'Can create users'
+                'name' => 'ROLE_COLABORATORS',
+                'description' => 'Can create, update & delete colaborators'
             ],
             [
-                'name' => 'ROLE_UPDATE_USERS',
-                'description' => 'Can update users'
+                'name' => 'ROLE_INSCRIPTIONS',
+                'description' => 'Can create, update & delete inscriptions'
             ],
             [
-                'name' => 'ROLE_DELETE_USERS',
-                'description' => 'Can delete users'
+                'name' => 'ROLE_MARKS',
+                'description' => 'Can create, update & delete marks'
+            ],
+            [
+                'name' => 'ROLE_CATEGORIES',
+                'description' => 'Can create, update & delete categories'
+            ],
+            [
+                'name' => 'ROLE_SPONSORS',
+                'description' => 'Can create, update & delete sponsors'
+            ],
+            [
+                'name' => 'ROLE_DONATIONS',
+                'description' => 'Can create donatios'
             ]
         ]);
     }
