@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ColaboratorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DonationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,5 +71,7 @@ Route::get('/prueba', function () {
     return ColaboratorController::prueba();
 })->middleware(['auth'])->name('prueba');
 
+Route::get('/donation_showInsert', [DonationController::class, 'showInsert'])->middleware(['auth'])->name('donation_showInsert');
+
 require __DIR__.'/auth.php';
-// require __DIR__.'/private.php';
+require __DIR__.'/private.php';

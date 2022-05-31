@@ -16,7 +16,7 @@ function inscription_date() {
   var accion = 'inscription_date'; //Variable que guarda la acción que queramos hacer al realizar la petición
   //Petición
 
-  $.post('http://localhost:8080/inscription_date', function (data) {
+  $.post('/inscription_date', function (data) {
     //Método que realiza diferentes acciones según la respuesta devuelta
     switch (data.trim()) {
       case 'ok':
@@ -51,7 +51,7 @@ $(document).ready(function () {
 
   $('#example').DataTable({
     "ajax": {
-      "url": "http://localhost:8080/inscription_datatable",
+      "url": "/inscription_datatable",
       "method": "POST",
       "data": {
         funcion: funcion
@@ -282,7 +282,7 @@ var i = 0; //Inicialización de variable que usaremos para realizar la inserció
 function form() {
   var accion = 'cargar_talla';
   $.ajax({
-    url: 'http://localhost:8080/inscription_form',
+    url: '/inscription_form',
     success: function success(data) {
       //console.log(data)
       form2(JSON.parse(data));
@@ -329,7 +329,7 @@ function form2(data) {
     var fecha_id = $(this).attr("id"); //Método que guarda el id seleccionado
     //Petición
 
-    $.post('http://localhost:8080/inscriptionForm2' + '/fecha_id=' + fecha_id, str, function (data) {
+    $.post('/inscriptionForm2' + '/fecha_id=' + fecha_id, str, function (data) {
       var precio = data;
       $('#donacion' + fecha_id + '').attr("value", precio); //Método que añade valor al elemento selecionado
 
@@ -343,7 +343,7 @@ function showInsert() {
   var accion = 'mostrar_insertar'; //Variable que guarda la acción que queramos hacer al realizar la petición
   //Petición
 
-  $.post('http://localhost:8080/inscription_showInsert', function (data) {
+  $.post('/inscription_showInsert', function (data) {
     $('#mostrarInsertar').html(data);
     $(form()).html(data);
     $('.btn_remove').css('display', 'none');
@@ -361,7 +361,7 @@ function terms() {
   var accion = 'terminos'; //Variable que guarda la acción que queramos hacer al realizar la petición
   //Petición
 
-  $.post('http://localhost:8080/terms', function (data) {
+  $.post('/terms', function (data) {
     $('#cuadroTerminos').html(data);
     $('#cuadroTerminos').css('display', 'block');
   });
@@ -379,7 +379,7 @@ function totalBought() {
   var str = $("#formulario").serialize(); //Variable que guarda los datos del formulario
   //Petición
 
-  $.post('http://localhost:8080/totalBought', str, function (data) {
+  $.post('/totalBought', str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Precio incorrecto
@@ -404,7 +404,7 @@ function insert() {
   var str = $("#formulario").serialize(); //Variable que guarda los datos del formulario
   //Petición
 
-  $.post('http://localhost:8080/inscription_insert', str, function (data) {
+  $.post('/inscription_insert', str, function (data) {
     var condiciones = $("#aceptar").is(":checked"); //Comprobación del campo check marcado
     //Condición que realiza diferentes acciones según la respuesta devuelta
 
@@ -435,7 +435,7 @@ function showEdit(id) {
   var accion = 'mostrar_editar'; //Variable que guarda la acción que queramos hacer al realizar la petición
   //Petición
 
-  $.post('http://localhost:8080/inscription_showEdit/' + id, function (data) {
+  $.post('/inscription_showEdit/' + id, function (data) {
     $('#editar').html(data);
     $('#editar').css('display', 'block');
     $('#tabla').css('display', 'none');
@@ -533,7 +533,7 @@ function edit(id) {
   var str = $("#submitenviar").serialize(); //Variable que guarda los datos del formulario
   //Petición
 
-  $.post('http://localhost:8080/inscription_edit/' + id, str, function (data) {
+  $.post('/inscription_edit/' + id, str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error consulta

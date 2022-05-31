@@ -108,11 +108,18 @@ Route::get('/donation_consult', function () {
     /*return Donation::Consult();*/
 })->middleware(['auth'])->name('donation_consult');
 
-Route::get('/donation_showInsert', function () {
-    /*return Donation::showInsert();*/
-})->middleware(['auth'])->name('donation_showInsert');
+Route::get('/donation_showInsert', [DonationController::class, 'showInsert'])->middleware(['auth'])->name('donation_showInsert');
 
 Route::get('/donation_donation', function () {
     /*return Donation::donation();*/
 })->middleware(['auth'])->name('donation_donation');
+
+Route::get('/donationInsert', function () {
+    $data = array();
+    $data["name"] = $_REQUEST["name"];
+    $data["last_name"] = $_REQUEST["last_name"];
+    $data["amount"] = $_REQUEST["amount"];
+    $data["size"] = $_REQUEST["size"];
+    return DonationController::insert($data);
+})->middleware(['auth'])->name('donationInsert');
 

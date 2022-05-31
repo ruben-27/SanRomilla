@@ -32,7 +32,7 @@ function pruebaAjax() {
         }
     };
 
-    xmlhttp.open("GET", "http://localhost:8080/prueba", true);
+    xmlhttp.open("GET", "/prueba", true);
     xmlhttp.send();
 }
 $(document).ready(function() {

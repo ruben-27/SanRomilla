@@ -38,7 +38,7 @@ function pruebaAjax() {
     }
   };
 
-  xmlhttp.open("GET", "http://localhost:8080/prueba", true);
+  xmlhttp.open("GET", "/prueba", true);
   xmlhttp.send();
 }
 
@@ -51,7 +51,7 @@ $(document).ready(function () {
 
   $('#example').DataTable({
     "ajax": {
-      "url": 'http://localhost:8080/colaborator_datatable',
+      "url": '/colaborator_datatable',
       "method": "POST",
       "data": {
         funcion: funcion
@@ -273,7 +273,7 @@ function showInsert() {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'mostrar_insertar'; //Petición
 
-  $.post('http://localhost:8080/colaborator_showInsert', function (data) {
+  $.post('/colaborator_showInsert', function (data) {
     $('#mostrarInsertar').html(data);
     $('#mostrarInsertar').css('display', 'block');
     $('#tabla').css('display', 'none');
@@ -369,7 +369,7 @@ function insert() {
 
   var str = $("#insertar").serialize(); //Petición
 
-  $.post('http://localhost:8080/colaborator_insert', str, function (data) {
+  $.post('/colaborator_insert', str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error en la consulta
@@ -389,7 +389,7 @@ function showEdit(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'mostrar_editar'; //Petición
 
-  $.post('http://localhost:8080/colaborator_showEdit', function (data) {
+  $.post('/colaborator_showEdit', function (data) {
     $('#editar').html(data);
     $('#editar').css('display', 'block');
     $('#tabla').css('display', 'none');
@@ -466,7 +466,7 @@ function edit(id) {
 
   var str = $("#submitenviar").serialize(); //Petición
 
-  $.post('http://localhost:8080/colaborator_edit', str, function (data) {
+  $.post('/colaborator_edit', str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error consulta
@@ -485,7 +485,7 @@ function removeAction(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'cuadro_eliminar'; //Petición
 
-  $.post('http://localhost:8080/colaborator_RemoveAction' + accion, function (data) {
+  $.post('/colaborator_RemoveAction' + accion, function (data) {
     $('#eliminar').html(data);
     $('#eliminar').css('display', 'block');
     $('#editar').css('display', 'none');
@@ -503,7 +503,7 @@ function acceptRemove(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'aceptar_eliminar'; //Petición
 
-  $.post('http://localhost:8080/colaborator_AcceptRemove', function (data) {
+  $.post('/colaborator_AcceptRemove', function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error consulta
