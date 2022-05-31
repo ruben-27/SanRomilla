@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Donation;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
         
         // Factories
         User::Factory(10)->create();
+        Donation::Factory(20)->create();
 
         // Seeders
         $this->call([
