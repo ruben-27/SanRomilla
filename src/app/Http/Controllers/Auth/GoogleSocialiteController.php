@@ -52,7 +52,7 @@ class GoogleSocialiteController extends Controller
      
                 // Auth::login($newUser);
       
-                // return redirect('/dashboard');
+                return redirect('/dashboard');
             }
      
         } catch (Exception $e) {

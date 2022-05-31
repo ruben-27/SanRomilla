@@ -10,7 +10,7 @@ var __webpack_exports__ = {};
     Descripción: Archivo que contiene las funciones que se van a emplear para la gestión de los colaboradores
 */
 //Función que realiza una petición para averiguar x datos en base a la fecha de nacimiento
-$("inscripcion").click(showInsert());
+$("#inscripcion").click(showInsert());
 
 function inscription_date() {
   var accion = 'inscription_date'; //Variable que guarda la acción que queramos hacer al realizar la petición

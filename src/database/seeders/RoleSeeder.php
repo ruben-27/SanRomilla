@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
@@ -31,10 +30,6 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'ROLE_DELETE_USERS',
                 'description' => 'Can delete users'
-            ],
-            [
-                'name' => 'ÑàèìòùÀÈÌÒÙÉ',
-                'description' => 'Canñ delete users'
             ]
         ]);
     }

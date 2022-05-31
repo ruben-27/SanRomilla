@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Colaborator;
-use App\Http\Controllers\Coordinator;
-use App\Http\Controllers\Donation;
-use App\Http\Controllers\Inscription;
+use App\Http\Controllers\ColaboratorController;
+use App\Http\Controllers\CoordinatorController;
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\InscriptionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

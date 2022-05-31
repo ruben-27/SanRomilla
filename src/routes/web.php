@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ColaboratorController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Colaborator;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,8 +67,8 @@ Route::get('/modify', function () {
 })->middleware(['auth'])->name('modify');
 
 Route::get('/prueba', function () {
-    return Colaborator::prueba();
+    return ColaboratorController::prueba();
 })->middleware(['auth'])->name('prueba');
 
 require __DIR__.'/auth.php';
-require __DIR__.'/private.php';
+// require __DIR__.'/private.php';
