@@ -40,17 +40,17 @@ class GoogleSocialiteController extends Controller
                 return redirect('/dashboard');
       
             }else{
-                return view('auth.error-google-login');
-                // $newUser = User::create([
-                //     'name' => $user->name,
-                //     'last_name' => 'google',
-                //     'email' => $user->email,
-                //     // 'social_id'=> $user->id,
-                //     // 'social_type'=> 'google',
-                //     'password' => encrypt('password')
-                // ]);
+                // return view('auth.error-google-login');
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'last_name' => 'google',
+                    'email' => $user->email,
+                    // 'social_id'=> $user->id,
+                    // 'social_type'=> 'google',
+                    'password' => encrypt('password')
+                ]);
      
-                // Auth::login($newUser);
+                Auth::login($newUser);
       
                 return redirect('/dashboard');
             }
