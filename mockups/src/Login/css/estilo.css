@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+#header{
+    display: flex;
+    justify-content: center;
+}
+
+#header-items{
+    flex-direction: column;
+    text-align: center;
+}
+
+form{
+    width: 25%;
+    padding: 20px 40px;
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px rgba(0,0,0,.2);
+    background-color: white;
+}
+
+input{
+    width: 100%;
+    margin: 5px 0px 15px 0px;
+}
+
+input[type="email"],
+input[type="password"]{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 7px 2%;
+}
+
+input[type="checkbox"]{
+    margin-right: 5px;
+}
+
+#input-long{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+#input-long > div{
+    display: flex;
+}
+
+a{
+    color: #7575ef;
+    text-decoration: none;
+}
+
+a:hover{
+    color: gray;
+}
+
+#submit{
+    border-radius: 5px;
+    background-color: #7575ef;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#submit:hover{
+    background-color: #6969d7;
+}
+
+#separator{
+    text-align: center;
+    position: relative;
+    margin: 10px 0;
+    color: #5a5a5a;
+}
+
+#separator div:before{
+    position: absolute;
+    content: '';
+    width: 30%;
+    height: 2px;
+    background: #ccc;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#separator div:after{
+    position: absolute;
+    content: '';
+    width: 30%;
+    height: 2px;
+    background: #ccc;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#google{
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#google:hover{
+    box-shadow: 1px 1px 8px rgba(0,0,0,.1);
+}
