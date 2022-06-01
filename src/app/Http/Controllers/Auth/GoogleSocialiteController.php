@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 use App\Models\User;
 use Exception;
 
@@ -29,25 +30,30 @@ class GoogleSocialiteController extends Controller
     {
         try {
      
+            // Get Google User
             $user = Socialite::driver('google')->user();
-      
+            // Validate If exists
             $finduser = User::where('email', $user->email)->first();
       
             if($finduser){
       
+                // Update Avatar
+                $finduser->fill([
+                    'avatar' => $user->avatar
+                ]);
+                $finduser->save();
+                // Login
                 Auth::login($finduser);
-     
                 return redirect('/dashboard');
       
             }else{
                 // return view('auth.error-google-login');
                 $newUser = User::create([
-                    'name' => $user->name,
-                    'last_name' => 'google',
+                    'name' => strtok($user->name, " "),
+                    'last_name' => substr(strstr($user->name," "), 1),
                     'email' => $user->email,
-                    // 'social_id'=> $user->id,
-                    // 'social_type'=> 'google',
-                    'password' => encrypt('password')
+                    'password' => encrypt('password'),
+                    'avatar' => $user->avatar,
                 ]);
      
                 Auth::login($newUser);

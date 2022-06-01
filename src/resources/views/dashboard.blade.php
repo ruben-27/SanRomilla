@@ -11,8 +11,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+                <div class="flex items-center p-6 bg-white border-b border-gray-200">
+                    <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-full w-10 mr-5" referrerpolicy="no-referrer">
+                    !Has iniciado sesión!
                 </div>
             </div>
         </div>
