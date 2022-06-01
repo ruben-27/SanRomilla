@@ -283,7 +283,7 @@ function showInsert() {
 } //Función que valida el registro de colaboradores
 
 
-function validateInsert() {
+function validatestore() {
   $("#insertar").validate({
     rules: {
       nombre: {
@@ -347,7 +347,7 @@ function validateInsert() {
 
     },
     submitHandler: function submitHandler() {
-      insert();
+      store();
     }
   }); //Validaciones personalizadas que no entran dentro de la librería
 
@@ -363,7 +363,7 @@ function validateInsert() {
 } //Función que realiza la petición para el registro de colaboradores
 
 
-function insert() {
+function store() {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'insertar'; //Variable que guarda los datos del formulario
 

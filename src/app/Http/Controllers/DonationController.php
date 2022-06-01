@@ -13,25 +13,35 @@ class DonationController extends Controller
 
     public static function Consult() {
         $donacion = Donation::all();
-        echo json_encode($donacion);
+        return $donacion;
     }
     
-    public static function insert($array) {
+    public function store(Request $request) {
+       
         $donation = new Donation();
-        $donation->name = $array["name"];
-        $donation->last_name = $array["last_name"];
-        $donation->amount = $array["amount"];
-        if ($array["size"]!="No quiere") {
-            $donation->size = $array["size"];
+        $request->validate([
+            'name' => ['required','max:50'],
+            'last_name' => ['required','max:100'],
+            'amount' => ['required','max:999'],
+        ], [
+            'name.required' => 'El nombre es obligatorio',
+            'last_name.required' => 'El apellido es obligatorio'
+        ]); 
+        $donation->name = $_REQUEST["name"];
+        $donation->last_name = $_REQUEST["last_name"];
+        $donation->amount = $_REQUEST["amount"];
+        if ($_REQUEST["size"]!="No quiere") {
+            $donation->size = $_REQUEST["size"];
         } else {
             unset($donation->size);
         }
         $saved = $donation->save();
         if (!$saved) {
-            echo json_encode("KO");
+            return redirect('/donation')->with("error","fallo al introducir el formulario");
         } else {
-            echo json_encode("OK");
+            return redirect('/donation');
         }
+        
         
     }
 

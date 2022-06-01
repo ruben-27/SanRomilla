@@ -14,7 +14,7 @@ class ColaboratorController extends Controller
         echo json_encode("showInsert");
     }
 
-    public static function insert() {
+    public static function store() {
         echo json_encode("insert");
     }
     

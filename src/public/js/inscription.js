@@ -398,7 +398,7 @@ function keepShopping() {
 } //Función que realiza la petición para el registro de inscripciones
 
 
-function insert() {
+function store() {
   var accion = 'insertar'; //Variable que guarda la acción que queramos hacer al realizar la petición
 
   var str = $("#formulario").serialize(); //Variable que guarda los datos del formulario

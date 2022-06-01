@@ -38,11 +38,11 @@ class InscriptionController extends Controller
         echo json_encode("keepShopping");
     }
 
-    public static function validateInsert() {
+    public static function validatestore() {
         echo json_encode("validateInsert");
     }
     
-    public static function insert() {
+    public static function store() {
         echo json_encode("insert");
     }
 

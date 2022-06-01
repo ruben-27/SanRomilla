@@ -7,15 +7,16 @@
             {{ __('Donation') }}
         </h2>
     </x-slot>
+    {{ csrf_field() }}
     <div id="tabla" class="container" >
                 <div class="jumbotron jumbotron-fluid">
                     <div class="mt-5 mb-5">
                         <h1>Gestión donaciones</h1>
                     </div>
                 </div>
-                <div><button type="button" class="btn btn-primary mb-5" name="enviar" id="donation"><i class="bi bi-plus"></i>Nueva donación</button></div>
+                <div><a href="/donation_showInsert"><button type="button" class="btn btn-primary mb-5" name="enviar" id="donation"><i class="bi bi-plus"></i>Nueva donación</button></a></div>
                 <div class="m-0">
-                    <table id="example" class="table table-hover table-responsive">
+                    <table id="table" class="table table-hover table-responsive">
                         <thead>
                         <tr>
                             <th>IdDonacion</th>

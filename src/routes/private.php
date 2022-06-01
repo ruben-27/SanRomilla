@@ -30,7 +30,7 @@ Route::get('/colaborator_showInsert', function () {
 })->middleware(['auth'])->name('colaborator_showInsert');
 
 Route::get('/colaborator_Insert', function () {
-    /*return Colaborator::insert();*/
+    /*return Colaborator::store();*/
 })->middleware(['auth'])->name('colaborator_Insert');
 
 Route::get('/colaborator_ShowEdit', function () {
@@ -88,7 +88,7 @@ Route::get('/totalBought', function () {
 })->middleware(['auth'])->name('totalBought');
 
 Route::get('/inscriptionInsert', function () {
-    /*return Inscription::insert();*/
+    /*return Inscription::store();*/
 })->middleware(['auth'])->name('ColaboratorInsert');
 
 Route::get('inscriptionShowEdit', function () {
@@ -104,9 +104,8 @@ Route::get('/inscriptionEdit', function () {
 })->middleware(['auth'])->name('colaboratorEdit');
 
 /*Donation Routes*/ 
-Route::get('/donation_consult', function () {
-    /*return Donation::Consult();*/
-})->middleware(['auth'])->name('donation_consult');
+
+Route::post('/donation_consult', [DonationController::class, 'Consult'])->middleware(['auth'])->name('donation_consult');
 
 Route::get('/donation_showInsert', [DonationController::class, 'showInsert'])->middleware(['auth'])->name('donation_showInsert');
 
@@ -114,12 +113,7 @@ Route::get('/donation_donation', function () {
     /*return Donation::donation();*/
 })->middleware(['auth'])->name('donation_donation');
 
-Route::get('/donationInsert', function () {
-    $data = array();
-    $data["name"] = $_REQUEST["name"];
-    $data["last_name"] = $_REQUEST["last_name"];
-    $data["amount"] = $_REQUEST["amount"];
-    $data["size"] = $_REQUEST["size"];
-    return DonationController::insert($data);
-})->middleware(['auth'])->name('donationInsert');
+Route::post('/donationInsert', [DonationController::class,'store'])->middleware(['auth'])->name('donationInsert');
+
+
 
