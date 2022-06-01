@@ -42,6 +42,10 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'ROLE_DONATIONS',
                 'description' => 'Can create donatios'
+            ],
+            [
+                'name' => 'ROLE_YEARS',
+                'description' => 'Can create & update years'
             ]
         ]);
     }
