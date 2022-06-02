@@ -20,4 +20,13 @@ class Donation extends Model
        'amount',
        'size',
    ];
+
+   public function scopeSearch($query, $val)
+   {
+       return $query
+        ->where('name', 'like', '%'.$val.'%')
+        ->orWhere('last_name', 'like', '%'.$val.'%')
+        ->orWhere('amount', 'like', '%'.$val.'%')
+        ->orWhere('size', 'like', '%'.$val.'%');
+   }
 }

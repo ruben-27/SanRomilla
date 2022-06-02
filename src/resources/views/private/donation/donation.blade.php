@@ -16,20 +16,7 @@
                 </div>
                 <div><a href="/donation_showInsert"><button type="button" class="btn btn-primary mb-5" name="enviar" id="donation"><i class="bi bi-plus"></i>Nueva donación</button></a></div>
                 <div class="m-0">
-                    <table id="table" class="table table-hover table-responsive">
-                        <thead>
-                        <tr>
-                            <th>IdDonacion</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Importe donación</th>
-                            <th>Talla Camiseta</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-    
-                        </tbody>
-                    </table>
+                    <livewire:donation-datatable/>
                 </div>
             </div>
             <div id="mostrarInsertar" class="container"></div>
