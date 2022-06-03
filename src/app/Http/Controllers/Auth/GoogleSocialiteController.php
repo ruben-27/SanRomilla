@@ -52,7 +52,6 @@ class GoogleSocialiteController extends Controller
                 //     'name' => strtok($user->name, " "),
                 //     'last_name' => substr(strstr($user->name," "), 1),
                 //     'email' => $user->email,
-                //     'password' => encrypt('password'),
                 //     'avatar' => $user->avatar,
                 // ]);
      
