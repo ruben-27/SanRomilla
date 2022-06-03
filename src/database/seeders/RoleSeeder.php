@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->store([
+        DB::table('roles')->insert([
             [
                 'name' => 'ROLE_IMAGES',
                 'description' => 'Can create & delete images'
