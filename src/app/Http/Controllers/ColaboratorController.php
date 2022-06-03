@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ColaboratorController extends Controller
 {
@@ -11,11 +12,33 @@ class ColaboratorController extends Controller
     }
 
     public static function showInsert() {
-        echo json_encode("showInsert");
+        return view('private.colaborator.colaboratorForm');
     }
 
-    public static function store() {
-        echo json_encode("insert");
+    public function store(Request $request) {
+       
+        $colaborator = new User();
+        $request->validate([
+            'name' => ['required','max:50'],
+            'last_name' => ['required','max:100'],
+            'email' => ['required','max:100'],
+        ], [
+            'name.required' => 'El nombre es obligatorio',
+            'last_name.required' => 'El apellido es obligatorio',
+            'email.required' => 'El correo es obligatorio'
+        ]); 
+        $colaborator->name = $_REQUEST["name"];
+        $colaborator->last_name = $_REQUEST["last_name"];
+        $colaborator->email = $_REQUEST["email"];
+       
+        $saved = $colaborator->save();
+        if (!$saved) {
+            return redirect('/colaborator')->with("error","fallo al introducir el formulario");
+        } else {
+            return redirect('/colaborator');
+        }
+        
+        
     }
     
     public static function datatable() {

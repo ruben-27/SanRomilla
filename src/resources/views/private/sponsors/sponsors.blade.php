@@ -1,44 +1,25 @@
 <x-app-layout>
     <x-slot name="script">
-        {{ __('sponsors') }}
+        {{ __('sponsor') }}
     </x-slot>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Sponsors') }}
         </h2>
     </x-slot>
-        <div class="container" id="tabla" >
-            <div class="jumbotron jumbotron-fluid">
-                <div class=" mt-5 mb-5">
-                    <h1>Gestión inscripciones</h1>
+        <div class="container mx-auto">
+            <div class="mt-5 md:mx-4">
+                <h1 class="text-3xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-5xl">
+                    <span class="inline md:block">Patrocinadores</span>
+                </h1>
+                <div class="flex justify-center md:justify-start">
+                    <a href="/sponsor_showInsert" class="mt-7 flex bg-yellow-500 rounded-lg font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-yellow-600 mr-6">
+                        <svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        Añadir Patrocinador
+                    </a>
                 </div>
             </div>
-            <div><button id="inscripcion" type="button" class="btn btn-primary mb-5" name="enviar" onclick="showInsert()"><i class="bi bi-plus"></i>Nueva inscripción</button></div>
-            <div id="cuadro_inscripcion1" class="alert alert-warning mb-5" role="alert">El proceso  de inscripción se habilitará cuando el plazo esté abierto.</div>
-            <div id="cuadro_inscripcion2" class="alert alert-warning mb-5" role="alert">El proceso  de inscripción ha finalizado.</div>
-            <div class="table-responsive" >
-                <table id="example" class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Inscripción</th>
-                        <th>DNI</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Teléfono</th>
-                        <th>Dorsal</th>
-                        <th>Talla Camiseta</th>
-                        <th>Categoría</th>
-                        <th>Importe Donación</th>
-                        <th>Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-
+            <livewire:sponsor-datatable/>
         </div>
         <div id="mostrarInsertar" class="container"></div>
         <div id="editar" class="container"></div>

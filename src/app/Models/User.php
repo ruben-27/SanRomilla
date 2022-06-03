@@ -52,5 +52,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
         
     }
+    public function scopeSearch($query, $val)
+    {
+        return $query
+         ->where('name', 'like', '%'.$val.'%')
+         ->orWhere('last_name', 'like', '%'.$val.'%')
+         ->orWhere('email', 'like', '%'.$val.'%');
+    }
 
 }

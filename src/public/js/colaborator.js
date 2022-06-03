@@ -11,70 +11,7 @@ var __webpack_exports__ = {};
     Curso: 20-21
     Descripción: Archivo que contiene las funciones que se van a emplear para la gestión de los colaboradores
 */
-window.onload = pruebaAjax;
-var button = document.getElementById("sumbit");
-var prueba = document.getElementById("prueba");
-
-button.onclick = function () {
-  console.log('working');
-};
-
-prueba.addEventListener("click", pruebaAjax); //Función que al cargar el documento hace una petición para consultar los registros de la baase de datos y mostrarlos
-
-function pruebaAjax() {
-  alert("dentro");
-  var xmlhttp = new XMLHttpRequest();
-
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-      // XMLHttpRequest.DONE == 4
-      if (xmlhttp.status == 200) {
-        console.log(xmlhttp.responseText);
-      } else if (xmlhttp.status == 400) {
-        alert('There was an error 400');
-      } else {
-        alert('something else other than 200 was returned');
-      }
-    }
-  };
-
-  xmlhttp.open("GET", "/prueba", true);
-  xmlhttp.send();
-}
-
-$(document).ready(function () {
-  alert("js cargado"); //Variable que guarda la acción que queramos hacer al realizar la petición
-
-  var accion = 'consultar'; //Variable que recoge el nombre de la función
-
-  var funcion = 'listar'; //Función que realiza la petición y muestra los registros devueltos
-
-  $('#example').DataTable({
-    "ajax": {
-      "url": '/colaborator_datatable',
-      "method": "POST",
-      "data": {
-        funcion: funcion
-      }
-    },
-    "columns": [{
-      "data": "idColaborador"
-    }, {
-      "data": "correo"
-    }, {
-      "data": "tipo"
-    }, {
-      "data": "nombre"
-    }, {
-      "data": "apellidos"
-    }, {
-      "data": "telefono"
-    }, {
-      "data": "acciones"
-    }],
-    "language": es
-  });
-}); //Registro de comentarios de la librería en español
+$("#cancel").click(cancel); //Registro de comentarios de la librería en español
 
 var es = {
   "processing": "Procesando...",
@@ -515,6 +452,10 @@ function acceptRemove(id) {
       location.reload();
     }
   });
+}
+
+function cancel() {
+  window.location.replace("/colaborator");
 }
 /******/ })()
 ;

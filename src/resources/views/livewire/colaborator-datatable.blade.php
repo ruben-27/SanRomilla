@@ -53,29 +53,29 @@
                                     @include('partials._sort-icon', ['field'=>'last_name'])
                                 </span>
                             </th>
-                            <th wire:click="sortBy('amount')" class="py-3 px-6 text-center cursor-pointer">
+                            <th wire:click="sortBy('email')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Importe donación
-                                    @include('partials._sort-icon', ['field'=>'amount'])
+                                    Correo
+                                    @include('partials._sort-icon', ['field'=>'email'])
                                 </span>
                             </th>
-                            <th wire:click="sortBy('size')" class="py-3 px-6 text-center cursor-pointer">
+                            <th wire:click="sortBy('email')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Talla Camiseta
-                                    @include('partials._sort-icon', ['field'=>'size'])
+                                    Ultima Conexión
+                                    @include('partials._sort-icon', ['field'=>'updated_at'])
                                 </span>
                             </th>
-                            <th wire:click="sortBy('created_at')" class="py-3 px-6 text-center cursor-pointer">
+                            <th wire:click="sortBy('email')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Fecha
-                                    @include('partials._sort-icon', ['field'=>'created_at'])
+                                    Acciones
+                                    @include('partials._sort-icon', ['field'=>'email'])
                                 </span>
                             </th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-600 text-sm font-light">
 
-                        @foreach ($donations as $donation)
+                        @foreach ($colaborators as $colaborator)
                         @if($loop->iteration % 2 == 0)
                         <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
                         @else
@@ -83,29 +83,40 @@
                         @endif
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$donation->name}}</span>
+                                    <span>{{$colaborator->name}}</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$donation->last_name}}</span>
+                                    <span>{{$colaborator->last_name}}</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$donation->amount}}</span>
+                                    <span>{{$colaborator->email}}</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
-                                <div class="flex items-center justify-center uppercase">
-                                    <span>{{$donation->size}}</span>
+                                <div class="flex items-center justify-center">
+                                    <span>{{ \Carbon\Carbon::parse($colaborator->created_at)->format('d/m/Y')}}</span>
                                 </div>
                             </td>
+                            
                             <td class="py-3 px-6 text-center">
-                                <div class="flex items-center justify-center uppercase">
-                                    <span>{{ \Carbon\Carbon::parse($donation->created_at)->format('d/m/Y')}}</span>
+                                <div class="flex item-center justify-center">
+                                    <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110 cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg>
+                                    </div>
+                                    <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110 cursor-pointer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </td>
+                            
                         </tr>                        
                         @endforeach
 
@@ -116,10 +127,10 @@
             </div>
 
             {{-- Paginator --}}
-            @if($donations->links()->paginator->hasPages())
+            @if($colaborators->links()->paginator->hasPages())
             <div class="p-3 z-1">
                 <p>
-                    {{$donations->links('vendor.pagination.tailwind')}}
+                    {{$colaborators->links('vendor.pagination.tailwind')}}
                 </p>
             </div>
             @endif

@@ -5,6 +5,8 @@ use App\Http\Controllers\ColaboratorController;
 use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\InscriptionController;
+use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,51 +23,23 @@ use App\Http\Controllers\InscriptionController;
 // });
 /*Colaborator Routes*/
 
-Route::get('/colaborator_datatable', function () {
-    /*return Colaborator::datatable();*/
-})->middleware(['auth'])->name('colaborator_datatable');
+Route::get('/colaborator_showInsert', [ColaboratorController::class, 'showInsert'])->middleware(['auth'])->name('colaborator_showInsert');
 
-Route::get('/colaborator_showInsert', function () {
-    /*return Colaborator::showInsert();*/
-})->middleware(['auth'])->name('colaborator_showInsert');
+Route::post('/colaboratorInsert', [ColaboratorController::class,'store'])->middleware(['auth'])->name('colaboratorInsert');
 
-Route::get('/colaborator_Insert', function () {
-    /*return Colaborator::store();*/
-})->middleware(['auth'])->name('colaborator_Insert');
-
-Route::get('/colaborator_ShowEdit', function () {
-    /*return Colaborator::ShowEdit();*/
-})->middleware(['auth'])->name('colaborator_ShowEdit');
-
-Route::get('/colaborator_Edit', function () {
-    /*return Colaborator::edit();*/
-})->middleware(['auth'])->name('colaborator_Edit');
-
-Route::get('/colaborator_RemoveAction', function () {
-    /*return Colaborator::removeAction();*/
-})->middleware(['auth'])->name('colaborator_RemoveAction');
-
-Route::get('/colaborator_AcceptRemove', function () {
-   /*return Colaborator::acceptRemove();*/
-})->middleware(['auth'])->name('colaborator_AcceptRemove');
 
 /*Inscription Routes*/
+
+Route::post('inscription_consult', [InscriptionController::class, 'Consult'])->middleware(['auth'])->name('inscription_consult');
+
+Route::get('/inscription_showInsert', [InscriptionController::class, 'showInsert'])->middleware(['auth'])->name('inscription_showInsert');
+
+Route::post('/inscriptionInsert', [InscriptionController::class,'store'])->middleware(['auth'])->name('inscriptionInsert');
+
 
 Route::get('/inscription_date', function () {
     /*return Inscription::showInsert();*/
 })->middleware(['auth'])->name('inscription_date');
-
-Route::get('/incription_datatable', function () {
-    /*return Inscription::datatable();*/
-})->middleware(['auth'])->name('incription_datatable');
-
-Route::get('/inscription_form', function () {
-     /*return Inscription::form();*/
-})->middleware(['auth'])->name('inscription_form');
-
-Route::get('/inscription_showInsert', function () {
-    /*return Inscription::showInsert();*/
-})->middleware(['auth'])->name('inscription_showInsert');
 
 Route::get('/terms', function () {
     /*return Inscription::terms();*/
@@ -87,10 +61,6 @@ Route::get('/totalBought', function () {
     /*return Inscription::showInsert();*/
 })->middleware(['auth'])->name('totalBought');
 
-Route::get('/inscriptionInsert', function () {
-    /*return Inscription::store();*/
-})->middleware(['auth'])->name('ColaboratorInsert');
-
 Route::get('inscriptionShowEdit', function () {
     /*return Inscription::ShowEdit();*/
 })->middleware(['auth'])->name('colaboratorShowEdit');
@@ -109,11 +79,22 @@ Route::post('/donation_consult', [DonationController::class, 'Consult'])->middle
 
 Route::get('/donation_showInsert', [DonationController::class, 'showInsert'])->middleware(['auth'])->name('donation_showInsert');
 
-Route::get('/donation_donation', function () {
-    /*return Donation::donation();*/
-})->middleware(['auth'])->name('donation_donation');
-
 Route::post('/donationInsert', [DonationController::class,'store'])->middleware(['auth'])->name('donationInsert');
 
+/*Sponsor Routes*/ 
+
+Route::post('/sponsor_consult', [SponsorController::class, 'Consult'])->middleware(['auth'])->name('sponsor_consult');
+
+Route::get('/sponsor_showInsert', [SponsorController::class, 'showInsert'])->middleware(['auth'])->name('sponsor_showInsert');
+
+Route::post('/sponsorInsert', [SponsorController::class,'store'])->middleware(['auth'])->name('sponsorInsert');
+
+/*Category Routes*/ 
+
+Route::post('/category_consult', [CategoryController::class, 'Consult'])->middleware(['auth'])->name('category_consult');
+
+Route::get('/category_showInsert', [CategoryController::class, 'showInsert'])->middleware(['auth'])->name('category_showInsert');
+
+Route::post('/categoryInsert', [CategoryController::class,'store'])->middleware(['auth'])->name('categoryInsert');
 
 
