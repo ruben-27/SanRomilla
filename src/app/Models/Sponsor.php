@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsor extends Model
 {
     use HasFactory;
+    public function scopeSearch($query, $val)
+    {
+        return $query
+         ->where('name', 'like', '%'.$val.'%');
+    }
 }

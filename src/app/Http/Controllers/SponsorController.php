@@ -19,27 +19,28 @@ class SponsorController extends Controller
     public function store(Request $request) {
        
         $sponsor = new Sponsor();
+       
+  
+        /* Store $imageName name in DATABASE from HERE */
         $request->validate([
             'name' => ['required','max:50'],
-            'last_name' => ['required','max:100'],
-            'amount' => ['required','max:999'],
+            'image' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'name' => ['required','max:200'],
         ], [
             'name.required' => 'El nombre es obligatorio',
-            'last_name.required' => 'El apellido es obligatorio'
+            'image.required' => 'La imagen es obligatoria'
         ]); 
+        $imageName = $_REQUEST["name"].'.'.$request->image->extension();  
+        $request->image->move(public_path('images/sponsors/'), $imageName);
         $sponsor->name = $_REQUEST["name"];
-        $sponsor->last_name = $_REQUEST["last_name"];
-        $sponsor->amount = $_REQUEST["amount"];
-        if ($_REQUEST["size"]!="No quiere") {
-            $sponsor->size = $_REQUEST["size"];
-        } else {
-            unset($sponsor->size);
-        }
+        $sponsor->url = $_REQUEST["url"];
+        $sponsor->image = $imageName;
+        
         $saved = $sponsor->save();
         if (!$saved) {
-            return redirect('/sponsor')->with("error","fallo al introducir el formulario");
+            return redirect('/sponsors')->with("error","fallo al introducir el formulario");
         } else {
-            return redirect('/sponsor');
+            return redirect('/sponsors');
         }
         
         

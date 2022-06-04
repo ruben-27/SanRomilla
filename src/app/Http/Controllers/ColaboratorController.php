@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
+
 
 class ColaboratorController extends Controller
 {
@@ -12,11 +14,14 @@ class ColaboratorController extends Controller
     }
 
     public static function showInsert() {
-        return view('private.colaborator.colaboratorForm');
+        $roles = Role::all();
+
+        return view('private.colaborator.colaboratorForm',compact("roles"));
     }
 
     public function store(Request $request) {
-       
+        
+        
         $colaborator = new User();
         $request->validate([
             'name' => ['required','max:50'],
@@ -32,13 +37,19 @@ class ColaboratorController extends Controller
         $colaborator->email = $_REQUEST["email"];
        
         $saved = $colaborator->save();
+        foreach ($request->roles as $key => $role) {
+            $colaborator->roles()->attach(
+                $role
+            );
+        }
+            
+        
+       
         if (!$saved) {
             return redirect('/colaborator')->with("error","fallo al introducir el formulario");
         } else {
             return redirect('/colaborator');
-        }
-        
-        
+        }  
     }
     
     public static function datatable() {

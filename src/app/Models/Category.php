@@ -24,4 +24,15 @@ class Category extends Model
     {
         return $this->hasMany(Mark::class);
     }
+
+    public function scopeSearch($query, $val)
+    {
+        return $query
+         ->where('name', 'like', '%'.$val.'%')
+         ->orWhere('min_age', 'like', '%'.$val.'%')
+         ->orWhere('max_age', 'like', '%'.$val.'%')
+         ->orWhere('KM', 'like', '%'.$val.'%')
+         ->orWhere('start_time', 'like', '%'.$val.'%')
+         ->orWhere('price', 'like', '%'.$val.'%');
+    }
 }

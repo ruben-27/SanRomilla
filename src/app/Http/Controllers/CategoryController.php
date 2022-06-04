@@ -21,20 +21,27 @@ class CategoryController extends Controller
         $category = new Category();
         $request->validate([
             'name' => ['required','max:50'],
-            'last_name' => ['required','max:100'],
-            'amount' => ['required','max:999'],
+            'min_age' => ['required'],
+            'max_age' => ['required'],
+            'KM' => ['required','max:100'],
+            'start_time' => ['required'],
+            'price' => ['required'],
         ], [
             'name.required' => 'El nombre es obligatorio',
-            'last_name.required' => 'El apellido es obligatorio'
+            'min_age.required' => 'La edad mínima es obligatoria',
+            'max_age.required' => 'La edad máxima es obligatoria',
+            'KM.required' => 'La duración de la categoria es obligatoria',
+            'name.max' => 'El nombre es demasiado largo',
+            'start_time.required' => 'La fecha de comienzo es obligatoria',
+            'price.required' => 'El precio es obligatorio'
         ]); 
         $category->name = $_REQUEST["name"];
-        $category->last_name = $_REQUEST["last_name"];
-        $category->amount = $_REQUEST["amount"];
-        if ($_REQUEST["size"]!="No quiere") {
-            $category->size = $_REQUEST["size"];
-        } else {
-            unset($category->size);
-        }
+        $category->min_age = $_REQUEST["min_age"];
+        $category->max_age = $_REQUEST["max_age"];
+        $category->KM = str_replace(',', '.',$_REQUEST["KM"]);
+        $category->start_time = $_REQUEST["start_time"];
+        $category->price = $_REQUEST["price"];
+        $category->status = "W";
         $saved = $category->save();
         if (!$saved) {
             return redirect('/category')->with("error","fallo al introducir el formulario");
