@@ -18,12 +18,12 @@ class CreateMarksTable extends Migration
             $table->string('name', 100);
             $table->string('last_name', 200);
             $table->tinyInteger('place')->unsigned();
-            $table->smallInteger('dorsal')->unsigned()->unique();
+            $table->smallInteger('dorsal')->unsigned();
             $table->time('time');
             $table->time('pace');
             $table->char('gender', 1);
             $table->tinyInteger('category_id')->unsigned()->nullable();
-            $table->tinyInteger('year_id')->unsigned()->nullable();
+            $table->smallInteger('year_id')->unsigned()->nullable();
             $table->timestamps();
 
             // Foreign Keys

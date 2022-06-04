@@ -8,9 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsor extends Model
 {
     use HasFactory;
-    public function scopeSearch($query, $val)
-    {
-        return $query
-         ->where('name', 'like', '%'.$val.'%');
-    }
+
+    /**
+    * The attributes that are mass assignable.
+    *
+    * @var array<int, string>
+    */
+   protected $fillable = [
+       'name',
+       'image',
+       'url'
+   ];
+   
+   public function scopeSearch($query, $val)
+   {
+       return $query
+        ->where('name', 'like', '%'.$val.'%');
+   }
 }

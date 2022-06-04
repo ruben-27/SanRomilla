@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration
             $table->tinyIncrements('id')->unsigned();
             $table->string('file_name', 200);
             $table->tinyInteger('category_id')->unsigned()->nullable();
-            $table->tinyInteger('year_id')->unsigned()->nullable();
+            $table->smallInteger('year_id')->unsigned()->nullable();
             $table->timestamps();
 
             // Foreign Keys

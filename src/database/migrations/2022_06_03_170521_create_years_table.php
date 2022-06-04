@@ -14,10 +14,11 @@ class CreateYearsTable extends Migration
     public function up()
     {
         Schema::create('years', function (Blueprint $table) {
-            $table->tinyInteger('year')->primary()->unsigned();
+            $table->smallInteger('year')->primary()->unsigned();
             $table->string('ong', 80);
             $table->string('ong_message', 1000);
             $table->decimal('amount_raised', 15, 2);
+            $table->boolean('active');
             $table->timestamps();
         });
     }

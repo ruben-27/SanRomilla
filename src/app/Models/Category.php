@@ -10,6 +10,21 @@ class Category extends Model
     use HasFactory;
 
     /**
+    * The attributes that are mass assignable.
+    *
+    * @var array<int, string>
+    */
+   protected $fillable = [
+       'name',
+       'min_age',
+       'max_age',
+       'KM',
+       'start_time',
+       'price',
+       'status'
+   ];
+
+    /**
      * Get images
      */
     public function images()
