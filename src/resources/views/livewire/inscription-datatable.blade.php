@@ -88,6 +88,12 @@
                                     @include('partials._sort-icon', ['field'=>'category_id'])
                                 </span>
                             </th>
+                            <th wire:click="sortBy('inscription_number')" class="py-3 px-6 text-center cursor-pointer">
+                                <span class="flex justify-center">
+                                    Número inscripción
+                                    @include('partials._sort-icon', ['field'=>'inscription_number'])
+                                </span>
+                            </th>
                             <th wire:click="sortBy('gender')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
                                     Género
@@ -155,12 +161,17 @@
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$inscription->birthday}}</span>
+                                    <span>{{ \Carbon\Carbon::parse($inscription->birthday)->format('d/m/Y')}}</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
                                     <span>{{$inscription->categoryName}}</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                    <span>{{$inscription->inscription_number}}</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
