@@ -40,16 +40,22 @@
                     <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent placeholder:text-gray-300" value="{{ isset($colaborator) ? $colaborator->email : ''}}" type="email" placeholder="Email" name="email" />
                 </div>
 
-                @foreach ($roles as $key -> $role)
+                @foreach ($roles as $role)
                 
                 <section class="container mx-auto p-5">
                     <label for="checkbox" class="relative flex-inline items-center isolate p-4 rounded-2xl">
                         @if (isset($colaborator))
-                                @if ($role->id == $colaborator->roles()->get()[$key]->id)
-                                    <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>
-                                @else
-                                    <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
+                            @foreach ($colaborator->roles()->get() as $colRole)
+                                @if ($colRole->id == $role->id)
+                                    {{$checked = true}}
                                 @endif
+                            @endforeach
+                            @if ($checked)
+                                <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>
+                            @else
+                                <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
+                            @endif
+                            {{$checked = false}}
                         @else
                         <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
                         @endif
