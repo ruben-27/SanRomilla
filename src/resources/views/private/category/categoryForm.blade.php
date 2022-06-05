@@ -20,37 +20,40 @@
                     <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nueva Categoria</h1>
                 </div>
             </div>
-            <form id="categoryInscription" method="post" action="/categoryInsert">
+            <form id="categoryInscription" method="post" action="{{ isset($category) ? '/categoryUpdate' : '/categoryInsert' }}" >
             {{ csrf_field() }}
+                @if (isset($category))
+                    <input type="hidden" value="{{$category->id}}" name="id">
+                @endif  
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Nombre" name="name" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" value="<?php echo isset($category) ? $category->name : ""?>" placeholder="Nombre" name="name" />
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
                     <div class="grid grid-cols-1">
                         <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Edad Minima</label>
-                        <input class="py-2 px-3 rounded-lg border-2 border-grey-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="Edad Minima" name="min_age" />
+                        <input class="py-2 px-3 rounded-lg border-2 border-grey-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" value="<?php echo isset($category) ? $category->min_age : ""?>" type="text" placeholder="Edad Minima" name="min_age" />
                     </div>
                     <div class="grid grid-cols-1">
                         <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Edad Máxima</label>
-                        <input class="py-2 px-3 rounded-lg border-2 border-grey-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="Edad Máxima" name="max_age" />
+                        <input class="py-2 px-3 rounded-lg border-2 border-grey-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" value="<?php echo isset($category) ? $category->max_age : ""?>" type="text" placeholder="Edad Máxima" name="max_age" />
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Kilometros</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Kilometros" name="KM" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" value="<?php echo isset($category) ? $category->KM : ""?>" type="text" placeholder="Kilometros" name="KM" />
                 </div>
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Hora Inicio</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="time" name="start_time" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" value="<?php echo isset($category) ? $category->start_time : ""?>" type="time" name="start_time" />
                 </div>
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Precio</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="number" min="1" step="any"  name="price" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" value="<?php echo isset($category) ? $category->price : ""?>" type="number" min="1" step="any"  name="price" />
                 </div>
 
                 <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>

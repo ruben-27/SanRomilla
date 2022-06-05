@@ -21,7 +21,6 @@ class ColaboratorController extends Controller
 
     public function store(Request $request) {
         
-        
         $colaborator = new User();
         $request->validate([
             'name' => ['required','max:50'],
@@ -42,9 +41,7 @@ class ColaboratorController extends Controller
                 $role
             );
         }
-            
-        
-       
+
         if (!$saved) {
             return redirect('/colaborator')->with("error","fallo al introducir el formulario");
         } else {

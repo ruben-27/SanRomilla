@@ -37,4 +37,8 @@ class CategoryDatatable extends Component
     {
         $this->resetPage();
     }
+
+    public function delete($id) {
+       Category::find($id)->delete();
+    }
 }

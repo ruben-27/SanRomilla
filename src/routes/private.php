@@ -91,6 +91,10 @@ Route::post('/sponsorInsert', [SponsorController::class,'store'])->middleware(['
 
 /*Category Routes*/ 
 
+Route::get('/categoryModify/{id}', [CategoryController::class, 'modify'])->middleware(['auth'])->name('categoryModify');
+
+Route::post('/categoryUpdate', [CategoryController::class, 'update'])->middleware(['auth'])->name('categoryUpdate');
+
 Route::post('/category_consult', [CategoryController::class, 'Consult'])->middleware(['auth'])->name('category_consult');
 
 Route::get('/category_showInsert', [CategoryController::class, 'showInsert'])->middleware(['auth'])->name('category_showInsert');
