@@ -43,7 +43,7 @@
                 @foreach ($roles as $role)
                 
                 <section class="container mx-auto p-5">
-                    <label for="checkbox" class="relative flex-inline items-center isolate p-4 rounded-2xl">
+                    <label for="{{$role->id}}" class="relative flex-inline items-center isolate p-4 rounded-2xl">
                         @if (isset($colaborator))
                             {{$checked = false}}
                             @foreach ($colaborator->roles()->get() as $colRole)
@@ -52,13 +52,13 @@
                                 @endif
                             @endforeach
                             @if ($checked)
-                                <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>
+                                <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>
                             @else
-                                <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
+                                <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
                             @endif
                             {{$checked = false}}
                         @else
-                        <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
+                        <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
                         @endif
                         
                         <span class="ml-2 relative z-20">{{ $role->public }}</span>
