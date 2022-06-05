@@ -49,20 +49,20 @@
                             </th>
                             <th wire:click="sortBy('min_age')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Apellidos
+                                    Edad Mínima
                                     @include('partials._sort-icon', ['field'=>'min_age'])
                                 </span>
                             </th>
                             <th wire:click="sortBy('max_age')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Correo
+                                    Edad Máxima
                                     @include('partials._sort-icon', ['field'=>'max_age'])
                                 </span>
                             </th>
-                            <th wire:click="sortBy('KM')" class="py-3 px-6 text-center cursor-pointer">
+                            <th wire:click="sortBy('distance')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Kilometros
-                                    @include('partials._sort-icon', ['field'=>'KM'])
+                                    Distancia
+                                    @include('partials._sort-icon', ['field'=>'distance'])
                                 </span>
                             </th>
                             <th wire:click="sortBy('start_time')" class="py-3 px-6 text-center cursor-pointer">
@@ -109,17 +109,17 @@
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$category->KM}}</span>
+                                    <span>{{$category->distance}} m</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$category->start_time}}</span>
+                                    <span>{{\Carbon\Carbon::createFromFormat('H:i:s',$category->start_time)->format('h:i')}}</span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$category->price}}</span>
+                                    <span>{{$category->price}} €</span>
                                 </div>
                             </td>
                             

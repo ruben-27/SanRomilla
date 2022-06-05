@@ -18,7 +18,7 @@ class Category extends Model
        'name',
        'min_age',
        'max_age',
-       'KM',
+       'distance',
        'start_time',
        'price',
        'status'
@@ -46,7 +46,7 @@ class Category extends Model
          ->where('name', 'like', '%'.$val.'%')
          ->orWhere('min_age', 'like', '%'.$val.'%')
          ->orWhere('max_age', 'like', '%'.$val.'%')
-         ->orWhere('KM', 'like', '%'.$val.'%')
+         ->orWhere('distance', 'like', '%'.$val.'%')
          ->orWhere('start_time', 'like', '%'.$val.'%')
          ->orWhere('price', 'like', '%'.$val.'%');
     }

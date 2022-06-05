@@ -29,6 +29,12 @@ Route::get('/colaborator_showInsert', [ColaboratorController::class, 'showInsert
 Route::post('/colaboratorInsert', [ColaboratorController::class,'store'])
     ->middleware(['auth'])->name('colaboratorInsert');
 
+Route::get('/colaboratorModify/{id}', [ColaboratorController::class, 'modify'])
+    ->middleware(['auth'])->name('colaboratorModify');
+
+Route::post('/colaboratorUpdate', [ColaboratorController::class, 'update'])
+    ->middleware(['auth'])->name('colaboratorUpdate');    
+
 
 /*Inscription Routes*/
 Route::post('inscription_consult', [InscriptionController::class, 'Consult'])
@@ -61,6 +67,12 @@ Route::get('/sponsor_showInsert', [SponsorController::class, 'showInsert'])
 
 Route::post('/sponsorInsert', [SponsorController::class,'store'])
     ->middleware(['auth'])->name('sponsorInsert');
+
+Route::get('/sponsorModify/{id}', [SponsorController::class, 'modify'])
+    ->middleware(['auth'])->name('sponsorModify');
+
+Route::post('/sponsorUpdate', [SponsorController::class, 'update'])
+    ->middleware(['auth'])->name('sponsorUpdate');    
 
 
 /*Category Routes*/

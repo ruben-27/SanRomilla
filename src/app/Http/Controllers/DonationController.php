@@ -8,14 +8,14 @@ use App\Models\Donation;
 class DonationController extends Controller
 {
     public static function showInsert() {
-        return view('private.donation.donationForm');
+        return view('private.donations.donationForm');
     }
 
     public static function Consult() {
         $donacion = Donation::all();
         return $donacion;
     }
-    
+
     public function store(Request $request) {
        
         $donation = new Donation();
@@ -40,8 +40,7 @@ class DonationController extends Controller
             return redirect('/donation')->with("error","fallo al introducir el formulario");
         } else {
             return redirect('/donation');
-        }
-        
+        } 
         
     }
 

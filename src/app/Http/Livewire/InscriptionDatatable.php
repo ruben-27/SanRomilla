@@ -43,4 +43,8 @@ class InscriptionDatatable extends Component
     {
         $this->resetPage();
     }
+
+    public function delete($id) {
+        Inscription::find($id)->delete();
+    }
 }

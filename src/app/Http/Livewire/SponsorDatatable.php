@@ -36,4 +36,8 @@ class SponsorDatatable extends Component
     {
         $this->resetPage();
     }
+
+    public function delete($id) {
+        Sponsor::find($id)->delete();
+     }
 }

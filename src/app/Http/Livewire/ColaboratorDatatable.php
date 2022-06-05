@@ -37,4 +37,8 @@ class ColaboratorDatatable extends Component
     {
         $this->resetPage();
     }
+
+    public function delete($id) {
+        User::find($id)->delete();
+     }
 }

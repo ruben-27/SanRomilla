@@ -20,28 +20,41 @@
                     <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nuevo Colaborador</h1>
                 </div>
             </div>
-            <form id="inscriptionDonation" method="post" action="/colaboratorInsert">
+            <form id="inscriptionDonation" method="post" action="{{ isset($sponsor) ? '/colaboratorUpdate' : '/colaboratorInsert' }}" >
             {{ csrf_field() }}
+                @if (isset($colaborator))
+                    <input type="hidden" value="{{$colaborator->id}}" name="id">
+                @endif  
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Nombre" name="name" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" value="{{ isset($colaborator) ? $colaborator->name : ''}}" type="text" placeholder="Nombre" name="name" />
                 </div>
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Apellidos</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Apellidos" name="last_name" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent placeholder:text-gray-300" value="{{ isset($colaborator) ? $colaborator->last_name : ''}}" type="text" placeholder="Apellidos" name="last_name" />
                 </div>
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent placeholder:text-gray-300" type="email" placeholder="Email" name="email" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent placeholder:text-gray-300" value="{{ isset($colaborator) ? $colaborator->email : ''}}" type="email" placeholder="Email" name="email" />
                 </div>
+
+                @foreach ($roles as $key -> $role)
                 
-                @foreach ($roles as $role)
                 <section class="container mx-auto p-5">
                     <label for="checkbox" class="relative flex-inline items-center isolate p-4 rounded-2xl">
+                        @if (isset($colaborator))
+                                @if ($role->id == $colaborator->roles()->get()[$key]->id)
+                                    <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>
+                                @else
+                                    <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
+                                @endif
+                        @else
                         <input id="checkbox" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
-                        <span class="ml-2 relative z-20">{{ $role->name }}</span>
+                        @endif
+                        
+                        <span class="ml-2 relative z-20">{{ $role->public }}</span>
                         <div class="absolute inset-0 bg-white peer-checked:bg-yellow-50 peer-checked:border-yellow-300 z-10 border rounded-2xl"></div>
                     </label>
                 </section>

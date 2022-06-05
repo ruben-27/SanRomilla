@@ -20,11 +20,14 @@
                     <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nuevo Patrocinador</h1>
                 </div>
             </div>
-            <form id="sponsorInscription" method="post" action="/sponsorInsert" enctype="multipart/form-data">
+            <form id="sponsorInscription" method="post" action="{{ isset($sponsor) ? '/sponsorUpdate' : '/sponsorInsert' }}" enctype="multipart/form-data">
             {{ csrf_field() }}
+                @if (isset($sponsor))
+                    <input type="hidden" value="{{$sponsor->id}}" name="id">
+                @endif  
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Nombre" name="name" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" value="{{ isset($sponsor) ? $sponsor->name : ''}}" type="text" placeholder="Nombre" name="name" />
                 </div>
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
@@ -42,7 +45,7 @@
 
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Url de la página</label>
-                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Url de la página" name="url" />
+                    <input class="py-2 px-3 rounded-lg border-2 border-gray-300 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" value="{{ isset($sponsor) ? $sponsor->url : ''}}" type="text" placeholder="Url de la página" name="url" />
                 </div>
 
 
