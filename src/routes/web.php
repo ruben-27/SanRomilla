@@ -15,45 +15,39 @@ use App\Http\Controllers\DonationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('auth.error-google-login');
-// });
-
+// Public
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/terms', function () {
+    /*return Inscription::terms();*/
+})->middleware(['auth'])->name('terms');
+
+// Private
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/inscription', function () {
-    return view('private.inscription.inscription');
+    return view('private.inscriptions.inscription');
 })->middleware(['auth'])->name('inscription');
 
 Route::get('/donation', function () {
-    return view('private.donation.donation');
+    return view('private.donations.donation');
 })->middleware(['auth'])->name('donation');
 
-Route::get('/event', function () {
-    return view('private.event.event');
-})->middleware(['auth'])->name('event');
-
 Route::get('/colaborator', function () {
-    return view('private.colaborator.colaborator');
+    return view('private.colaborators.colaborator');
 })->middleware(['auth'])->name('colaborator');
 
 Route::get('/clasification', function () {
-    return view('private.clasification.clasification');
+    return view('private.marks.mark');
 })->middleware(['auth'])->name('clasification');
 
 Route::get('/category', function () {
-    return view('private.category.category');
+    return view('private.categories.category');
 })->middleware(['auth'])->name('category');
-
-Route::get('/route', function () {
-    return view('private.route.route');
-})->middleware(['auth'])->name('route');
 
 Route::get('/sponsors', function () {
     return view('private.sponsors.sponsors');
@@ -62,16 +56,6 @@ Route::get('/sponsors', function () {
 Route::get('/documentation', function () {
     return view('private.documentation.documentation');
 })->middleware(['auth'])->name('documentation');
-
-Route::get('/modify', function () {
-    return view('private.modify_password.modify');
-})->middleware(['auth'])->name('modify');
-
-Route::get('/prueba', function () {
-    return ColaboratorController::prueba();
-})->middleware(['auth'])->name('prueba');
-
-Route::get('/donation_showInsert', [DonationController::class, 'showInsert'])->middleware(['auth'])->name('donation_showInsert');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/private.php';

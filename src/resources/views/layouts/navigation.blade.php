@@ -30,12 +30,6 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('event')" :active="request()->routeIs('event')">
-                    
-                        {{ __('Event') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('colaborator')" :active="request()->routeIs('colaborator')">
                    
                         {{ __('Colaborator') }}
@@ -54,12 +48,6 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('route')" :active="request()->routeIs('route')">
-                   
-                        {{ __('route') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('sponsors')" :active="request()->routeIs('sponsors')">
                     
                         {{ __('Sponsors') }}
@@ -68,11 +56,6 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('documentation')" :active="request()->routeIs('documentation')">
                         {{ __('Documentation') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('modify')" :active="request()->routeIs('modify')">
-                        {{ __('Modify Password') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $category->KM = str_replace(',', '.',$_REQUEST["KM"]);
         $category->start_time = $_REQUEST["start_time"];
         $category->price = str_replace(',', '.',$_REQUEST["price"]);
-        $category->status = "W";
+        $category->status = "N";
         $saved = $category->save();
         if (!$saved) {
             return redirect('/category')->with("error","fallo al introducir el formulario");
