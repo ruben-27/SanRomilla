@@ -17,35 +17,59 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             [
                 'name' => 'ROLE_IMAGES',
-                'description' => 'Can create & delete images'
+                'public' => 'Imágenes',
+                'description' => 'Can create & delete images',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => 'ROLE_COLABORATORS',
-                'description' => 'Can create, update & delete colaborators'
+                'public' => 'Colaboradores',
+                'description' => 'Can create, update & delete colaborators',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => 'ROLE_INSCRIPTIONS',
-                'description' => 'Can create, update & delete inscriptions'
+                'public' => 'Inscripciones',
+                'description' => 'Can create, update & delete inscriptions',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => 'ROLE_MARKS',
-                'description' => 'Can create, update & delete marks'
+                'public' => 'Marcas',
+                'description' => 'Can create, update & delete marks',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => 'ROLE_CATEGORIES',
-                'description' => 'Can create, update & delete categories'
+                'public' => 'Categorías',
+                'description' => 'Can create, update & delete categories',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => 'ROLE_SPONSORS',
-                'description' => 'Can create, update & delete sponsors'
+                'public' => 'Patrocinadores',
+                'description' => 'Can create, update & delete sponsors',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => 'ROLE_DONATIONS',
-                'description' => 'Can create donatios'
+                'public' => 'Donaciones',
+                'description' => 'Can create donatios',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => 'ROLE_YEARS',
-                'description' => 'Can create & update years'
+                'public' => 'Años',
+                'description' => 'Can create & update years',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
             ]
         ]);
     }

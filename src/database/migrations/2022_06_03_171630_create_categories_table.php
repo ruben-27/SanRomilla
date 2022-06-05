@@ -16,12 +16,12 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->tinyIncrements('id')->unsigned();
             $table->string('name', 50);
-            $table->tinyInteger('min_age')->unsigned();
-            $table->tinyInteger('max_age')->unsigned();
-            $table->decimal('KM', 5, 2);
+            $table->smallInteger('min_age')->nullable()->unsigned();
+            $table->smallInteger('max_age')->nullable()->unsigned();
+            $table->decimal('distance', 6, 2);
             $table->time('start_time');
             $table->decimal('price', 4, 2);
-            $table->char('status', 1);
+            $table->char('status', 1)->default('n');
             $table->timestamps();
         });
     }

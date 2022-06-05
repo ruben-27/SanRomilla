@@ -26,7 +26,9 @@ class InscriptionFactory extends Factory
             'amount' => $this->faker->numberBetween(4, 900),
             'size' => $this->faker->randomElement(['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl', null]),
             'category_id' => $category->id,
-            'dorsal' => $this->faker->unique()->numberBetween(1, 100)
+            'dorsal' => $this->faker->unique()->numberBetween(1, 100),
+            'inscription_number' => $this->faker->unique()->randomNumber(6),
+            'paid' => $this->faker->randomElement([0, 1])
         ];
     }
 }
