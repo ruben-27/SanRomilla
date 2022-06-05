@@ -72,7 +72,7 @@ class ColaboratorController extends Controller
        
         $saved = $colaborator->save();
         foreach ($request->roles as $key => $role) {
-            $colaborator->roles()->attach(
+            $colaborator->roles()->sync(
                 $role
             );
         }

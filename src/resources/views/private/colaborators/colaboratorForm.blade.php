@@ -20,7 +20,7 @@
                     <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nuevo Colaborador</h1>
                 </div>
             </div>
-            <form id="inscriptionDonation" method="post" action="{{ isset($sponsor) ? '/colaboratorUpdate' : '/colaboratorInsert' }}" >
+            <form id="inscriptionDonation" method="post" action="{{ isset($colaborator) ? '/colaboratorUpdate' : '/colaboratorInsert' }}" >
             {{ csrf_field() }}
                 @if (isset($colaborator))
                     <input type="hidden" value="{{$colaborator->id}}" name="id">
@@ -45,6 +45,7 @@
                 <section class="container mx-auto p-5">
                     <label for="checkbox" class="relative flex-inline items-center isolate p-4 rounded-2xl">
                         @if (isset($colaborator))
+                            {{$checked = false}}
                             @foreach ($colaborator->roles()->get() as $colRole)
                                 @if ($colRole->id == $role->id)
                                     {{$checked = true}}
