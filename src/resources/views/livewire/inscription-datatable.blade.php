@@ -18,7 +18,7 @@
                 {{-- /Per Page --}}
 
                 {{-- Categories --}}
-                <div>
+                <div class="mt-6 md:mt-0">
                     Categoría: &nbsp;
                     <select wire:model="category" class="py-1 bg-gray-100 border border-gray-300 text-gray-900 rounded focus:ring-yellow-500 focus:border-yellow-500">
                         <option value="">Todas</option>

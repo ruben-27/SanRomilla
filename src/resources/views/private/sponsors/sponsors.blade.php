@@ -7,22 +7,18 @@
             {{ __('Sponsors') }}
         </h2>
     </x-slot>
-        <div class="container mx-auto">
-            <div class="mt-5 md:mx-4">
-                <h1 class="text-3xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-5xl">
-                    <span class="inline md:block">Patrocinadores</span>
-                </h1>
-                <div class="flex justify-center md:justify-start">
-                    <a href="/sponsor_showInsert" class="mt-7 flex bg-yellow-500 rounded-lg font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-yellow-600 mr-6">
-                        <svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                        Añadir Patrocinador
-                    </a>
-                </div>
+    <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+        <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-5xl">
+                <span class="inline md:block">Patrocinadores</span>
+            </h1>
+            <div class="flex justify-center md:justify-start">
+                <a href="/sponsor_showInsert" class="mt-7 flex bg-yellow-500 rounded-lg font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-yellow-600 mr-6">
+                    <svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                    Añadir Patrocinador
+                </a>
             </div>
-            <livewire:sponsor-datatable/>
         </div>
-        <div id="mostrarInsertar" class="container"></div>
-        <div id="editar" class="container"></div>
-        <div id="cuadroTramitar" class="container"></div>
-        <div id="cuadroTerminos" class="container"></div>  
+        <livewire:sponsor-datatable/>
+    </div>
 </x-app-layout>

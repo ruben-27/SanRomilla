@@ -39,7 +39,8 @@ class GoogleSocialiteController extends Controller
       
                 // Update Avatar
                 $finduser->fill([
-                    'avatar' => $user->avatar
+                    'avatar' => $user->avatar,
+                    'last_connection' => \Carbon\Carbon::now()->toDateTimeString()
                 ]);
                 $finduser->save();
                 // Login

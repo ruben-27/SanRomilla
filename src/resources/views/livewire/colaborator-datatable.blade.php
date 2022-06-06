@@ -59,16 +59,15 @@
                                     @include('partials._sort-icon', ['field'=>'email'])
                                 </span>
                             </th>
-                            <th wire:click="sortBy('email')" class="py-3 px-6 text-center cursor-pointer">
+                            <th wire:click="sortBy('last_connection')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Ultima Conexión
-                                    @include('partials._sort-icon', ['field'=>'updated_at'])
+                                    Última Conexión
+                                    @include('partials._sort-icon', ['field'=>'last_connection'])
                                 </span>
                             </th>
-                            <th wire:click="sortBy('email')" class="py-3 px-6 text-center cursor-pointer">
+                            <th class="py-3 px-6 text-center">
                                 <span class="flex justify-center">
                                     Acciones
-                                    @include('partials._sort-icon', ['field'=>'email'])
                                 </span>
                             </th>
                         </tr>
@@ -98,7 +97,8 @@
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{ \Carbon\Carbon::parse($colaborator->created_at)->format('d/m/Y')}}</span>
+                                    {{-- <span>{{ \Carbon\Carbon::parse($colaborator->last_connection)->format('d/m/Y')}}</span> --}}
+                                    <span>{{$colaborator->last_connection}}</span>
                                 </div>
                             </td>
                             

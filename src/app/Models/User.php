@@ -22,7 +22,8 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
-        'avatar'
+        'avatar',
+        'last_connection'
     ];
 
     /**
@@ -57,7 +58,8 @@ class User extends Authenticatable
         return $query
          ->where('name', 'like', '%'.$val.'%')
          ->orWhere('last_name', 'like', '%'.$val.'%')
-         ->orWhere('email', 'like', '%'.$val.'%');
+         ->orWhere('email', 'like', '%'.$val.'%')
+         ->orWhere('last_connection', 'like', '%'.$val.'%');
     }
 
 }

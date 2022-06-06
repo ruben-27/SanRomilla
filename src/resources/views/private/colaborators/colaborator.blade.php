@@ -8,8 +8,8 @@
         </h2>
     </x-slot>
    
-    <div class="container mx-auto">
-        <div class="mt-5 md:mx-4">
+    <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+        <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-5xl">
                 <span class="inline md:block">Colaboradores</span>
             </h1>
@@ -22,7 +22,4 @@
         </div>
         <livewire:colaborator-datatable/>
     </div>
-    <div id="mostrarInsertar" class="container"></div>
-    <div id="editar" class="container"></div>
-    <div id="eliminar" class="container"></div> 
 </x-app-layout>

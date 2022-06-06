@@ -49,14 +49,8 @@
                             </th>
                             <th wire:click="sortBy('min_age')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Edad Mínima
+                                    Año Nacimiento
                                     @include('partials._sort-icon', ['field'=>'min_age'])
-                                </span>
-                            </th>
-                            <th wire:click="sortBy('max_age')" class="py-3 px-6 text-center cursor-pointer">
-                                <span class="flex justify-center">
-                                    Edad Máxima
-                                    @include('partials._sort-icon', ['field'=>'max_age'])
                                 </span>
                             </th>
                             <th wire:click="sortBy('distance')" class="py-3 px-6 text-center cursor-pointer">
@@ -67,7 +61,7 @@
                             </th>
                             <th wire:click="sortBy('start_time')" class="py-3 px-6 text-center cursor-pointer">
                                 <span class="flex justify-center">
-                                    Hora Comienzo
+                                    Hora
                                     @include('partials._sort-icon', ['field'=>'start_time'])
                                 </span>
                             </th>
@@ -77,7 +71,7 @@
                                     @include('partials._sort-icon', ['field'=>'price'])
                                 </span>
                             </th>
-                            <th class="py-3 px-6 text-center cursor-pointer">
+                            <th class="py-3 px-6 text-center">
                                 <span class="flex justify-center">
                                     Acciones
                                 </span>
@@ -99,12 +93,13 @@
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$category->min_age}}</span>
-                                </div>
-                            </td>
-                            <td class="py-3 px-6 text-center">
-                                <div class="flex items-center justify-center">
-                                    <span>{{$category->max_age}}</span>
+                                    @if (!$category->min_age)
+                                    <span>Después de {{$category->max_age}} <i>inclusive</i></span>
+                                    @elseif (!$category->max_age)
+                                    <span>Antes de {{$category->min_age}} <i>inclusive</i></span>
+                                    @else
+                                    <span>{{$category->max_age}} - {{$category->min_age}}</span>
+                                    @endif
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">

@@ -53,7 +53,7 @@
                                     @include('partials._sort-icon', ['field'=>'image'])
                                 </span>
                             </th>
-                            <th class="py-3 px-6 text-center cursor-pointer">
+                            <th class="py-3 px-6 text-center">
                                 <span class="flex justify-center">
                                     Acciones
                                 </span>

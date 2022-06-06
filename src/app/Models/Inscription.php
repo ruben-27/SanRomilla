@@ -30,7 +30,6 @@ class Inscription extends Model
          ->orWhere('amount', 'like', '%'.$val.'%')
          ->orWhere('size', 'like', '%'.$val.'%')
          ->orWhere('dorsal', 'like', '%'.$val.'%')
-         ->orWhere('category_id', 'like', '%'.$val.'%')
          ->orwhere('categories.name', 'like', '%'.$val.'%');
     }
 }
