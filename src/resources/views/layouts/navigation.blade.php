@@ -193,6 +193,26 @@
                 <span class="hidden md:block flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">Gestión</span>
             </li>
             <li class="my-px">
+                <x-nav-link :href="route('year')" :active="request()->routeIs('year')">
+                    <span class="flex items-center justify-center text-lg text-gray-400">
+                        <svg class="w-6 h-6" 
+                            data-darkreader-inline-stroke="" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            style="--darkreader-inline-stroke: currentColor;" 
+                            viewBox="0 0 24 24" 
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </span>
+                    <span class="ml-3 tracking-wide truncate">Años</span>
+                </x-nav-link>
+            </li>
+            <li class="my-px">
                 <x-nav-link :href="route('colaborator')" :active="request()->routeIs('colaborator')">
                     <span class="flex items-center justify-center text-lg text-gray-400">
                         <svg fill="none"

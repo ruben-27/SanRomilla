@@ -24,4 +24,13 @@ class Year extends Model
     {
         return $this->hasMany(Mark::class);
     }
+
+    public function scopeSearch($query, $val)
+    {
+        return $query
+         ->where('year', 'like', '%'.$val.'%')
+         ->orWhere('ong', 'like', '%'.$val.'%')
+         ->orWhere('ong_message', 'like', '%'.$val.'%')
+         ->orWhere('amount_raised', 'like', '%'.$val.'%');
+    }
 }

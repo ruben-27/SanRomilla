@@ -13,7 +13,20 @@
                 <div class="grid bg-white rounded-lg shadow-xl w-full sm:w-12/12 lg:w-8/12 xl:w-6/12 px-3 md:px-7">
                     <div class="flex justify-center py-4">
                         <div class="flex bg-yellow-200 rounded-full md:p-4 p-2 border-2 border-yellow-300">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                class="icon icon-tabler icon-tabler-list text-yellow-500"
+                                width="25" height="25"
+                                viewBox="0 0 24 24" 
+                                stroke-width="1.5" 
+                                stroke="currentColor" 
+                                fill="none" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <rect x="7" y="9" width="14" height="10" rx="2" />
+                                <circle cx="14" cy="14" r="2" />
+                                <path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2" />
+                            </svg>
                         </div>
                     </div>
 
@@ -41,7 +54,7 @@
 
 
                         <div class="grid grid-cols-1 mt-5">
-                            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Talla</label>
+                            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Talla Camiseta</label>
                             <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent" name="size">
                                 <option>No quiere</option>
                                 <option>XXS</option>

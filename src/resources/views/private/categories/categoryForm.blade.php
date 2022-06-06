@@ -13,7 +13,23 @@
                 <div class="grid bg-white rounded-lg shadow-xl w-full sm:w-12/12 lg:w-8/12 xl:w-6/12 px-3 md:px-7">
                     <div class="flex justify-center py-4">
                         <div class="flex bg-yellow-200 rounded-full md:p-4 p-2 border-2 border-yellow-300">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                class="icon icon-tabler icon-tabler-list text-yellow-500"
+                                width="25" height="25"
+                                viewBox="0 0 24 24" 
+                                stroke-width="1.5" 
+                                stroke="currentColor" 
+                                fill="none" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <line x1="9" y1="6" x2="20" y2="6" />
+                                <line x1="9" y1="12" x2="20" y2="12" />
+                                <line x1="9" y1="18" x2="20" y2="18" />
+                                <line x1="5" y1="6" x2="5" y2="6.01" />
+                                <line x1="5" y1="12" x2="5" y2="12.01" />
+                                <line x1="5" y1="18" x2="5" y2="18.01" />
+                            </svg>
                         </div>
                     </div>
 

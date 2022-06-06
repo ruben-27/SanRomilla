@@ -29,6 +29,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/year', function () {
+    return view('private.years.year');
+})->middleware(['auth'])->name('year');
+
 Route::get('/inscription', function () {
     return view('private.inscriptions.inscription');
 })->middleware(['auth'])->name('inscription');
