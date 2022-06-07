@@ -72,8 +72,8 @@
                             <div class="grid grid-cols-1">
                             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Gender</label>
                                 <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" name="gender">
-                                    <option>Masculino</option>
-                                    <option>Femenino</option>
+                                    <option value="m">Masculino</option>
+                                    <option value="f">Femenino</option>
                                 </select>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                             <div class="grid grid-cols-1">
                             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Talla Camiseta</label>
                             <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent" name="size" name="size">
-                                <option>No quiere</option>
+                                <option value="NULL">No quiere</option>
                                 <option>XXS</option>
                                 <option>XS</option>
                                 <option>S</option>
@@ -104,7 +104,12 @@
 
                         <div class="grid grid-cols-1 mt-5">
                             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Categoria</label>
-                            <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Categoria" name="category" name="category"/>
+                            <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" name="category" disabled>
+                                
+                                @foreach ($categories as $category)
+                                    <option value="{{$category->id}}" >{{$category->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         

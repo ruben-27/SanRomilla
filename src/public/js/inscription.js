@@ -65,23 +65,44 @@ var Inscription = /*#__PURE__*/function () {
     this.inscriptionId = 0;
     this.events();
     this.selectedId = null;
+    this.categoriesInfo = this.getCategoriesInfo();
   }
 
   _createClass(Inscription, [{
     key: "events",
     value: function events() {
-      // sidebar button that prepares new inscription to be added
+      $('input[name="birthday"]').change(function () {
+        var date = $('input[name="birthday"]').val().split("-");
+        var year = date[0];
+        this.categoriesInfo.forEach(function (value, index, currentArray) {
+          if (currentArray[index]["min_age"] == null && year >= currentArray[index]["max_age"]) {
+            $('select[name="category"]').val(currentArray[index]["id"]);
+          }
+
+          if (currentArray[index]["max_age"] == null && year <= currentArray[index]["min_age"]) {
+            $('select[name="category"]').val(currentArray[index]["id"]);
+          }
+
+          if (currentArray[index]["min_age"] != null && currentArray[index]["max_age"] != null) {
+            if (year >= currentArray[index]["max_age"] && year <= currentArray[index]["min_age"]) {
+              $('select[name="category"]').val(currentArray[index]["id"]);
+            }
+          }
+        });
+      }.bind(this)); // sidebar button that prepares new inscription to be added
+
       $("#addNewInscription").click(function () {
         $("#inscriptionInscription").trigger("reset");
         this.selectedId = null;
-        console.log(this.selectedId);
         $("#add").html('Añadir Inscripción');
       }.bind(this)); // function that executes the whole inscription change/modification process
 
       $("#add").click(function () {
         var self = this;
+        var disabled = $("#inscriptionInscription").find(':input:disabled').removeAttr('disabled');
         var form = $("#inscriptionInscription").serializeArray(); //aqui se valida
-        // colects current form and stores it into an array
+
+        disabled.attr('disabled', 'disabled'); // colects current form and stores it into an array
 
         this.inscriptionsArray[this.inscriptionId] = form; // this removes the inscription on the sidebar if you are modifying it
 
@@ -100,13 +121,18 @@ var Inscription = /*#__PURE__*/function () {
         }); // deletes sidebar inscription 
 
         $(".deleteInscription").on('click', function () {
-          this.inscriptionsArray[this.id] = [];
+          self.inscriptionsArray[this.id] = [];
           $("#sidebar-inscriptions #" + this.id).remove();
         }); // resets info of from
 
         $("#inscriptionInscription").trigger("reset");
         $("#add").html('Añadir Inscripción');
         this.inscriptionId++;
+      }.bind(this));
+      $("#inscriptionInscription").on("submit", function (event) {
+        alert("aaaaa");
+        event.preventDefault();
+        this.inscriptionSumbit();
       }.bind(this));
     } // fills selected form info with our array content
 
@@ -146,6 +172,53 @@ var Inscription = /*#__PURE__*/function () {
               break;
           }
         }
+      });
+    }
+  }, {
+    key: "inscriptionSumbit",
+    value: function inscriptionSumbit() {
+      self = this;
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: "/inscriptionInsert",
+        data: {
+          array: self.inscriptionsArray
+        },
+        context: this,
+        dataType: "json",
+        success: function success(data) {
+          if (data == "OK") {
+            window.location.replace("/inscription");
+          } else {
+            alert("error");
+          }
+        },
+        error: function error(message, status) {}
+      });
+    }
+  }, {
+    key: "getCategoriesInfo",
+    value: function getCategoriesInfo() {
+      self = this;
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: "/getCategoriesInfo",
+        dataType: "json",
+        context: this,
+        success: function success(data) {
+          self.categoriesInfo = data;
+        },
+        error: function error(message, status) {}
       });
     }
   }]);

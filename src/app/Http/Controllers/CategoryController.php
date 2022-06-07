@@ -90,6 +90,10 @@ class CategoryController extends Controller
         
     }
 
+    public function getCategoriesInfo () {
+        $category = Category::select('id','min_age','max_age')->get();
+        echo json_encode($category);
+    }
     public static function category() {
         echo json_encode("category");
     }

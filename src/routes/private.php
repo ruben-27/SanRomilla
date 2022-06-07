@@ -91,4 +91,7 @@ Route::get('/category_showInsert', [CategoryController::class, 'showInsert'])
 Route::post('/categoryInsert', [CategoryController::class,'store'])
     ->middleware(['auth'])->name('categoryInsert');
 
+Route::post('/getCategoriesInfo', [CategoryController::class,'getCategoriesInfo'])
+    ->middleware(['auth'])->name('getCategoriesInfo');    
+
 
