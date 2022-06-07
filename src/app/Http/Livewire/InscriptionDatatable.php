@@ -35,7 +35,7 @@ class InscriptionDatatable extends Component
             $this->sortDirection = 'desc';
         else
             $this->sortDirection = 'asc';
-        
+
         return $this->sortBy = $field;
     }
 
@@ -46,5 +46,14 @@ class InscriptionDatatable extends Component
 
     public function delete($id) {
         Inscription::find($id)->delete();
+    }
+
+    public function payInscription($id) {
+        $inscription = Inscription::find($id);
+        if ($inscription->paid == 1)
+            $inscription->paid = 0;
+        else
+            $inscription->paid = 1;
+        $inscription->save();
     }
 }

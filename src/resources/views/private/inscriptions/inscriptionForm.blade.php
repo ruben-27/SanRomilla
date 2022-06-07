@@ -6,9 +6,9 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('inscription') }}
         </h2>
-    </x-slot>    
-    <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">  
+    </x-slot>
+    <div class="h-full mt-14 mb-10">
+        <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-center mt-8">
                 <div class="grid bg-white rounded-lg shadow-xl w-full sm:w-12/12 lg:w-8/12 xl:w-6/12 px-3 md:px-7">
                     <div class="flex justify-center py-4">
@@ -35,89 +35,101 @@
                         @if (isset($inscription))
                             <input type="hidden" value="{{$inscription->id}}" name="id">
                         @else
-                            <input type="hidden" name="id">    
+                            <input type="hidden" name="id">
                         @endif
-                          
+
+                        <h1 class="uppercase md:text-sm text-xs text-gray-500 text-light font-bold mt-5">Datos de usuario</h1>
+                        <hr />
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 ">
                             <div class="grid grid-cols-1">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="Nombre" name="name"/>
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Nombre" name="name"/>
                             </div>
                             <div class="grid grid-cols-1">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Apellidos</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="Apellidos" name="last_name" />
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Apellidos" name="last_name" />
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 ">
                             <div class="grid grid-cols-1">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">DNI</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="DNI" name="dni" />
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="DNI" name="dni" />
                             </div>
                             <div class="grid grid-cols-1">
-                                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Telefono</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="tel" name="phone" />
+                                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Teléfono</label>
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="tel" placeholder="Teléfono" name="phone" />
                             </div>
                             <div class="grid grid-cols-1">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Fecha de Nacimiento</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="date" name="birthday" />
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="date" name="birthday" />
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 ">
                             <div class="grid grid-cols-1">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Correo</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="email" placeholder="Correo" name="email" />
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="email" placeholder="Correo" name="email" />
                             </div>
                             <div class="grid grid-cols-1">
-                            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Gender</label>
-                                <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" name="gender">
+                                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Gender</label>
+                                <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" name="gender">
+                                    <option disabled selected>-- Seleccionar género --</option>
                                     <option value="m">Masculino</option>
                                     <option value="f">Femenino</option>
                                 </select>
                             </div>
                         </div>
 
+                        <h1 class="uppercase md:text-sm text-xs text-gray-500 text-light font-bold mt-5">Datos Carrera</h1>
+                        <hr />
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 ">
                             <div class="grid grid-cols-1">
                                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Dorsal</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="number" placeholder="Dorsal" name="dorsal"/>
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="number" placeholder="Dorsal" name="dorsal"/>
                             </div>
                             <div class="grid grid-cols-1">
                             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Talla Camiseta</label>
-                            <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent" name="size" name="size">
-                                <option value="NULL">No quiere</option>
-                                <option>XXS</option>
-                                <option>XS</option>
-                                <option>S</option>
-                                <option>M</option>
-                                <option>L</option>
-                                <option>XL</option>
-                                <option>XXL</option>
+                            <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" name="size" name="size">
+                                <option value="null">No quiere</option>
+                                <option value="XXS">XXS</option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
                             </select>
                             </div>
                             <div class="grid grid-cols-1">
-                                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Donacion Dorsal</label>
-                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" type="text" placeholder="Donacion Dorsal" name="amount"/>
+                                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Donación Dorsal</label>
+                                <input class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Donación Dorsal" name="amount"/>
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 mt-5">
+                            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Categoría</label>
+                            <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" name="category" disabled>
+
+                                @foreach ($categories as $category)
+                                    <option value="{{$category->id}}" >{{$category->name}}</option>
+                                @endforeach
+                            </select>
                             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Categoria</label>
                             <select class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" name="category" disabled>
-                                
+
                                 @foreach ($categories as $category)
                                     <option value="{{$category->id}}" >{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        
+
 
                         <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-                            <button type="button" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2' id="cancel">Cancelar</button>
-                            <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded-lg shadow-xl font-medium text-white px-4 py-2' type="button" id="add">Añadir Inscripción</button>
-                            <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded-lg shadow-xl font-medium text-white px-4 py-2' id="sumbit">Enviar</button>
+                            <button type="button" class='w-auto bg-gray-500 hover:bg-gray-700 rounded uppercase shadow-xl font-medium text-white px-4 py-2' id="cancel">Cancelar</button>
+                            <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' type="button" id="add">Añadir Inscripción</button>
+                            <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' id="sumbit">Enviar</button>
                         </div>
 
                     </form>
@@ -129,9 +141,9 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif  
+                    @endif
                 </div>
-            </div>       
+            </div>
         </div>
     </div>
     <div id="sidebar-inscriptions" class="w-1/12 h-full bg-white fixed right-0 top-16" ><p id="addNewInscription">Icono Añadir</p></div>

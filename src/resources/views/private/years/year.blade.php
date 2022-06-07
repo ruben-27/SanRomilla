@@ -8,7 +8,7 @@
         </h2>
     </x-slot>
     {{ csrf_field() }}
-    <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+    <div class="h-full mt-14 mb-10">
         <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-5xl">
                 <span class="inline md:block">Años</span>

@@ -6,21 +6,21 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Donation') }}
         </h2>
-    </x-slot>    
+    </x-slot>
     <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">   
+        <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-center mt-8">
                 <div class="grid bg-white rounded-lg shadow-xl w-full sm:w-12/12 lg:w-8/12 xl:w-6/12 px-3 md:px-7">
                     <div class="flex justify-center py-4">
                         <div class="flex bg-yellow-200 rounded-full md:p-4 p-2 border-2 border-yellow-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" 
+                            <svg xmlns="http://www.w3.org/2000/svg"
                                 class="icon icon-tabler icon-tabler-list text-yellow-500"
                                 width="25" height="25"
-                                viewBox="0 0 24 24" 
-                                stroke-width="1.5" 
-                                stroke="currentColor" 
-                                fill="none" 
-                                stroke-linecap="round" 
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                fill="none"
+                                stroke-linecap="round"
                                 stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <rect x="7" y="9" width="14" height="10" rx="2" />
@@ -68,8 +68,8 @@
                         </div>
 
                         <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-                            <button type="button" class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2' id="cancel">Cancelar</button>
-                            <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded-lg shadow-xl font-medium text-white px-4 py-2' id="sumbit">Añadir</button>
+                            <button type="button" class='w-auto bg-gray-500 hover:bg-gray-700 rounded shadow-xl uppercase font-medium text-white px-4 py-2' id="cancel">Cancelar</button>
+                            <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' id="sumbit">Añadir</button>
                         </div>
                     </form>
                     @if ($errors->any())
@@ -80,7 +80,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif  
+                    @endif
                 </div>
             </div>
         </div>

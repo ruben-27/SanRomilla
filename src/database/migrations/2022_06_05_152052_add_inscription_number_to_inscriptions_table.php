@@ -14,7 +14,7 @@ class AddInscriptionNumberToInscriptionsTable extends Migration
     public function up()
     {
         Schema::table('inscriptions', function (Blueprint $table) {
-            $table->char('inscription_number', 6)->unique()->after('dorsal');
+            $table->char('inscription_number', 6)->after('dorsal');
         });
     }
 

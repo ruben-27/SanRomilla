@@ -42,7 +42,7 @@
                     <input wire:model.debounce.300ms="search" type="text" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full md:w-80 pl-10 p-2.5" placeholder="Buscar">
                 </div>
                 {{-- /Searcher --}}
-            
+
             </div>
             {{-- /Header --}}
 
@@ -202,7 +202,7 @@
                                 <div class="flex items-center justify-center uppercase">
                                     <span>{{ \Carbon\Carbon::parse($inscription->created_at)->format('d/m/Y')}}</span>
                                 </div>
-                            </td>                            
+                            </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex item-center justify-center">
                                     <a href="/inscriptionModify/{{$inscription->id}}">
@@ -218,10 +218,17 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
                                         </div>
-                                    </a>  
+                                    </a>
+                                    <a wire:click.prevent="payInscription({{$inscription->id}})">
+                                        <div class="w-4 mr-2 transform {{$inscription->paid == 1 ? 'text-green-400 hover:text-green-500' : 'text-red-400 hover:text-red-500'}} hover:text-red-500 hover:scale-110 cursor-pointer">
+                                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </div>
+                                    </a>
                                 </div>
                             </td>
-                        </tr>                        
+                        </tr>
                         @endforeach
 
                     </tbody>
