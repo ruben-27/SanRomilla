@@ -20,7 +20,7 @@
 </style>
 <g id="escudo" class="st0">
 	
-		<image style="display:inline;overflow:visible;opacity:0.35;" width="864" height="936" xlink:href="Screenshot_1.png"  transform="matrix(0.75 0 0 0.75 359 33)">
+		<image style="display:inline;overflow:visible;opacity:0.35;" width="864" height="936" transform="matrix(0.75 0 0 0.75 359 33)">
 	</image>
 </g>
 <g id="Capa_1">

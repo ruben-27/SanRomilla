@@ -15,7 +15,7 @@ class InscriptionController extends Controller
     }
 
     public static function showInsert() {
-        echo json_encode("showInsert");
+        return view('private.inscriptions.inscriptionForm');
     }
 
     public static function terms() {

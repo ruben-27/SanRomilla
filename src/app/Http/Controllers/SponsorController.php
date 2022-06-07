@@ -58,7 +58,7 @@ class SponsorController extends Controller
         $request->validate([
             'name' => ['required','max:50'],
             'image' => ['required','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
-            'name' => ['required','max:200'],
+            'url' => ['required','max:200'],
         ], [
             'name.required' => 'El nombre es obligatorio',
             'image.required' => 'La imagen es obligatoria'

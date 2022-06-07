@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="script">
-        {{ __('sponsor') }}
+        {{ __('category') }}
     </x-slot>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Colaborator') }}
+            {{ __('category') }}
         </h2>
     </x-slot>    
     <div class="h-full ml-14 mt-14 mb-10 md:ml-64">

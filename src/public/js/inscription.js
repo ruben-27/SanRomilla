@@ -1,232 +1,157 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
 /*!*************************************!*\
   !*** ./resources/js/inscription.js ***!
   \*************************************/
-/*
-    Alumno: Marta Broncano Suárez
-    Asignatura: Proyecto San Romilla
-    Curso: 20-21
-    Descripción: Archivo que contiene las funciones que se van a emplear para la gestión de los colaboradores
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Inscription": () => (/* binding */ Inscription)
+/* harmony export */ });
+/**
+*   @file Inscriptions
+*   @description Inscriptions js class
+*   @version 1.0.0
+*   @author Rubén Torres <rtorresgutierrez.guadalupe@alumnado.fundacionloyola.net>
+*   @author Diego Carrión <dcarrionrodriguez.guadalupe@alumnado.fundacionloyola.net>
+*   @license GPL-3.0-or-later
 */
-//Función que realiza una petición para averiguar x datos en base a la fecha de nacimiento
-$("#inscripcion").click(showInsert());
 
-function inscription_date() {
-  var accion = 'inscription_date'; //Variable que guarda la acción que queramos hacer al realizar la petición
-  //Petición
 
-  $.post('/inscription_date', function (data) {
-    //Método que realiza diferentes acciones según la respuesta devuelta
-    switch (data.trim()) {
-      case 'ok':
-        //Plazo inscripción abierto
-        //document.getElementById("inscripcion").disabled = false;
-        //$('#cuadro_inscripcion1').hide();
-        //$('#cuadro_inscripcion2').hide();
-        break;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-      case 'ko1':
-        //Plazo inscripción no abierto
-        //document.getElementById("inscripcion").disabled = true;
-        //$('#cuadro_inscripcion2').hide();
-        break;
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-      case 'ko2':
-        //Plazo inscripción cerrado
-        //document.getElementById("inscripcion").disabled = true;
-        //$('#cuadro_inscripcion1').hide();
-        break;
-    }
-  });
-}
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-var i = 0; //Inicialización de variable que usaremos para realizar la inserción dinámica
-//Función que carga las tallas de las camisetas disponibles en el formulario
-//Función que contiene la estructura del formulario dinámico
+var Inscription = /*#__PURE__*/function () {
+  function Inscription() {
+    _classCallCheck(this, Inscription);
 
-function form2(data) {
-  console.log(data);
-  var tabla = '<table class="table mb-5" id="table' + i + '">' + '<tr class="borde">' + '<td></td>' + '<td></td>' + '<td></td>' + '<td>';
-
-  if (i == 0) {
-    tabla += ' ';
-  } else {
-    tabla += '   <button type="button" name="remove" id="' + i + '" class=" btn btn-danger btn_remove float-end col-2 btn-sm m-3"><i class="bi bi-x-lg"></i></button>';
+    this.inscriptionsArray = [];
+    this.inscriptionId = 0;
+    this.events();
+    this.selectedId = null;
   }
 
-  tabla += '</td>' + '</tr>' + '<tr>' + '<th>Nombre</th>\n' + '<th>Apellidos</th>\n' + '<th>DNI</th>\n' + '<th>Fecha Nacimiento</th>\n' + '</tr> ' + '<tr class="borde">' + '<td ><input class="inscripcion" name="nombre[]" type="text"></td>\n' + '<td><input class="inscripcion" name="apellidos[]" type="text"></td>\n' + '<td><input class="inscripcion" name="dni[]" type="text"></td>\n' + '<td><input id="' + i + '" class="inscripcion fecha" name="fecha_nacimiento[]" type="date"></td>\n' + '</tr> ' + '<tr>' + '<th>Teléfono</th>' + '<th>Dorsal</th>\n' + '<th>Donación dorsal</th>\n' + //'<th>Categoría</th>\n' +
-  '<th>Talla Camiseta</th>\n' + '</tr> ' + '<tr class="borde">' + '<td><input class="inscripcion" name="telefono[]" type="text"></td>' + '<td ><input class="inscripcion" name="dorsal[]" type="text"></td>\n' + '<td><input id="donacion' + i + '" class="inscripcion" name="donacion[]"  type="text"></td>\n' + //value="valor precio consulta sql categoria"
-  //'<td>' + '<input type="text" name="categoria[]">'+ '</td>'+
-  '<td>' + '<select class="inscripcion pt-1" name="talla[]">\n' + '\n' + '<option value="0" >No quiere camiseta</option>\n';
+  _createClass(Inscription, [{
+    key: "events",
+    value: function events() {
+      // sidebar button that prepares new inscription to be added
+      $("#addNewInscription").click(function () {
+        $("#inscriptionInscription").trigger("reset");
+        this.selectedId = null;
+        console.log(this.selectedId);
+        $("#add").html('Añadir Inscripción');
+      }.bind(this)); // function that executes the whole inscription change/modification process
 
-  for (var j = 0; j < data.length; j++) {
-    tabla += '<option value=' + j + '>' + data[j][1] + '</option>\n';
-  }
+      $("#add").click(function () {
+        var self = this;
+        var form = $("#inscriptionInscription").serializeArray(); //aqui se valida
+        // colects current form and stores it into an array
 
-  tabla += '</select>' + '</td>\n' + '</tr> ' + '</table>';
-  i++;
-  $('#dynamic_field').append(tabla); //Función que elimina la tabla sleccionada del formulario
+        this.inscriptionsArray[this.inscriptionId] = form; // this removes the inscription on the sidebar if you are modifying it
 
-  $(document).on('click', '.btn_remove', function () {
-    var button_id = $(this).attr("id"); //Método que guarda el id seleccionado
-
-    $('#table' + button_id + '').remove(); //Métodopara eliminar elemento
-  }); //Función que averigua el precio del dorsal al perder el foco en la fecha
-
-  $(document).on('blur', '.fecha', function () {
-    var accion = 'precio_dorsal'; //Variable que guarda la acción que queramos hacer al realizar la petición
-
-    var str = $("#formulario").serialize(); //Variable que guarda los datos del formulario
-
-    var fecha_id = $(this).attr("id"); //Método que guarda el id seleccionado
-    //Petición
-
-    $.post('/inscriptionForm2' + '/fecha_id=' + fecha_id, str, function (data) {
-      var precio = data;
-      $('#donacion' + fecha_id + '').attr("value", precio); //Método que añade valor al elemento selecionado
-
-      $('#donacion' + fecha_id + '').attr("placeholder", "Indique el importe (mínimo " + precio + "€)"); //Método que añade placeholder al elemento selecionado
-    });
-  });
-} //Función que muestra el formulario de registro de inscripciones
-//Función que muestra un cuadro de mensaje con el total del precio de la compra
+        if (this.selectedId != null) {
+          $("#sidebar-inscriptions #" + this.selectedId).remove();
+        } // adds a new inscription to the sidebar
 
 
-function totalBought() {
-  var accion = 'total_compra'; //Variable que guarda la acción que queramos hacer al realizar la petición
+        $("#sidebar-inscriptions").prepend("<div class='changeForm' id='" + this.inscriptionId + "'>" + "<div class='font-bold'>" + this.inscriptionsArray[this.inscriptionId][2].value + "</div>" + "<div>" + this.inscriptionsArray[this.inscriptionId][4].value + "</div>" + "<div class='deleteInscription' id='" + this.inscriptionId + "'>Icono Borrar</div>" + "</div>");
+        this.selectedId = null; // selects sidebar inscription to be modified
 
-  var str = $("#formulario").serialize(); //Variable que guarda los datos del formulario
-  //Petición
+        $(".changeForm").on('click', function () {
+          $("#add").html('Modificar Inscripción');
+          self.selectedId = this.id;
+          self.populateForm(this.id);
+        }); // deletes sidebar inscription 
 
-  $.post('/totalBought', str, function (data) {
-    //Condición que realiza diferentes acciones según la respuesta devuelta
-    if (data.trim() === 'ko') {
-      //Precio incorrecto
-      alert("El importe de la donación no puede ser menor al precio del dorsal");
-    } else {
-      //Precio correcto
-      $('#cuadroTramitar').html(data);
-      $('#cuadroTramitar').css('display', 'block');
+        $(".deleteInscription").on('click', function () {
+          this.inscriptionsArray[this.id] = [];
+          $("#sidebar-inscriptions #" + this.id).remove();
+        }); // resets info of from
+
+        $("#inscriptionInscription").trigger("reset");
+        $("#add").html('Añadir Inscripción');
+        this.inscriptionId++;
+      }.bind(this));
+    } // fills selected form info with our array content
+
+  }, {
+    key: "populateForm",
+    value: function populateForm(id) {
+      var data = this.inscriptionsArray[id];
+      var frm = $("#inscriptionInscription");
+      $.each(data, function (key, value) {
+        var $ctrl = $('[name=' + value.name + ']', frm);
+
+        if ($ctrl.is('select')) {
+          $("option", $ctrl).each(function () {
+            if (this.value == value.value) {
+              this.selected = true;
+            }
+          });
+        } else {
+          switch ($ctrl.attr("type")) {
+            case "text":
+            case "hidden":
+            case "tel":
+            case "number":
+            case "textarea":
+            case "email":
+            case "date":
+              $ctrl.val(value.value);
+              break;
+
+            case "radio":
+            case "checkbox":
+              $ctrl.each(function () {
+                if ($(this).attr('value') == value.value) {
+                  $(this).attr("checked", value.value);
+                }
+              });
+              break;
+          }
+        }
+      });
     }
-  });
-} //Función que realiza la petición para el registro de inscripciones
-//Función que muestra el formulario de edición de inscripciones
+  }]);
 
-
-function showEdit(id) {
-  var accion = 'mostrar_editar'; //Variable que guarda la acción que queramos hacer al realizar la petición
-  //Petición
-
-  $.post('/inscription_showEdit/' + id, function (data) {
-    $('#editar').html(data);
-    $('#editar').css('display', 'block');
-    $('#tabla').css('display', 'none');
-  });
-} //Función que valida la edición de inscripciones
-
-
-function validateEdit(id) {
-  $("#submitenviar").validate({
-    rules: {
-      nombre: {
-        required: true,
-        minlength: 3,
-        lettersonly: true
-      },
-      apellidos: {
-        required: true,
-        minlength: 3,
-        lettersonly: true
-      },
-      telefono: {
-        required: true,
-        maxlength: 9,
-        isMobile: true
-      },
-      fecha_nacimiento: {
-        required: true
-      },
-      dorsal: {
-        required: true,
-        dorsal: true
-      },
-      dni: {
-        required: true,
-        dni: true
-      }
-    },
-    messages: {
-      nombre: {
-        required: "*Campo obligatorio",
-        minlength: "El nombre debe tener al menos 3 caracteres",
-        lettersonly: "*Sólo puede contener letras"
-      },
-      apellidos: {
-        required: "*Campo obligatorio",
-        minlength: "El nombre debe tener al menos 3 caracteres",
-        lettersonly: "*Sólo puede contener letras"
-      },
-      telefono: {
-        required: "*Campo obligatorio",
-        maxlength: "¡El número de teléfono móvil no puede superar los 9 dígitos!",
-        isMobile: "El formato del teléfono debe contener 9 dígitos, el primero debe comenzar por 6 ó 7"
-      },
-      dni: {
-        required: "*Campo obligatorio",
-        dni: "*Introduzca un formato correcto para el dni"
-      },
-      fecha_nacimiento: {
-        required: "*Campo obligatorio"
-      },
-      dorsal: {
-        required: "*Campo obligatorio",
-        dorsal: "*Sólo números"
-      } //Función que realiza una acción si la validación es correcta
-
-    },
-    submitHandler: function submitHandler() {
-      edit(id);
-    }
-  }); //Validaciones personalizadas que no entran dentro de la librería
-
-  jQuery.validator.addMethod("isMobile", function (value, element) {
-    var length = value.length;
-    var mobile = /^[6-7][0-9]{8}$/;
-    return this.optional(element) || length == 9 && mobile.test(value);
-  }, "El formato del teléfono debe contener 9 dígitos, el primero debe comenzar por 6 ó 7");
-  jQuery.validator.addMethod("lettersonly", function (value, element) {
-    var lettersonly = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
-    return this.optional(element) || lettersonly.test(value);
-  }, "*Sólo letras");
-  jQuery.validator.addMethod("dni", function (value, element) {
-    var dni = /((([X-Z])|([LM])){1}([-]?)((\d){7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]))/;
-    return this.optional(element) || dni.test(value);
-  }, "*Introduzca un formato correcto para el dni");
-  jQuery.validator.addMethod("dorsal", function (value, element) {
-    var dorsal = /^([0-9])*$/;
-    return this.optional(element) || dorsal.test(value);
-  }, "*Sólo números");
-} //Función que realiza la petición para la edición de inscripciones
-
-
-function edit(id) {
-  var accion = 'editar'; //Variable que guarda la acción que queramos hacer al realizar la petición
-
-  var str = $("#submitenviar").serialize(); //Variable que guarda los datos del formulario
-  //Petición
-
-  $.post('/inscription_edit/' + id, str, function (data) {
-    //Condición que realiza diferentes acciones según la respuesta devuelta
-    if (data.trim() === 'ko') {
-      //Error consulta
-      alert("Ha habido un error al realizar la petición solicitada intentelo de nuevo");
-    } else {
-      //Consulta correcta
-      $('#editar').css('display', 'none');
-      location.reload();
-    }
-  });
-}
+  return Inscription;
+}();
+var inscription = new Inscription();
 /******/ })()
 ;
