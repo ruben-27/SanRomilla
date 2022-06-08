@@ -21,7 +21,7 @@ use App\Http\Controllers\DonationController;
 
 // Public
 Route::get('/', function () {
-    return view('welcome');
+    return view('public.index');
 })->name('welcome');
 
 Route::get('/terms', function () {
