@@ -9,6 +9,9 @@ use App\Models\Role;
 
 class ColaboratorController extends Controller
 {
+    public function index() {
+        return view('private.colaborators.colaborator');
+    }
 
     public static function showInsert() {
         $roles = Role::all();
@@ -21,9 +24,9 @@ class ColaboratorController extends Controller
         $colaborator = User::where('id',$id)->first();
         return view('private.colaborators.colaboratorForm',compact("colaborator","roles"));
     }
-    
+
     public function store(Request $request) {
-        
+
         // New User
         $colaborator = new User();
 
@@ -34,7 +37,7 @@ class ColaboratorController extends Controller
             return redirect('/colaborator')->with("error","fallo al introducir el formulario");
         } else {
             return redirect('/colaborator');
-        } 
+        }
 
     }
 
@@ -51,13 +54,13 @@ class ColaboratorController extends Controller
             return redirect('/colaborator')->with("error","fallo al introducir el formulario");
         } else {
             return redirect('/colaborator');
-        } 
+        }
 
     }
 
     public function saveUser($user, Request $request) {
 
-        // Validations 
+        // Validations
         $request->validate([
             'name' => ['required','max:50'],
             'last_name' => ['required','max:100'],
@@ -67,11 +70,11 @@ class ColaboratorController extends Controller
             'last_name.required' => 'El apellido es obligatorio',
             'email.required' => 'El correo es obligatorio'
         ]);
-        
+
         // Save User
         $user->name = $request->name;
         $user->last_name = $request->last_name;
-        $user->email = $request->email;       
+        $user->email = $request->email;
         $saved = $user->save();
 
         foreach ($request->roles as $role) {

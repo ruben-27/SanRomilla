@@ -10,7 +10,7 @@ class YearDatatable extends Component
 {
     use WithPagination;
     public $sortBy = 'year';
-    public $sortDirection = 'asc';
+    public $sortDirection = 'desc';
     public $perPage = 10;
     public $search = '';
 
@@ -29,7 +29,7 @@ class YearDatatable extends Component
             $this->sortDirection = 'desc';
         else
             $this->sortDirection = 'asc';
-        
+
         return $this->sortBy = $field;
     }
 

@@ -1,5 +1,5 @@
-<div class="min-w-screen min-h-screen bg-gray-100 flex justify-center bg-gray-100 font-sans overflow-hidden p-6">
-    <div class="w-full lg:w-5/6">
+<div class="min-h-screen flex justify-center font-sans overflow-hidden py-6">
+    <div class="w-full">
         <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
 
             {{-- Header --}}
@@ -31,7 +31,7 @@
                     <input wire:model.debounce.300ms="search" type="text" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full md:w-80 pl-10 p-2.5" placeholder="Buscar">
                 </div>
                 {{-- /Searcher --}}
-            
+
             </div>
             {{-- /Header --}}
 
@@ -76,11 +76,7 @@
                     <tbody class="text-gray-600 text-sm font-light">
 
                         @foreach ($donations as $donation)
-                        @if($loop->iteration % 2 == 0)
-                        <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
-                        @else
-                        <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        @endif
+                        <tr class="border-b border-gray-200 even:bg-gray-50 hover:bg-gray-100">
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
                                     <span>{{$donation->name}}</span>
@@ -106,7 +102,7 @@
                                     <span>{{ \Carbon\Carbon::parse($donation->created_at)->format('d/m/Y')}}</span>
                                 </div>
                             </td>
-                        </tr>                        
+                        </tr>
                         @endforeach
 
                     </tbody>

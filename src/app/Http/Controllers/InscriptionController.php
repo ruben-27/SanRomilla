@@ -8,9 +8,13 @@ use App\Models\Category;
 
 class InscriptionController extends Controller
 {
+    public function index() {
+        $year = YearController::getActiveYear();
+        return view('private.inscriptions.inscription', compact('year'));
+    }
 
     public function store(Request $request) {
-        
+
         $inscriptions = $_POST["array"];
         $exit = "OK";
         foreach ($inscriptions as $key => $inscription) {
@@ -28,7 +32,7 @@ class InscriptionController extends Controller
                 'category' => ['required'],
                 'dorsal' => ['required'],
                 'size' => ["required"]
-                
+
             ], [
                 'name.required' => 'El nombre es obligatorio',
                 'last_name.required' => 'Los apellidos son obligatorios',
@@ -42,10 +46,10 @@ class InscriptionController extends Controller
             ]);*/
             $inscriptionModel->name = $inscription[2]["value"];
             $inscriptionModel->last_name = $inscription[3]["value"];
-            $inscriptionModel->dni = $inscription[4]["value"];
-            $inscriptionModel->phone = $inscription[5]["value"];
-            $inscriptionModel->birthday = $inscription[6]["value"];
-            $inscriptionModel->email = $inscription[7]["value"];
+            $inscriptionModel->email = $inscription[4]["value"];
+            $inscriptionModel->dni = $inscription[5]["value"];
+            $inscriptionModel->phone = $inscription[6]["value"];
+            $inscriptionModel->birthday = $inscription[7]["value"];
             $inscriptionModel->gender = $inscription[8]["value"];
             $inscriptionModel->dorsal = $inscription[9]["value"];
             $inscriptionModel->size = $inscription[10]["value"];

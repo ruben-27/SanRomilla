@@ -7,6 +7,10 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
+    public function index() {
+        return view('private.categories.category');
+    }
+
     public static function showInsert() {
         return view('private.categories.categoryForm');
     }
@@ -15,9 +19,9 @@ class CategoryController extends Controller
         $donacion = Category::all();
         return $donacion;
     }
-    
+
     public function store(Request $request) {
-       
+
         $category = new Category();
         $request->validate([
             'name' => ['required','max:50'],
@@ -34,7 +38,7 @@ class CategoryController extends Controller
             'name.max' => 'El nombre es demasiado largo',
             'start_time.required' => 'La fecha de comienzo es obligatoria',
             'price.required' => 'El precio es obligatorio'
-        ]); 
+        ]);
         $category->name = $_REQUEST["name"];
         $category->min_age = $_REQUEST["min_age"];
         $category->max_age = $_REQUEST["max_age"];
@@ -48,8 +52,8 @@ class CategoryController extends Controller
         } else {
             return redirect('/category');
         }
-        
-        
+
+
     }
 
     public function modify($id) {
@@ -72,7 +76,7 @@ class CategoryController extends Controller
             'start_time.required' => 'La fecha de comienzo es obligatoria',
             'price.required' => 'El precio es obligatorio'
         ]);
-        
+
         // Getting values from the blade template form
         $category->name = $_REQUEST["name"];
         $category->min_age = $_REQUEST["min_age"];
@@ -87,7 +91,7 @@ class CategoryController extends Controller
         } else {
             return redirect('/category');
         }
-        
+
     }
 
     public function getCategoriesInfo () {

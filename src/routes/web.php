@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColaboratorController;
+use App\Http\Controllers\InscriptionController;
+use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\YearController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonationController;
 
@@ -29,33 +33,27 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/year', function () {
-    return view('private.years.year');
-})->middleware(['auth'])->name('year');
+Route::get('/year', [YearController::class, 'index'])
+    ->middleware(['auth'])->name('year');
 
-Route::get('/inscription', function () {
-    return view('private.inscriptions.inscription');
-})->middleware(['auth'])->name('inscription');
+Route::get('/inscription', [InscriptionController::class, 'index'])
+    ->middleware(['auth'])->name('inscription');
 
-Route::get('/donation', function () {
-    return view('private.donations.donation');
-})->middleware(['auth'])->name('donation');
+Route::get('/donation', [DonationController::class, 'index'])
+        ->middleware(['auth'])->name('donation');
 
-Route::get('/colaborator', function () {
-    return view('private.colaborators.colaborator');
-})->middleware(['auth'])->name('colaborator');
+Route::get('/colaborator', [ColaboratorController::class, 'index'])
+    ->middleware(['auth'])->name('colaborator');
 
 Route::get('/clasification', function () {
     return view('private.marks.mark');
 })->middleware(['auth'])->name('clasification');
 
-Route::get('/category', function () {
-    return view('private.categories.category');
-})->middleware(['auth'])->name('category');
+Route::get('/category', [CategoryController::class, 'index'])
+    ->middleware(['auth'])->name('category');
 
-Route::get('/sponsors', function () {
-    return view('private.sponsors.sponsors');
-})->middleware(['auth'])->name('sponsors');
+Route::get('/sponsors', [SponsorController::class, 'index'])
+    ->middleware(['auth'])->name('sponsors');
 
 Route::get('/documentation', function () {
     return view('private.documentation.documentation');

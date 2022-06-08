@@ -9,7 +9,7 @@
 'use strict'
 
 export class Inscription{
-    
+
     constructor(){
         this.inscriptionsArray = [];
         this.inscriptionId = 0;
@@ -17,25 +17,24 @@ export class Inscription{
         this.selectedId = null;
         this.categoriesInfo = this.getCategoriesInfo();
     }
+
     events() {
       $('input[name="birthday"]').change(function() {
         let date = $('input[name="birthday"]').val().split("-");
 
         let year = date[0];
         this.categoriesInfo.forEach(function (value,index,currentArray) {
-          
-          if(currentArray[index]["min_age"] == null && year >= currentArray[index]["max_age"]) {
-            $('select[name="category"]').val(currentArray[index]["id"]);
-          }
-          if(currentArray[index]["max_age"] == null && year <= currentArray[index]["min_age"]) {
-            $('select[name="category"]').val(currentArray[index]["id"]);
-          }
-          if(currentArray[index]["min_age"] != null && currentArray[index]["max_age"] != null) {
-            if(year >= currentArray[index]["max_age"] && year <= currentArray[index]["min_age"]) {
-              $('select[name="category"]').val(currentArray[index]["id"]);
-            }
-          }
-        
+
+            if (year == null || isNaN(year))
+                $('select[name="category"]').val(0);
+            if (currentArray[index]["min_age"] == null && year >= currentArray[index]["max_age"])
+                $('select[name="category"]').val(currentArray[index]["id"]);
+            if (currentArray[index]["max_age"] == null && year <= currentArray[index]["min_age"])
+                $('select[name="category"]').val(currentArray[index]["id"]);
+            if (currentArray[index]["min_age"] != null && currentArray[index]["max_age"] != null)
+                if (year >= currentArray[index]["max_age"] && year <= currentArray[index]["min_age"])
+                  $('select[name="category"]').val(currentArray[index]["id"]);
+
         });
 
       }.bind(this));
@@ -54,25 +53,45 @@ export class Inscription{
         disabled.attr('disabled','disabled');
         // colects current form and stores it into an array
 
+        if (this.inscriptionsArray.length <= 1) {
+            $('#sidebar-inscriptions').removeClass('hidden');
+            $('.main').addClass('mr-36');
+        }
         this.inscriptionsArray[this.inscriptionId] = form; // this removes the inscription on the sidebar if you are modifying it
 
         if (this.selectedId != null) {
           $("#sidebar-inscriptions #" + this.selectedId).remove();
         } // adds a new inscription to the sidebar
 
-
-        $("#sidebar-inscriptions").prepend("<div class='changeForm' id='" + this.inscriptionId + "'>" + "<div class='font-bold'>" + this.inscriptionsArray[this.inscriptionId][2].value + "</div>" + "<div>" + this.inscriptionsArray[this.inscriptionId][4].value + "</div>" + "<div class='deleteInscription' id='" + this.inscriptionId + "'>Icono Borrar</div>" + "</div>");
+        $("#sidebar-inscriptions")
+            .prepend("<a class='changeForm flex justify-between w-full relative group hover:bg-gray-50 border border-b-gray-300 p-3 text-xs text-left cursor-default' id='" + this.inscriptionId + "'>" +
+                        "<div>" +
+                            "<div class='font-bold text-sm'>" + this.inscriptionsArray[this.inscriptionId][2].value + "</div>" +
+                            "<div>" + this.inscriptionsArray[this.inscriptionId][5].value + "</div>" +
+                        "</div>" +
+                    "<button type='button' class='deleteInscription m-2 invisible group-hover:visible text-red-400' id='" + this.inscriptionId + "'>" +
+                        "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">" +
+                            "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 18L18 6M6 6l12 12\"></path>" +
+                        "</svg>" +
+                    "</button>" +
+                "</a>"
+            );
         this.selectedId = null; // selects sidebar inscription to be modified
 
         $(".changeForm").on('click', function () {
           $("#add").html('Modificar Inscripción');
           self.selectedId = this.id;
           self.populateForm(this.id);
-        }); // deletes sidebar inscription 
+        }); // deletes sidebar inscription
 
         $(".deleteInscription").on('click', function () {
-          self.inscriptionsArray[this.id] = [];
-          $("#sidebar-inscriptions #" + this.id).remove();
+            self.inscriptionsArray[this.id] = [];
+            console.log(this.id)
+            if (self.inscriptionsArray.length <= 1) {
+                $('#sidebar-inscriptions').addClass('hidden');
+                $('.main').removeClass('mr-36');
+            }
+            $("#sidebar-inscriptions #" + this.id).remove();
         }); // resets info of from
 
         $("#inscriptionInscription").trigger("reset");
@@ -81,17 +100,17 @@ export class Inscription{
       }.bind(this));
 
       $("#inscriptionInscription").on("submit",function(event) {
-        alert("aaaaa")
         event.preventDefault()
         this.inscriptionSumbit();
       }.bind(this))
     }
+
     // fills selected form info with our array content
     populateForm(id) {
         let data = this.inscriptionsArray[id];
         let frm = $("#inscriptionInscription");
         $.each(data, function (key, value) {
-        
+
             var $ctrl = $('[name=' + value.name + ']', frm);
             if ($ctrl.is('select')) {
               $("option", $ctrl).each(function () {
@@ -110,7 +129,7 @@ export class Inscription{
                 case "date":
                   $ctrl.val(value.value);
                   break;
-    
+
                 case "radio":
                 case "checkbox":
                   $ctrl.each(function () {
@@ -119,11 +138,11 @@ export class Inscription{
                     }
                   });
                   break;
-                } 
-            } 
-        });  
-        
-        
+                }
+            }
+        });
+
+
     };
 
     inscriptionSumbit() {

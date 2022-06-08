@@ -8,7 +8,7 @@
         </h2>
     </x-slot>
 
-    <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+    <div class="h-full md:w-10/12 md:mx-auto mt-14 mb-10 px-6 md:px-0">
         <div class="mt-6 mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex items-center p-6 bg-white border-b border-gray-200">

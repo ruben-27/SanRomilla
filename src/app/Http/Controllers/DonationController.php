@@ -7,6 +7,9 @@ use App\Models\Donation;
 
 class DonationController extends Controller
 {
+    public function index() {
+        return view('private.donations.donation');
+    }
     public static function showInsert() {
         return view('private.donations.donationForm');
     }
@@ -17,7 +20,7 @@ class DonationController extends Controller
     }
 
     public function store(Request $request) {
-       
+
         $donation = new Donation();
         $request->validate([
             'name' => ['required','max:50'],
@@ -26,7 +29,7 @@ class DonationController extends Controller
         ], [
             'name.required' => 'El nombre es obligatorio',
             'last_name.required' => 'El apellido es obligatorio'
-        ]); 
+        ]);
         $donation->name = $_REQUEST["name"];
         $donation->last_name = $_REQUEST["last_name"];
         $donation->amount = $_REQUEST["amount"];
@@ -40,8 +43,8 @@ class DonationController extends Controller
             return redirect('/donation')->with("error","fallo al introducir el formulario");
         } else {
             return redirect('/donation');
-        } 
-        
+        }
+
     }
 
     public static function donation() {
