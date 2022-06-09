@@ -40,9 +40,9 @@ class DonationController extends Controller
         }
         $saved = $donation->save();
         if (!$saved) {
-            return redirect('/donation')->with("error","fallo al introducir el formulario");
+            return redirect(route('donation'))->with("error","fallo al introducir el formulario");
         } else {
-            return redirect('/donation');
+            return redirect(route('donation'));
         }
 
     }

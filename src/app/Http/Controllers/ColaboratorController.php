@@ -41,9 +41,9 @@ class ColaboratorController extends Controller
         
 
         if (!$saved) {
-            return redirect('/colaborator')->with(['error' => $error]);
+            return redirect(route('colaboratorForm'))->with(['error' => $error]);
         } else {
-            return redirect('/colaborator');
+            return redirect(route('colaborator'));
         }
 
     }
@@ -58,9 +58,9 @@ class ColaboratorController extends Controller
         $saved = $this->saveUser($colaborator, $request);
 
         if (!$saved) {
-            return redirect('/colaborator')->with("error","fallo al introducir el formulario");
+            return redirect(route('colaborator'))->with("error","fallo al introducir el formulario");
         } else {
-            return redirect('/colaborator');
+            return redirect(route('colaborator'));
         }
 
     }
