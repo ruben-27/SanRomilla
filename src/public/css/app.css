@@ -769,6 +769,9 @@ select {
 .mb-4 {
   margin-bottom: 1rem;
 }
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
 .mr-5 {
   margin-right: 1.25rem;
 }
@@ -780,9 +783,6 @@ select {
 }
 .mb-3 {
   margin-bottom: 0.75rem;
-}
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 .block {
   display: block;
@@ -880,14 +880,11 @@ select {
 .w-full {
   width: 100%;
 }
-.w-1\/12 {
-  width: 8.333333%;
+.w-36 {
+  width: 9rem;
 }
 .w-4 {
   width: 1rem;
-}
-.w-16 {
-  width: 4rem;
 }
 .w-16 {
   width: 4rem;
@@ -917,9 +914,6 @@ select {
 }
 .w-20 {
   width: 5rem;
-}
-.w-36 {
-  width: 9rem;
 }
 .w-12 {
   width: 3rem;
@@ -1849,13 +1843,13 @@ select {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(202 138 4 / var(--tw-ring-opacity));
 }
-.focus\:ring-yellow-300:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(253 224 71 / var(--tw-ring-opacity));
-}
 .focus\:ring-yellow-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(234 179 8 / var(--tw-ring-opacity));
+}
+.focus\:ring-yellow-300:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(253 224 71 / var(--tw-ring-opacity));
 }
 .focus\:ring-opacity-50:focus {
   --tw-ring-opacity: 0.5;
@@ -2118,14 +2112,14 @@ select {
     grid-column: span 2 / span 2;
   }
 
-  .md\:mx-4 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
   .md\:mx-auto {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .md\:mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .md\:ml-64 {
@@ -2160,6 +2154,10 @@ select {
     width: 75%;
   }
 
+  .md\:w-10\/12 {
+    width: 83.333333%;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -2170,10 +2168,6 @@ select {
 
   .md\:w-1\/3 {
     width: 33.333333%;
-  }
-
-  .md\:w-10\/12 {
-    width: 83.333333%;
   }
 
   .md\:w-80 {
@@ -2246,6 +2240,11 @@ select {
     padding: 1rem;
   }
 
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
   .md\:px-7 {
     padding-left: 1.75rem;
     padding-right: 1.75rem;
@@ -2254,11 +2253,6 @@ select {
   .md\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
-  }
-
-  .md\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   .md\:text-left {
@@ -2291,16 +2285,16 @@ select {
     width: 50%;
   }
 
-  .lg\:w-8\/12 {
-    width: 66.666667%;
+  .lg\:w-10\/12 {
+    width: 83.333333%;
   }
 
   .lg\:w-5\/6 {
     width: 83.333333%;
   }
 
-  .lg\:w-10\/12 {
-    width: 83.333333%;
+  .lg\:w-8\/12 {
+    width: 66.666667%;
   }
 
   .lg\:grid-cols-3 {
@@ -2323,12 +2317,12 @@ select {
 }
 @media (min-width: 1280px) {
 
-  .xl\:w-6\/12 {
-    width: 50%;
-  }
-
   .xl\:w-9\/12 {
     width: 75%;
+  }
+
+  .xl\:w-6\/12 {
+    width: 50%;
   }
 }
 

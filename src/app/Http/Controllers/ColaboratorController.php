@@ -29,12 +29,19 @@ class ColaboratorController extends Controller
 
         // New User
         $colaborator = new User();
-
+        $saved = null;
+        $error = null;
+        try { 
+            $saved = $this->saveUser($colaborator, $request);
+          } catch(\Illuminate\Database\QueryException $ex){ 
+            $error = $ex->getMessage(); 
+            // Note any method of class PDOException can be called on $ex.
+          }
         // Save User
-        $saved = $this->saveUser($colaborator, $request);
+        
 
         if (!$saved) {
-            return redirect('/colaborator')->with("error","fallo al introducir el formulario");
+            return redirect('/colaborator')->with(['error' => $error]);
         } else {
             return redirect('/colaborator');
         }
