@@ -29,7 +29,7 @@
                         <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nuevo Colaborador</h1>
                     </div>
                 </div>
-                <form id="inscriptionDonation" method="post" action="{{ isset($colaborator) ? '/colaboratorUpdate' : '/colaboratorInsert' }}" >
+                <form id="inscriptionDonation" method="post" action="{{ isset($colaborator) ? 'route("colaboratorUpdate")' : 'route("colaboratorInsert")' }}" >
                 {{ csrf_field() }}
                     @if (isset($colaborator))
                         <input type="hidden" value="{{$colaborator->id}}" name="id">
