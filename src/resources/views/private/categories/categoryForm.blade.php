@@ -76,7 +76,7 @@
                     </div>
 
                     <div class='flex items-center justify-center  md:gap-8 gap-4 mt-5 pt-5 pb-5'>
-                        <button type="button" class='w-auto bg-gray-500 hover:bg-gray-700 rounded shadow-xl uppercase font-medium text-white px-4 py-2' id="cancel">Cancelar</button>
+                        <a href="{{route('category')}}" class='w-auto bg-gray-500 hover:bg-gray-700 rounded shadow-xl uppercase font-medium text-white px-4 py-2' id="cancel">Cancelar</a>
                         <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' id="sumbit">Añadir</button>
                     </div>
                 </form>

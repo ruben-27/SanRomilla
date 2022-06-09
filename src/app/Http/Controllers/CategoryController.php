@@ -48,9 +48,9 @@ class CategoryController extends Controller
         $category->status = "N";
         $saved = $category->save();
         if (!$saved) {
-            return redirect('/category')->with("error","fallo al introducir el formulario");
+            return redirect(route('category'))->with("error","fallo al introducir el formulario");
         } else {
-            return redirect('/category');
+            return redirect(route('category'));
         }
 
 
@@ -87,9 +87,9 @@ class CategoryController extends Controller
         $category->status = "W";
         $saved = $category->save();
         if (!$saved) {
-            return redirect('/category')->with("error","fallo al introducir el formulario");
+            return redirect(route('category'))->with("error","fallo al introducir el formulario");
         } else {
-            return redirect('/category');
+            return redirect(route('category'));
         }
 
     }

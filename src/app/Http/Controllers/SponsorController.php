@@ -47,9 +47,9 @@ class SponsorController extends Controller
 
         $saved = $sponsor->save();
         if (!$saved) {
-            return redirect('/sponsors')->with("error","fallo al introducir el formulario");
+            return redirect(route('sponsors'))->with("error","fallo al introducir el formulario");
         } else {
-            return redirect('/sponsors');
+            return redirect(route('sponsors'));
         }
 
 
@@ -75,9 +75,9 @@ class SponsorController extends Controller
 
         $saved = $sponsor->save();
         if (!$saved) {
-            return redirect('/sponsors')->with("error","fallo al introducir el formulario");
+            return redirect(route('sponsors'))->with("error","fallo al introducir el formulario");
         } else {
-            return redirect('/sponsors');
+            return redirect(route('sponsors'));
         }
 
     }
