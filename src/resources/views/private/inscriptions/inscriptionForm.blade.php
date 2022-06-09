@@ -29,7 +29,7 @@
                         <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nueva Inscripción</h1>
                     </div>
                 </div>
-                <form id="inscriptionInscription" method="post" action="{{ isset($inscription) ? 'route("inscriptionUpdate")' : 'route("inscriptionInsert")' }}" >
+                <form id="inscriptionInscription" method="post" action="{{ isset($inscription) ? route('inscriptionUpdate') : route('inscriptionInsert') }}" >
                 {{ csrf_field() }}
                     @if (isset($inscription))
                         <input type="hidden" value="{{$inscription->id}}" name="id">
