@@ -37,7 +37,7 @@
                         <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nueva Categoria</h1>
                     </div>
                 </div>
-                <form id="categoryInscription" method="post" action="{{ isset($category) ? '/categoryUpdate' : '/categoryInsert' }}" >
+                <form id="categoryInscription" method="post" action="{{ isset($category) ? 'route("categoryUpdate")' : 'route("categoryInsert")' }}" >
                 {{ csrf_field() }}
                     @if (isset($category))
                         <input type="hidden" value="{{$category->id}}" name="id">

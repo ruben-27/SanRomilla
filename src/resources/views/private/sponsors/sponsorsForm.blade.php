@@ -33,7 +33,7 @@
                         <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Nuevo Patrocinador</h1>
                     </div>
                 </div>
-                <form id="sponsorInscription" method="post" action="{{ isset($sponsor) ? '/sponsorUpdate' : '/sponsorInsert' }}" enctype="multipart/form-data">
+                <form id="sponsorInscription" method="post" action="{{ isset($sponsor) ? 'route("sponsorUpdate")' : 'route("sponsorInsert")' }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                     @if (isset($sponsor))
                         <input type="hidden" value="{{$sponsor->id}}" name="id">
