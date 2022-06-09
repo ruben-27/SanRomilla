@@ -37,4 +37,8 @@ class DonationDatatable extends Component
     {
         $this->resetPage();
     }
+    
+    public function delete($id) {
+        Donation::find($id)->delete();
+     }
 }
