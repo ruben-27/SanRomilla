@@ -18,80 +18,76 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('auth.error-google-login');
-// });
-
 /*Colaborator Routes*/
-Route::get('/colaborator_showInsert', [ColaboratorController::class, 'showInsert'])
+Route::get('/admin/colaborator_showInsert', [ColaboratorController::class, 'showInsert'])
     ->middleware(['auth'])->name('colaborator_showInsert');
 
-Route::post('/colaboratorInsert', [ColaboratorController::class,'store'])
+Route::post('/admin/colaboratorInsert', [ColaboratorController::class,'store'])
     ->middleware(['auth'])->name('colaboratorInsert');
 
-Route::get('/colaboratorModify/{id}', [ColaboratorController::class, 'modify'])
+Route::get('/admin/colaboratorModify/{id}', [ColaboratorController::class, 'modify'])
     ->middleware(['auth'])->name('colaboratorModify');
 
-Route::post('/colaboratorUpdate', [ColaboratorController::class, 'update'])
-    ->middleware(['auth'])->name('colaboratorUpdate');    
+Route::post('/admin/colaboratorUpdate', [ColaboratorController::class, 'update'])
+    ->middleware(['auth'])->name('colaboratorUpdate');
 
 
 /*Inscription Routes*/
-Route::post('inscription_consult', [InscriptionController::class, 'Consult'])
+Route::post('/admin/inscription_consult', [InscriptionController::class, 'Consult'])
     ->middleware(['auth'])->name('inscription_consult');
 
-Route::get('/inscription_showInsert', [InscriptionController::class, 'showInsert'])
+Route::get('/admin/inscription_showInsert', [InscriptionController::class, 'showInsert'])
     ->middleware(['auth'])->name('inscription_showInsert');
 
-Route::post('/inscriptionInsert', [InscriptionController::class,'store'])
+Route::post('/admin/inscriptionInsert', [InscriptionController::class,'store'])
     ->middleware(['auth'])->name('inscriptionInsert');
 
 
 /*Donation Routes*/
-Route::post('/donation_consult', [DonationController::class, 'Consult'])->middleware(['auth'])
-    ->name('donation_consult');
+Route::post('/admin/donation_consult', [DonationController::class, 'Consult'])
+    ->middleware(['auth'])->name('donation_consult');
 
-Route::get('/donation_showInsert', [DonationController::class, 'showInsert'])
+Route::get('/admin/donation_showInsert', [DonationController::class, 'showInsert'])
     ->middleware(['auth'])->name('donation_showInsert');
 
-Route::post('/donationInsert', [DonationController::class,'store'])
+Route::post('/admin/donationInsert', [DonationController::class,'store'])
     ->middleware(['auth'])->name('donationInsert');
 
 
-/*Sponsor Routes*/ 
-Route::post('/sponsor_consult', [SponsorController::class, 'Consult'])
+/*Sponsor Routes*/
+Route::post('/admin/sponsor_consult', [SponsorController::class, 'Consult'])
     ->middleware(['auth'])->name('sponsor_consult');
 
-Route::get('/sponsor_showInsert', [SponsorController::class, 'showInsert'])
+Route::get('/admin/sponsor_showInsert', [SponsorController::class, 'showInsert'])
     ->middleware(['auth'])->name('sponsor_showInsert');
 
-Route::post('/sponsorInsert', [SponsorController::class,'store'])
+Route::post('/admin/sponsorInsert', [SponsorController::class,'store'])
     ->middleware(['auth'])->name('sponsorInsert');
 
-Route::get('/sponsorModify/{id}', [SponsorController::class, 'modify'])
+Route::get('/admin/sponsorModify/{id}', [SponsorController::class, 'modify'])
     ->middleware(['auth'])->name('sponsorModify');
 
-Route::post('/sponsorUpdate', [SponsorController::class, 'update'])
-    ->middleware(['auth'])->name('sponsorUpdate');    
+Route::post('/admin/sponsorUpdate', [SponsorController::class, 'update'])
+    ->middleware(['auth'])->name('sponsorUpdate');
 
 
 /*Category Routes*/
-Route::get('/categoryModify/{id}', [CategoryController::class, 'modify'])
+Route::get('/admin/categoryModify/{id}', [CategoryController::class, 'modify'])
     ->middleware(['auth'])->name('categoryModify');
 
-Route::post('/categoryUpdate', [CategoryController::class, 'update'])
+Route::post('/admin/categoryUpdate', [CategoryController::class, 'update'])
     ->middleware(['auth'])->name('categoryUpdate');
 
-Route::post('/category_consult', [CategoryController::class, 'Consult'])
+Route::post('/admin/category_consult', [CategoryController::class, 'Consult'])
     ->middleware(['auth'])->name('category_consult');
 
-Route::get('/category_showInsert', [CategoryController::class, 'showInsert'])
+Route::get('/admin/category_showInsert', [CategoryController::class, 'showInsert'])
     ->middleware(['auth'])->name('category_showInsert');
 
-Route::post('/categoryInsert', [CategoryController::class,'store'])
+Route::post('/admin/categoryInsert', [CategoryController::class,'store'])
     ->middleware(['auth'])->name('categoryInsert');
 
-Route::post('/getCategoriesInfo', [CategoryController::class,'getCategoriesInfo'])
-    ->middleware(['auth'])->name('getCategoriesInfo');    
+Route::post('/admin/getCategoriesInfo', [CategoryController::class,'getCategoriesInfo'])
+    ->middleware(['auth'])->name('getCategoriesInfo');
 
 

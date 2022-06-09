@@ -20,7 +20,7 @@ class GoogleSocialiteController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-       
+
     /**
      * Create a new controller instance.
      *
@@ -29,14 +29,14 @@ class GoogleSocialiteController extends Controller
     public function handleCallback()
     {
         try {
-     
+
             // Get Google User
             $user = Socialite::driver('google')->user();
             // Validate If exists
             $finduser = User::where('email', $user->email)->first();
-      
+
             if($finduser){
-      
+
                 // Update Avatar
                 $finduser->fill([
                     'avatar' => $user->avatar,
@@ -45,8 +45,8 @@ class GoogleSocialiteController extends Controller
                 $finduser->save();
                 // Login
                 Auth::login($finduser);
-                return redirect('/dashboard');
-      
+                return redirect(route('dashboard'));
+
             }else{
                 // return view('auth.error-google-login');
                 $newUser = User::create([
@@ -55,12 +55,12 @@ class GoogleSocialiteController extends Controller
                     'email' => $user->email,
                     'avatar' => $user->avatar,
                 ]);
-     
+
                 Auth::login($newUser);
-      
-                return redirect('/dashboard');
+
+                return redirect(route('dashboard'));
             }
-     
+
         } catch (Exception $e) {
             dd($e->getMessage());
         }

@@ -210,7 +210,7 @@ function showInsert() {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'mostrar_insertar'; //Petición
 
-  $.post('/colaborator_showInsert', function (data) {
+  $.post('/admin/colaborator_showInsert', function (data) {
     $('#mostrarInsertar').html(data);
     $('#mostrarInsertar').css('display', 'block');
     $('#tabla').css('display', 'none');
@@ -306,7 +306,7 @@ function store() {
 
   var str = $("#insertar").serialize(); //Petición
 
-  $.post('/colaborator_insert', str, function (data) {
+  $.post('/admin/colaborator_insert', str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error en la consulta
@@ -326,7 +326,7 @@ function showEdit(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'mostrar_editar'; //Petición
 
-  $.post('/colaborator_showEdit', function (data) {
+  $.post('/admin/colaborator_showEdit', function (data) {
     $('#editar').html(data);
     $('#editar').css('display', 'block');
     $('#tabla').css('display', 'none');
@@ -403,7 +403,7 @@ function edit(id) {
 
   var str = $("#submitenviar").serialize(); //Petición
 
-  $.post('/colaborator_edit', str, function (data) {
+  $.post('/admin/colaborator_edit', str, function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error consulta
@@ -422,7 +422,7 @@ function removeAction(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'cuadro_eliminar'; //Petición
 
-  $.post('/colaborator_RemoveAction' + accion, function (data) {
+  $.post('/admin/colaborator_RemoveAction' + accion, function (data) {
     $('#eliminar').html(data);
     $('#eliminar').css('display', 'block');
     $('#editar').css('display', 'none');
@@ -440,7 +440,7 @@ function acceptRemove(id) {
   //Variable que guarda la acción que queramos hacer al realizar la petición
   var accion = 'aceptar_eliminar'; //Petición
 
-  $.post('/colaborator_AcceptRemove', function (data) {
+  $.post('/admin/colaborator_AcceptRemove', function (data) {
     //Condición que realiza diferentes acciones según la respuesta devuelta
     if (data.trim() === 'ko') {
       //Error consulta
@@ -455,7 +455,7 @@ function acceptRemove(id) {
 }
 
 function cancel() {
-  window.location.replace("/colaborator");
+  window.location.replace("/admin/colaborator");
 }
 /******/ })()
 ;

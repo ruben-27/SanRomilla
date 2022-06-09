@@ -26,36 +26,36 @@ Route::get('/', function () {
 
 Route::get('/terms', function () {
     /*return Inscription::terms();*/
-})->middleware(['auth'])->name('terms');
+})->name('terms');
 
 // Private
-Route::get('/dashboard', function () {
+Route::get('/admin', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/year', [YearController::class, 'index'])
+Route::get('/admin/year', [YearController::class, 'index'])
     ->middleware(['auth'])->name('year');
 
-Route::get('/inscription', [InscriptionController::class, 'index'])
+Route::get('/admin/inscription', [InscriptionController::class, 'index'])
     ->middleware(['auth'])->name('inscription');
 
-Route::get('/donation', [DonationController::class, 'index'])
+Route::get('/admin/donation', [DonationController::class, 'index'])
         ->middleware(['auth'])->name('donation');
 
-Route::get('/colaborator', [ColaboratorController::class, 'index'])
+Route::get('/admin/colaborator', [ColaboratorController::class, 'index'])
     ->middleware(['auth'])->name('colaborator');
 
-Route::get('/clasification', function () {
+Route::get('/admin/clasification', function () {
     return view('private.marks.mark');
 })->middleware(['auth'])->name('clasification');
 
-Route::get('/category', [CategoryController::class, 'index'])
+Route::get('/admin/category', [CategoryController::class, 'index'])
     ->middleware(['auth'])->name('category');
 
-Route::get('/sponsors', [SponsorController::class, 'index'])
+Route::get('/admin/sponsors', [SponsorController::class, 'index'])
     ->middleware(['auth'])->name('sponsors');
 
-Route::get('/documentation', function () {
+Route::get('/admin/documentation', function () {
     return view('private.documentation.documentation');
 })->middleware(['auth'])->name('documentation');
 
