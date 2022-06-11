@@ -15,6 +15,11 @@ class InscriptionDatatable extends Component
     public $perPage = 10;
     public $search = '';
     public $category = '';
+    public $paid = '';
+
+    protected $listeners = [
+        'refreshParent' => '$refresh'
+    ];
 
     public function render()
     {
@@ -23,8 +28,9 @@ class InscriptionDatatable extends Component
             ->select('inscriptions.*', 'categories.name as categoryName')
             ->join('categories', 'categories.id', '=', 'inscriptions.category_id')
             ->search($this->search)
-            ->orderBy($this->sortBy, $this->sortDirection)
             ->where('category_id', $this->category > 0 ? $this->category : '>', 0)
+            ->where('paid', $this->paid != '' ? $this->paid : '>=', 0)
+            ->orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->perPage);
         return view('livewire.inscription-datatable', compact('categories', 'inscriptions'));
     }
@@ -42,10 +48,6 @@ class InscriptionDatatable extends Component
     public function updatingSearch()
     {
         $this->resetPage();
-    }
-
-    public function delete($id) {
-        Inscription::find($id)->delete();
     }
 
     public function payInscription($id) {
