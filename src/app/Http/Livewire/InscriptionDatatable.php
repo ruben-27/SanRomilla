@@ -17,6 +17,10 @@ class InscriptionDatatable extends Component
     public $category = '';
     public $paid = '';
 
+    protected $listeners = [
+        'refreshParent' => '$refresh'
+    ];
+
     public function render()
     {
         $categories = Category::all();
@@ -44,10 +48,6 @@ class InscriptionDatatable extends Component
     public function updatingSearch()
     {
         $this->resetPage();
-    }
-
-    public function delete($id) {
-        Inscription::find($id)->delete();
     }
 
     public function payInscription($id) {
