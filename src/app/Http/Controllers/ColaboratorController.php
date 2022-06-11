@@ -30,18 +30,43 @@ class ColaboratorController extends Controller
         // New User
         $colaborator = new User();
         $saved = null;
-        $error = null;
+        $userMessage = null;
+        /*
         try { 
-            $saved = $this->saveUser($colaborator, $request);
+           
           } catch(\Illuminate\Database\QueryException $ex){ 
             $error = $ex->getMessage(); 
             // Note any method of class PDOException can be called on $ex.
-          }
+          }*/
         // Save User
-        
+        try {
+            $saved = $this->saveUser($colaborator, $request);
+        } catch (\PDOException $e) {
+            $message = explode(' ', $e->getMessage());
+            $dbCode = rtrim($message[4], ']');
+            $dbCode = trim($dbCode, '[');
 
+            // codes specific to MySQL
+            switch ($dbCode)
+            {
+                case 1049:
+                    $userMessage = 'Unknown database - probably config error:';
+                    break;
+                case 2002:
+                    $userMessage = 'DATABASE IS DOWN:';
+                    break;
+                case 1062:
+                    $userMessage = 'El correo ya esta introducido en la base de datos';
+                    break;    
+                default:
+                    $userMessage = $dbCode;
+                    break;
+            }
+            $userMessage = $userMessage;
+        }
+        
         if (!$saved) {
-            return redirect(route('colaboratorForm'))->with(['error' => $error]);
+            return redirect()->back()->with(['error' => $userMessage]);
         } else {
             return redirect(route('colaborator'));
         }

@@ -119,7 +119,7 @@
                     </div>
 
 
-
+                    <div id="errorsDiv" class="text-red-600 font-bold"></div>
                     <div class='flex flex-col-reverse md:flex-row items-center justify-center md:gap-8 gap-4 pt-5 pb-5 mt-5'>
                         <a href="{{route('inscription')}}" class='w-auto bg-gray-500 hover:bg-gray-700 rounded uppercase shadow-xl font-medium text-white px-4 py-2' id="cancel">Cancelar</a>
                         <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' type="button" id="add">Añadir Inscripción</button>
@@ -139,7 +139,7 @@
             </div>
         </div>
     </div>
-
+   
     <div id="sidebar-inscriptions" class="flex flex-col items-center w-36 h-full bg-white hidden fixed right-0 top-16 shadow" >
         <button type="button" id="addNewInscription" class="mt-5 text-gray-500 hover:text-gray-400">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

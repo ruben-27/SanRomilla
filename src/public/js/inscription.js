@@ -187,7 +187,7 @@ var Inscription = /*#__PURE__*/function () {
       });
       $.ajax({
         type: "POST",
-        url: "/inscriptionInsert",
+        url: "/admin/inscriptionInsert",
         data: {
           array: self.inscriptionsArray
         },
@@ -197,7 +197,7 @@ var Inscription = /*#__PURE__*/function () {
           if (data == "OK") {
             window.location.replace("/inscription");
           } else {
-            alert("error");
+            $("#errorsDiv").html(data);
           }
         },
         error: function error(message, status) {}
@@ -214,7 +214,7 @@ var Inscription = /*#__PURE__*/function () {
       });
       $.ajax({
         type: "POST",
-        url: "/getCategoriesInfo",
+        url: "/admin/getCategoriesInfo",
         dataType: "json",
         context: this,
         success: function success(data) {

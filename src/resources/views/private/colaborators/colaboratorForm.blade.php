@@ -92,13 +92,16 @@
                     </div>
                 </form>
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="text-red-600 font-bold">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
                     </div>
+                @endif
+                @if (session()->get('error') != null)
+                    <div class="text-red-600 font-bold">{{ session()->get('error') }}</div>
                 @endif
             </div>
         </div>

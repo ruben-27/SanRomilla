@@ -57,9 +57,35 @@ class InscriptionController extends Controller
             $inscriptionModel->category_id = $inscription[12]["value"];
             $inscriptionModel->inscription_number = rand(10,100);
             $inscriptionModel->paid = 1;
-            $saved = $inscriptionModel->save();
+            $saved = false;
+            try {
+                $saved = $inscriptionModel->save();
+            } catch (\PDOException $e) {
+                $message = explode(' ', $e->getMessage());
+                $dbCode = rtrim($message[4], ']');
+                $dbCode = trim($dbCode, '[');
+    
+                // codes specific to MySQL
+                switch ($dbCode)
+                {
+                    case 1049:
+                        $userMessage = 'Unknown database - probably config error:';
+                        break;
+                    case 2002:
+                        $userMessage = 'DATABASE IS DOWN:';
+                        break;
+                    case 1062:
+                        $userMessage = 'El dorsal '.rtrim($message[7], ']'). ' ya esta introducido en la base de datos';
+                        break;    
+                    default:
+                        $userMessage = $dbCode;
+                        break;
+                }
+                $userMessage = $userMessage;
+            }
+            
             if(!$saved){
-                $exit = "KO";
+                $exit = $userMessage;
             }
 
         }

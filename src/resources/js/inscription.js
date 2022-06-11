@@ -154,7 +154,7 @@ export class Inscription{
       });
       $.ajax({
         type: "POST",
-        url: "/inscriptionInsert",
+        url: "/admin/inscriptionInsert",
         data: {array:self.inscriptionsArray},
         context: this,
         dataType: "json",
@@ -162,7 +162,7 @@ export class Inscription{
           if (data == "OK") {
             window.location.replace("/inscription");
           } else {
-            alert("error")
+            $("#errorsDiv").html(data);
           }
         },
         error: function error(message, status) {}
@@ -179,7 +179,7 @@ export class Inscription{
 
       $.ajax({
         type : "POST",
-        url : "/getCategoriesInfo",
+        url : "/admin/getCategoriesInfo",
         dataType : "json",
         context: this,
         success : function(data) {
