@@ -15,13 +15,13 @@ class CreateMarksTable extends Migration
     {
         Schema::create('marks', function (Blueprint $table) {
             $table->integerIncrements('id')->unsigned();
-            $table->string('name', 100);
-            $table->string('last_name', 200);
+            $table->string('name', 100)->nullable();
+            $table->string('last_name', 200)->nullable();
             $table->tinyInteger('place')->unsigned();
-            $table->smallInteger('dorsal')->unsigned();
+            $table->smallInteger('dorsal')->unsigned()->nullable();
             $table->time('time');
             $table->time('pace');
-            $table->char('gender', 1);
+            $table->char('gender', 1)->nullable();
             $table->tinyInteger('category_id')->unsigned()->nullable();
             $table->smallInteger('year_id')->unsigned()->nullable();
             $table->timestamps();

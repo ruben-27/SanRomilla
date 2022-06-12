@@ -49,13 +49,4 @@ class InscriptionDatatable extends Component
     {
         $this->resetPage();
     }
-
-    public function payInscription($id) {
-        $inscription = Inscription::find($id);
-        if ($inscription->paid == 1)
-            $inscription->paid = 0;
-        else
-            $inscription->paid = 1;
-        $inscription->save();
-    }
 }

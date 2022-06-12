@@ -89,12 +89,22 @@
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    @if (!$category->min_age)
-                                    <span>Después de {{$category->max_age}} <i>inclusive</i></span>
-                                    @elseif (!$category->max_age)
-                                    <span>Antes de {{$category->min_age}} <i>inclusive</i></span>
+                                    @if ($currentYear)
+                                        @if (!$category->min_age)
+                                        <span>Después de {{$currentYear->year - $category->max_age}} <i>inclusive</i></span>
+                                        @elseif (!$category->max_age)
+                                        <span>Antes de {{$currentYear->year - $category->min_age}} <i>inclusive</i></span>
+                                        @else
+                                        <span>{{$currentYear->year - $category->max_age}} - {{$currentYear->year - $category->min_age}}</span>
+                                        @endif
                                     @else
-                                    <span>{{$category->max_age}} - {{$category->min_age}}</span>
+                                        @if (!$category->min_age)
+                                            <span>Hasta {{$category->max_age}} años</span>
+                                        @elseif (!$category->max_age)
+                                            <span>A partir de {{$category->min_age}} años</span>
+                                        @else
+                                            <span>{{$category->max_age}} - {{$category->min_age}}</span>
+                                        @endif
                                     @endif
                                 </div>
                             </td>
@@ -123,7 +133,7 @@
                                             </svg>
                                         </div>
                                     </a>
-                                    <a wire:click="delete({{$category->id}})">
+                                    <a wire:click="$emit('openModal', 'modal.categories.delete-category', {{ json_encode(['category' => $category->id]) }})">
                                         <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110 cursor-pointer">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
