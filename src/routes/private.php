@@ -7,6 +7,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MarkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,4 +91,13 @@ Route::post('/admin/categoryInsert', [CategoryController::class,'store'])
 Route::post('/admin/getCategoriesInfo', [CategoryController::class,'getCategoriesInfo'])
     ->middleware(['auth'])->name('getCategoriesInfo');
 
+/*Mark Routes*/
 
+Route::get('/admin/startCategory/{id}', [MarkController::class, 'startCategory'])
+    ->middleware(['auth'])->name('startCategory');
+
+Route::post('/admin/fillCategory', [MarkController::class, 'fillCategory'])
+    ->middleware(['auth'])->name('fillCategory');
+
+Route::post('/admin/markDatatable', [MarkController::class, 'markDatatable'])
+    ->middleware(['auth'])->name('markDatatable');

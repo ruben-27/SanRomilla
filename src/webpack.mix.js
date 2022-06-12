@@ -18,4 +18,5 @@ const mix = require('laravel-mix');
 ])
 .js('resources/js/colaborator.js', 'public/js')
 .js('resources/js/donation.js', 'public/js')
-.js('resources/js/inscription.js', 'public/js');
+.js('resources/js/inscription.js', 'public/js')
+.js('resources/js/mark.js', 'public/js');

@@ -7,6 +7,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\YearController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\MarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +46,8 @@ Route::get('/admin/donation', [DonationController::class, 'index'])
 Route::get('/admin/colaborator', [ColaboratorController::class, 'index'])
     ->middleware(['auth'])->name('colaborator');
 
-Route::get('/admin/clasification', function () {
-    return view('private.marks.mark');
-})->middleware(['auth'])->name('clasification');
+Route::get('/admin/clasification', [MarkController::class, 'index'])
+    ->middleware(['auth'])->name('clasification');
 
 Route::get('/admin/category', [CategoryController::class, 'index'])
     ->middleware(['auth'])->name('category');
