@@ -96,7 +96,7 @@ Route::post('/admin/getCategoriesInfo', [CategoryController::class,'getCategorie
 Route::get('/admin/startCategory/{id}', [MarkController::class, 'startCategory'])
     ->middleware(['auth'])->name('startCategory');
 
-Route::post('/admin/fillCategory', [MarkController::class, 'fillCategory'])
+Route::get('/admin/fillCategory/{id}', [MarkController::class, 'fillCategory'])
     ->middleware(['auth'])->name('fillCategory');
 
 Route::post('/admin/markDatatable', [MarkController::class, 'markDatatable'])

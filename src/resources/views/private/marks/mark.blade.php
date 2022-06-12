@@ -25,7 +25,7 @@
             @if ($category->status == "n")
                         <a href="{{route('startCategory', ['id' => $category->id])}}">
                     @elseif ($category->status == "c")
-                        <a href="{{route('startCategory', ['id' => $category->id])}}">
+                        <a href="{{route('fillCategory', ['id' => $category->id])}}">
                     @else
                         <a href="rutaFinalizada">
                     @endif      

@@ -5,13 +5,16 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Mark;
+use Livewire\WithPagination;
 
 class CategoryStart extends Component
 {
+    use WithPagination;
     public $categoryId;
     public $category; 
-    public $marks; 
-    public $buttonView = true;
+    public $place;
+    public $perPage = 10;
+    public $buttonView = "n";
     protected $listeners = [
         'stopTime'
     ];
@@ -19,30 +22,37 @@ class CategoryStart extends Component
    public function stopTime($value)
    {
        if(!is_null($value)) {
+            $time = gmdate("H:i:s", $value);
+            $this->place++;
             $dist = ($this->category->distance)/1000; // Distance which is in kilometres(km)
-            $mins = \Carbon\Carbon::createFromTimestampUTC($value)->diffInMinutes();
-            $ts = ($dist / $mins) * 3600; // in seconds
+            $mins = $value/60;
+            $pace = gmdate("H:i:s", (($mins / $dist)*60));
             $mark = new Mark();
-            $mark->time = $value;
-            $mark->pace = $ts;
+            $mark->place = $this->place;
+            $mark->time = $time;
+            $mark->pace = $pace;
             $mark->category_id = $this->categoryId;
-            $mark->save();    
+            $mark->save();
        }    
    }
     public function render()
     {
         $this->category = Category::where('id',$this->categoryId)->first();
-        $this->marks = Mark::all()->where('category_id',$this->categoryId);
-        return view('livewire.category-start');
+        $marks = Mark::query()->where('category_id',$this->categoryId)->paginate($this->perPage);
+        $this->place = count($marks);
+        return view('livewire.category-start',compact("marks"));
     }
     public function mount($id)
     {
         $this->categoryId = $id;
     }
-    public function changeView() {
-        $this->buttonView = !$this->buttonView;
+    public function changeView($status) {
+        $this->buttonView = $status;
+        $this->category->status = "c";
+        $this->category->save();
     }
     public function delete($id) {
         Mark::find($id)->delete();
+        $this->place--;
      }
 }
