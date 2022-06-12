@@ -13,6 +13,11 @@ class SponsorDatatable extends Component
     public $sortDirection = 'asc';
     public $perPage = 10;
     public $search = '';
+
+    protected $listeners = [
+        'refreshParent' => '$refresh'
+    ];
+
     public function render()
     {
         $sponsors = Sponsor::query()
@@ -28,7 +33,7 @@ class SponsorDatatable extends Component
             $this->sortDirection = 'desc';
         else
             $this->sortDirection = 'asc';
-        
+
         return $this->sortBy = $field;
     }
 
@@ -36,8 +41,4 @@ class SponsorDatatable extends Component
     {
         $this->resetPage();
     }
-
-    public function delete($id) {
-        Sponsor::find($id)->delete();
-     }
 }

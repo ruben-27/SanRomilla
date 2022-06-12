@@ -14,6 +14,10 @@ class ColaboratorDatatable extends Component
     public $perPage = 10;
     public $search = '';
 
+    protected $listeners = [
+        'refreshParent' => '$refresh'
+    ];
+
     public function render()
     {
         $colaborators = User::query()
@@ -29,7 +33,7 @@ class ColaboratorDatatable extends Component
             $this->sortDirection = 'desc';
         else
             $this->sortDirection = 'asc';
-        
+
         return $this->sortBy = $field;
     }
 
@@ -37,8 +41,4 @@ class ColaboratorDatatable extends Component
     {
         $this->resetPage();
     }
-
-    public function delete($id) {
-        User::find($id)->delete();
-     }
 }

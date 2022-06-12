@@ -13,20 +13,27 @@
                 </svg>
             </div>
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Pagar Inscripción</h3>
+                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Pagar Inscripciones</h3>
                 <div class="mt-2">
-                    <p class="text-sm text-gray-500">¿Desea marcar como pagada la inscripción de <b>{{$inscription->name}} {{$inscription->last_name}}</b> con DNI <b>{{$inscription->dni}}</b>?</p>
-               </div>
+                        <p class="text-sm text-gray-500">Inserte los dorsales de los participantes de las inscripciones con número de inscripción <b>{{$inscriptions[0]->inscription_number}}</b></p>
+                </div>
             </div>
         </div>
         <form wire:submit.prevent="submit()" class="pt-6">
-            <div class="grid grid-cols-1">
-                <label class="uppercase text-xs text-gray-500 text-light font-semibold">Añadir Dorsal</label>
-                <input wire:model.debounce.500ms="dorsal" class="py-1 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Dorsal" name="dorsal"/>
-                @error('dorsal')
-                    <span class="text-red-500 text-xs mt-1">{{$message}}</span>
-                @enderror
-            </div>
+            @foreach($inscriptions as $insc)
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2 border-1 border-b border-gray-300 pb-3 mb-3 last:border-0 last:pb-0 last:mb-0">
+                    <div>
+                        <label class="uppercase text-sm text-gray-500 text-light font-bold">{{$insc->name}} {{$insc->last_name}}</label>
+                    </div>
+                    <div>
+                        <label class="uppercase text-xs text-gray-500 text-light font-semibold">Añadir Dorsal</label>
+                        <input wire:model.debounce.500ms="dorsal.{{$insc->id}}" name="dorsal.{{$insc->id}}" class="w-full py-1 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Dorsal"/>
+                        @error('dorsal')
+                        <span class="text-red-500 text-xs mt-1">{{$message}}</span>
+                        @enderror
+                    </div>
+                </div>
+            @endforeach
         </form>
     </div>
     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

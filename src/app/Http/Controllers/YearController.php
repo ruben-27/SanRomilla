@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class YearController extends Controller
 {
     public function index() {
-        return view('private.years.year');
+        $year = $this->getActiveYear();
+        return view('private.years.year', compact('year'));
     }
 
     public function getActiveYear() {

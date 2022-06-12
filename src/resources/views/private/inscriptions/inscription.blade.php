@@ -9,6 +9,7 @@
     </x-slot>
     {{ csrf_field() }}
     <div class="h-full md:w-10/12 md:mx-auto mt-14 mb-10 px-6 md:px-0">
+        @if($year)
         <div class="mt-8 flex flex-col items-center md:flex-row md:justify-between">
             <div>
                 <h1 class="text-2xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-4xl">
@@ -24,5 +25,12 @@
             </a>
         </div>
         <livewire:inscription-datatable/>
+        @else
+        <div class="flex justify-center items-center mt-20">
+            <p class="text-6xl text-gray-300 text-center">
+                Aún no hay inscripciones
+            </p>
+        </div>
+        @endif
     </div>
 </x-app-layout>

@@ -14,6 +14,10 @@ class YearDatatable extends Component
     public $perPage = 10;
     public $search = '';
 
+    protected $listeners = [
+        'refreshParent' => '$refresh'
+    ];
+
     public function render()
     {
         $years = Year::query()

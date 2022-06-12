@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\YearController;
 use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -13,9 +14,15 @@ class CategoryDatatable extends Component
     public $sortDirection = 'asc';
     public $perPage = 10;
     public $search = '';
+    public $currentYear;
+
+    protected $listeners = [
+        'refreshParent' => '$refresh'
+    ];
 
     public function render()
     {
+        $this->currentYear = YearController::getActiveYear();
         $categories = Category::query()
             ->search($this->search)
             ->orderBy($this->sortBy, $this->sortDirection)
@@ -29,16 +36,12 @@ class CategoryDatatable extends Component
             $this->sortDirection = 'desc';
         else
             $this->sortDirection = 'asc';
-        
+
         return $this->sortBy = $field;
     }
 
     public function updatingSearch()
     {
         $this->resetPage();
-    }
-
-    public function delete($id) {
-       Category::find($id)->delete();
     }
 }

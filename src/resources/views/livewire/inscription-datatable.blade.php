@@ -280,10 +280,3 @@
         </div>
     </div>
 </div>
-{{--@livewire('modal.message-modal', [--}}
-{{--    'icon' => 'error',--}}
-{{--    'title' => 'Error',--}}
-{{--    'message' => 'Mensaje error',--}}
-{{--    'buttonAccept' => 'Aceptar',--}}
-{{--    'buttonCancel' => 'Cancelar'--}}
-{{--])--}}
