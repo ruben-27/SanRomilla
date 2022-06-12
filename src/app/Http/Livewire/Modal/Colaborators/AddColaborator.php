@@ -67,6 +67,7 @@ class AddColaborator extends ModalComponent
 
     public function submit() {
         try {
+            $this->validate();
             if (!$this->colaborator)
                 $this->colaborator = new User();
             $this->colaborator->name = $this->name;

@@ -13,10 +13,10 @@
                 </svg>
             </div>
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Nuevo Colaborador</h3>
+                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Colaborador</h3>
             </div>
         </div>
-        <form id="inscriptionDonation" method="post" action="{{ isset($colaborator) ? route('colaboratorUpdate') : route('colaboratorInsert') }}" >
+        <form wire:submit.prevent="submit">
             {{ csrf_field() }}
             @if (isset($colaborator))
                 <input wire:model="colaboratorId" type="hidden" name="id">
