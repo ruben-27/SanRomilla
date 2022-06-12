@@ -66,39 +66,15 @@ class AddColaborator extends ModalComponent
     }
 
     public function submit() {
-        try {
-            $this->validate();
-            if (!$this->colaborator)
-                $this->colaborator = new User();
-            $this->colaborator->name = $this->name;
-            $this->colaborator->last_name = $this->last_name;
-            $this->colaborator->email = $this->email;
-            $this->colaborator->save();
-//            foreach ($this->roles as $role) {
-//                $this->colaborator->roles()->sync($role, 'detach');
-//            }
-        } catch (\PDOException $e) {
-            $message = explode(' ', $e->getMessage());
-            $dbCode = rtrim($message[4], ']');
-            $dbCode = trim($dbCode, '[');
-
-            // codes specific to MySQL
-            switch ($dbCode)
-            {
-                case 1049:
-                    $userMessage = 'Unknown database - probably config error:';
-                    break;
-                case 2002:
-                    $userMessage = 'DATABASE IS DOWN:';
-                    break;
-                case 1062:
-                    $userMessage = 'El correo ya esta introducido en la base de datos';
-                    break;
-                default:
-                    $userMessage = $dbCode;
-                    break;
-            }
-            $userMessage = $userMessage;
+        $this->validate();
+        if (!$this->colaborator)
+            $this->colaborator = new User();
+        $this->colaborator->name = $this->name;
+        $this->colaborator->last_name = $this->last_name;
+        $this->colaborator->email = $this->email;
+        $this->colaborator->save();
+        foreach ($this->roles as $role) {
+            $this->colaborator->roles()->sync($role, 'detach');
         }
         $this->closeModal();
         $this->emit('refreshParent');
