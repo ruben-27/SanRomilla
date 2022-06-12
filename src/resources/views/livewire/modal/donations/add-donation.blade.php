@@ -18,9 +18,6 @@
         </div>
         <form wire:submit.prevent="submit">
             {{ csrf_field() }}
-            @if (isset($colaborator))
-                <input wire:model="colaboratorId" type="hidden" name="id">
-            @endif
             <div class="grid grid-cols-1 mt-5">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre</label>
                 <input wire:model.debounce.500ms="name" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Nombre" name="name" />
@@ -38,50 +35,31 @@
             </div>
 
             <div class="grid grid-cols-1 mt-5">
-                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
-                <input wire:model.debounce.500ms="email" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent placeholder:text-gray-300" type="email" placeholder="Email" name="email" />
-                @error('email')
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Importe</label>
+                <input wire:model.debounce.500ms="amount" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Importe" name="amount" />
+                @error('amount')
                 <span class="text-red-500 text-xs mt-1">{{$message}}</span>
                 @enderror
             </div>
 
-            <div class="grid grid-cols-1 mt-5">
-                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-2">Roles</label>
-                <div class="md:flex flex-wrap">
-                    @foreach ($allRoles as $role)
-                        <section class="mx-auto p-5">
-                            <label for="{{$role->id}}" class="relative flex-inline items-center isolate p-4 rounded-2xl cursor-pointer">
-                                @if (isset($colaborator))
-                                    @php
-                                        $checked = false
-                                    @endphp
-                                    @foreach ($colaborator->roles()->get() as $colRole)
-                                        @if ($colRole->id == $role->id)
-                                            @php
-                                                $checked = true
-                                            @endphp
-                                        @endif
-                                    @endforeach
-                                    @if ($checked)
-                                        <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>
-                                    @else
-                                        <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
-                                    @endif
-                                    @php
-                                        $checked = false
-                                    @endphp
-                                @else
-                                    <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
-                                @endif
 
-                                <span class="ml-2 relative z-20">{{ $role->public }}</span>
-                                <div class="absolute inset-0 bg-white peer-checked:bg-yellow-50 peer-checked:border-yellow-300 z-10 border rounded-2xl"></div>
-                            </label>
-                        </section>
-                    @endforeach
-                </div>
+            <div class="grid grid-cols-1 mt-5">
+                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Talla Camiseta</label>
+                <select wire:model.debounce.500ms="size" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent" name="size">
+                    <option value="n">No quiere</option>
+                    <option value="XXS">XXS</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
             </div>
         </form>
+        <p class="mt-3 text-sm text-gray-400">
+            Importe total {{$size != "n" ? $shirt_price + (is_numeric($amount) ? $amount : 0) : (is_numeric($amount) ? $amount : 0) + 0}}.
+        </p>
     </div>
     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
         <button type="button" wire:click="submit()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-500 text-base font-medium text-white hover:bg-yellow-600 sm:ml-3 sm:w-auto sm:text-sm">Aceptar</button>

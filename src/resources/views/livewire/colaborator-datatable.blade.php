@@ -4,7 +4,7 @@
             <h1 class="text-2xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-4xl">
                 <span class="inline md:block">Colaboradores</span>
             </h1>
-            <p>
+            <p class="hidden md:block">
                 Gestión de colaboradores del evento San Romilla
             </p>
         </div>

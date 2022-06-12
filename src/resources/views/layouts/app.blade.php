@@ -16,7 +16,9 @@
 
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        @if($script != '')
         <script src=<?php echo'"'. asset('js/'."{$script}". '.js').'"'?> defer></script>
+        @endif
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src=" https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
@@ -26,7 +28,7 @@
             @include('layouts.navigation')
 
             <!-- Page Content -->
-            <main class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-100 text-gray-800 ml-14 md:ml-64">
+            <main class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-100 text-gray-800 ml-14 lg:ml-64">
                 {{ $slot }}
             </main>
         </div>

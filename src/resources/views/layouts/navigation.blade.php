@@ -57,7 +57,7 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-    
+
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
@@ -80,8 +80,8 @@
         </div>
     </div>
 </nav>
-<!-- Sidebar -->            
-<div class="fixed flex flex-col top-16 left-0 w-14 hover:w-64 md:w-64 bg-white h-full text-white transition-all duration-300 border-none z-9 sidebar shadow" x-show="asideOpen">
+<!-- Sidebar -->
+<div class="fixed flex flex-col top-16 left-0 w-14 hover:w-64 lg:w-64 bg-white h-full text-white transition-all duration-300 border-none z-10 sidebar shadow" x-show="asideOpen" style="z-index: 9;">
     <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
         <ul class="flex flex-col w-full">
             <li class="my-px">
@@ -101,7 +101,7 @@
                 </x-nav-link>
             </li>
             <li class="my-px">
-                <span class="hidden md:block flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">Carrera</span>
+                <span class="hidden lg:block flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">Carrera</span>
             </li>
             <li class="my-px">
                 <x-nav-link :href="route('inscription')" :active="request()->routeIs('inscription')">
@@ -122,14 +122,14 @@
             <li class="my-px">
                 <x-nav-link :href="route('clasification')" :active="request()->routeIs('clasification')">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" 
+                        <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-list"
                             width="25" height="25"
-                            viewBox="0 0 24 24" 
-                            stroke-width="1.5" 
-                            stroke="currentColor" 
-                            fill="none" 
-                            stroke-linecap="round" 
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M11 6h9" />
@@ -144,16 +144,16 @@
             </li>
             <li class="my-px">
                 <a href="#"
-                class="flex flex-row items-center h-12 px-4 text-gray-600 hover:bg-gray-100 md:border-l-4 border-transparent hover:border-[#f7dc6f]">
+                class="flex flex-row items-center h-12 px-4 text-gray-600 hover:bg-gray-100 lg:border-l-4 border-transparent hover:border-[#f7dc6f]">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" 
+                        <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-list"
                             width="25" height="25"
-                            viewBox="0 0 24 24" 
-                            stroke-width="1.5" 
-                            stroke="currentColor" 
-                            fill="none" 
-                            stroke-linecap="round" 
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <line x1="18" y1="6" x2="18" y2="6.01" />
@@ -168,16 +168,16 @@
             </li>
             <li class="my-px">
                 <a href="#"
-                class="flex flex-row items-center h-12 px-4 text-gray-600 hover:bg-gray-100 md:border-l-4 border-transparent hover:border-[#f7dc6f]">
+                class="flex flex-row items-center h-12 px-4 text-gray-600 hover:bg-gray-100 lg:border-l-4 border-transparent hover:border-[#f7dc6f]">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" 
+                        <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-list"
                             width="25" height="25"
-                            viewBox="0 0 24 24" 
-                            stroke-width="1.5" 
-                            stroke="currentColor" 
-                            fill="none" 
-                            stroke-linecap="round" 
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <line x1="15" y1="8" x2="15.01" y2="8" />
@@ -190,21 +190,21 @@
                 </a>
             </li>
             <li class="my-px">
-                <span class="hidden md:block flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">Gestión</span>
+                <span class="hidden lg:block flex font-medium text-sm text-gray-400 px-4 my-4 uppercase">Gestión</span>
             </li>
             <li class="my-px">
                 <x-nav-link :href="route('year')" :active="request()->routeIs('year')">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg class="w-6 h-6" 
-                            data-darkreader-inline-stroke="" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            style="--darkreader-inline-stroke: currentColor;" 
-                            viewBox="0 0 24 24" 
+                        <svg class="w-6 h-6"
+                            data-darkreader-inline-stroke=""
+                            fill="none"
+                            stroke="currentColor"
+                            style="--darkreader-inline-stroke: currentColor;"
+                            viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" 
-                                stroke-linejoin="round" 
-                                stroke-width="2" 
+                            <path stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                             </path>
                         </svg>
@@ -231,14 +231,14 @@
             <li class="my-px">
                 <x-nav-link :href="route('category')" :active="request()->routeIs('category')">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" 
+                        <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-list"
                             width="25" height="25"
-                            viewBox="0 0 24 24" 
-                            stroke-width="1.5" 
-                            stroke="currentColor" 
-                            fill="none" 
-                            stroke-linecap="round" 
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <line x1="9" y1="6" x2="20" y2="6" />
@@ -255,14 +255,14 @@
             <li class="my-px">
                 <x-nav-link :href="route('donation')" :active="request()->routeIs('donation')">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" 
+                        <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-list"
                             width="25" height="25"
-                            viewBox="0 0 24 24" 
-                            stroke-width="1.5" 
-                            stroke="currentColor" 
-                            fill="none" 
-                            stroke-linecap="round" 
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
                             stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <rect x="7" y="9" width="14" height="10" rx="2" />
@@ -276,16 +276,16 @@
             <li class="my-px">
                 <x-nav-link :href="route('sponsors')" :active="request()->routeIs('sponsors')">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg class="w-6 h-6" 
-                            data-darkreader-inline-stroke="" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            style="--darkreader-inline-stroke: currentColor;" 
-                            viewBox="0 0 24 24" 
+                        <svg class="w-6 h-6"
+                            data-darkreader-inline-stroke=""
+                            fill="none"
+                            stroke="currentColor"
+                            style="--darkreader-inline-stroke: currentColor;"
+                            viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" 
-                                stroke-linejoin="round" 
-                                stroke-width="2" 
+                            <path stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
                                 d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                             </path>
                         </svg>
@@ -296,16 +296,16 @@
             <li class="my-px">
                 <x-nav-link :href="route('documentation')" :active="request()->routeIs('documentation')">
                     <span class="flex items-center justify-center text-lg text-gray-400">
-                        <svg class="w-6 h-6" 
-                            data-darkreader-inline-stroke="" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            style="--darkreader-inline-stroke: currentColor;" 
-                            viewBox="0 0 24 24" 
+                        <svg class="w-6 h-6"
+                            data-darkreader-inline-stroke=""
+                            fill="none"
+                            stroke="currentColor"
+                            style="--darkreader-inline-stroke: currentColor;"
+                            viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" 
-                                stroke-linejoin="round" 
-                                stroke-width="2" 
+                            <path stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                             </path>
                         </svg>
