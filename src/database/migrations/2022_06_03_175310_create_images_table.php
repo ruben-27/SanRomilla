@@ -25,7 +25,7 @@ class CreateImagesTable extends Migration
                 ->references('id')->on('categories')
                 ->onDelete('set null');
             $table->foreign('year_id')
-                ->references('year')->on('years')
+                ->references('id')->on('years')
                 ->onDelete('set null');
         });
     }

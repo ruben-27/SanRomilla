@@ -39,15 +39,15 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5">
                 <div class="grid grid-cols-1">
-                    <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Edad Minima</label>
-                    <input wire:model.debounce.500ms="min_age" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Edad Minima" name="min_age" />
+                    <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Edad Mínima</label>
+                    <input wire:model.debounce.500ms="min_age" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Edad Minima" name="min_age" />
                     @error('min_age')
                     <span class="text-red-500 text-xs mt-1">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="grid grid-cols-1">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Edad Máxima</label>
-                    <input wire:model.debounce.500ms="max_age" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Edad Máxima" name="max_age" />
+                    <input wire:model.debounce.500ms="max_age" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Edad Máxima" name="max_age" />
                     @error('max_age')
                     <span class="text-red-500 text-xs mt-1">{{$message}}</span>
                     @enderror

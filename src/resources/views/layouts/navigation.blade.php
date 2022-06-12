@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed w-full bg-white border-b border-gray-100 z-20 shadow">
+<nav x-data="{ open: false }" class="fixed w-full bg-white border-b border-gray-100 z-10 shadow">
     <!-- Primary Navigation Menu -->
     <div class="mx-auto sm:px-4 sm:px-4 lg:px-6">
         <div class="flex justify-between h-16">
@@ -81,7 +81,7 @@
     </div>
 </nav>
 <!-- Sidebar -->
-<div class="fixed flex flex-col top-16 left-0 w-14 hover:w-64 lg:w-64 bg-white h-full text-white transition-all duration-300 border-none z-10 sidebar shadow" x-show="asideOpen">
+<div class="fixed flex flex-col top-16 left-0 w-14 hover:w-64 lg:w-64 bg-white h-full text-white transition-all duration-300 border-none z-10 sidebar shadow" x-show="asideOpen" style="z-index: 9;">
     <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
         <ul class="flex flex-col w-full">
             <li class="my-px">

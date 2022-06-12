@@ -24,7 +24,7 @@ class MarkFactory extends Factory
             'pace' => $this->faker->time(),
             'gender' => $this->faker->randomElement(['m', 'f']),
             'category_id' => Category::inRandomOrder()->first(),
-            'year_id' => 2022
+            'year_id' => 3
         ];
     }
 }

@@ -20,10 +20,10 @@ class AddCategory extends ModalComponent
     protected $rules = [
         'name' => ['required', 'min:2', 'max:50'],
         'min_age' => ['digits_between:0,2'],
-        'max_age' => ['digits_between:0,2'],
-        'distance' => ['required', 'max:6'],
+        'max_age' => ['digits_between:0,2', 'gt:min_age'],
+        'distance' => ['required', 'numeric', 'max:9999'],
         'start_time' => ['required'],
-        'price' => ['required', 'max:5']
+        'price' => ['required', 'numeric', 'max:99']
     ];
     protected $messages = [
         'name.required' => 'El campo nombre es obligatorio.',
@@ -31,10 +31,13 @@ class AddCategory extends ModalComponent
         'name.max' => 'El nombre es demasiado largo.',
         'min_age.digits_between' => 'Debe introducir una edad válida.',
         'max_age.digits_between' => 'Debe introducir una edad válida.',
+        'max_age.gt' => 'La edad máxima debe ser mayor.',
         'distance.required' => 'El campo distancia es obligatorio.',
+        'distance.numeric' => 'Debe introducir un número.',
         'distance.max' => 'Debe introducir una distancia válida.',
         'start_time.required' => 'El campo Hora inicio es obligatorio.',
         'price.required' => 'El campo precio es obligatorio.',
+        'price.numeric' => 'Debe introducir un número.',
         'price.max' => 'El precio es demasiado alto.',
     ];
 
