@@ -72,9 +72,6 @@ Route::get('/admin/sponsorModify/{id}', [SponsorController::class, 'modify'])
 Route::post('/admin/sponsorUpdate', [SponsorController::class, 'update'])
     ->middleware(['auth'])->name('sponsorUpdate');
 
-Route::post('/admin/sponsor/uploadImage', [UploadImageController::class, 'update'])
-    ->middleware(['auth'])->name('sponsorUploadImage');
-
 
 /*Category Routes*/
 Route::get('/admin/categoryModify/{id}', [CategoryController::class, 'modify'])
