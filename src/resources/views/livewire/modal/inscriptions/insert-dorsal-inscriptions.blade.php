@@ -27,8 +27,8 @@
                     </div>
                     <div>
                         <label class="uppercase text-xs text-gray-500 text-light font-semibold">Añadir Dorsal</label>
-                        <input wire:model.debounce.500ms="dorsal.{{$insc->id}}" name="dorsal.{{$insc->id}}" class="w-full py-1 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Dorsal"/>
-                        @error('dorsal')
+                        <input wire:model.debounce.500ms="dorsals.{{$insc->id}}" name="dorsal.{{$insc->id}}" class="w-full py-1 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Dorsal"/>
+                        @error('dorsals.'.$insc->id)
                         <span class="text-red-500 text-xs mt-1">{{$message}}</span>
                         @enderror
                     </div>
