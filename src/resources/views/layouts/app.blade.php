@@ -13,15 +13,18 @@
         <!-- Styles -->
         @livewireStyles
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+        <!-- /Styles -->
 
         <!-- Scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" defer></script>
         @if($script != '')
         <script src=<?php echo'"'. asset('js/'."{$script}". '.js').'"'?> defer></script>
         @endif
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src=" https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" defer></script>
+        <script src="https://unpkg.com/filepond@^4/dist/filepond.js" defer></script>
+        <!-- /Scripts -->
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

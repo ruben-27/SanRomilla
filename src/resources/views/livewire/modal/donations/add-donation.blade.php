@@ -2,18 +2,23 @@
     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
         <div class="sm:flex sm:items-start">
             <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-200 sm:mx-0 sm:h-10 sm:w-10">
-                <svg fill="none"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     stroke-width="2"
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="icon icon-tabler icon-tabler-list text-yellow-500"
+                     width="25" height="25"
                      viewBox="0 0 24 24"
+                     stroke-width="1.5"
                      stroke="currentColor"
-                     class="h-6 w-6 text-yellow-500">
-                    <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                     fill="none"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <rect x="7" y="9" width="14" height="10" rx="2" />
+                    <circle cx="14" cy="14" r="2" />
+                    <path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2" />
                 </svg>
             </div>
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Colaborador</h3>
+                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Donación</h3>
             </div>
         </div>
         <form wire:submit.prevent="submit">

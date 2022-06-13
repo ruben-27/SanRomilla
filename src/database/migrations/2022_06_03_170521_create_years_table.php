@@ -15,7 +15,7 @@ class CreateYearsTable extends Migration
     {
         Schema::create('years', function (Blueprint $table) {
             $table->smallIncrements('id')->unsigned();
-            $table->smallInteger('year')->unsigned();
+            $table->smallInteger('year')->unsigned()->unique();
             $table->string('ong', 80);
             $table->string('ong_message', 1000);
             $table->decimal('amount_raised', 15, 2);
