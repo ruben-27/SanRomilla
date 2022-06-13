@@ -2,8 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\YearController;
 use App\Models\Category;
+use App\Models\GeneralData;
 use App\Models\Inscription;
+use App\Models\Year;
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -17,13 +21,17 @@ class InscriptionDatatable extends Component
     public $category = '';
     public $paid = '';
 
+    public $generalData;
+
     protected $listeners = [
         'refreshParent' => '$refresh'
     ];
 
     public function render()
     {
+        $this->generalData = GeneralData::first();
         $categories = Category::all();
+        $activeYear = YearController::getActiveYear();
         $inscriptions = Inscription::query()
             ->select('inscriptions.*', 'categories.name as categoryName')
             ->join('categories', 'categories.id', '=', 'inscriptions.category_id')
@@ -32,7 +40,7 @@ class InscriptionDatatable extends Component
             ->where('paid', $this->paid != '' ? $this->paid : '>=', 0)
             ->orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->perPage);
-        return view('livewire.inscription-datatable', compact('categories', 'inscriptions'));
+        return view('livewire.inscription-datatable', compact('categories', 'inscriptions', 'activeYear'));
     }
 
     public function sortBy($field)
@@ -48,5 +56,19 @@ class InscriptionDatatable extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function inInscriptionsDate() {
+        $today = Carbon::today();
+        if ($this->generalData->start_date_inscription < $today && $this->generalData->end_date_inscription > $today)
+            return true;
+        return false;
+    }
+
+    public function maxPeople() {
+        $people = Inscription::all()->count();
+        if ($this->generalData->max_people > $people)
+            return true;
+        return false;
     }
 }

@@ -20,11 +20,12 @@ class YearDatatable extends Component
 
     public function render()
     {
+        $activeYear = Year::where('active', 1)->first();
         $years = Year::query()
             ->search($this->search)
             ->orderBy($this->sortBy, $this->sortDirection)
             ->paginate($this->perPage);
-        return view('livewire.year-datatable', compact('years'));
+        return view('livewire.year-datatable', compact('years', 'activeYear'));
     }
 
     public function sortBy($field)
