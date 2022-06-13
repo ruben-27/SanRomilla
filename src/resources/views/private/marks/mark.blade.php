@@ -27,7 +27,7 @@
                     @elseif ($category->status == "c")
                         <a href="{{route('fillCategory', ['id' => $category->id])}}">
                     @else
-                        <a href="rutaFinalizada">
+                        <a href="{{route('endCategory', ['id' => $category->id])}}">
                     @endif
             <div class="bg-white rounded-2xl border shadow-x1 p-10 max-w-lg hover:bg-gray-50">
                 <div class="flex flex-col items-center space-y-4">

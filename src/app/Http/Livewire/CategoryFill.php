@@ -13,18 +13,15 @@ class CategoryFill extends Component
     public $categoryId;
     public $category; 
     public $marks;
-    protected $listeners = [
-        'pepe'
-    ];
-    public function pepe(){
-        die();
-        $this->category->refresh();
-    }
+    public $buttonView;
+    public $markArray = array();
+    
     public function render()
     {
         $this->category = Category::where('id',$this->categoryId)->first();
         $this->marks = Mark::all()->where('category_id',$this->categoryId);
         $this->place = count($this->marks);
+        $this->buttonView = $this->category->status;
         return view('livewire.category-fill');
     }
     public function mount($id)

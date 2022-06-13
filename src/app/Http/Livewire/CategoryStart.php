@@ -14,7 +14,7 @@ class CategoryStart extends Component
     public $category; 
     public $place;
     public $perPage = 10;
-    public $buttonView = "n";
+    public $buttonView;
     protected $listeners = [
         'stopTime'
     ];
@@ -40,6 +40,7 @@ class CategoryStart extends Component
         $this->category = Category::where('id',$this->categoryId)->first();
         $marks = Mark::query()->where('category_id',$this->categoryId)->paginate($this->perPage);
         $this->place = count($marks);
+        $this->buttonView = $this->category->status;
         return view('livewire.category-start',compact("marks"));
     }
     public function mount($id)
@@ -48,7 +49,12 @@ class CategoryStart extends Component
     }
     public function changeView($status) {
         $this->buttonView = $status;
-        $this->category->status = "c";
+        if ($status == "f") {
+            $this->category->status = "f";
+        } else  {
+            $this->category->status = "c";
+        }
+        
         $this->category->save();
     }
     public function delete($id) {

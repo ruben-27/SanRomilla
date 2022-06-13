@@ -24,4 +24,15 @@ class Mark extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function scopeSearch($query, $val)
+    {
+        return $query
+         ->where('name', 'like', '%'.$val.'%')
+         ->orWhere('last_name', 'like', '%'.$val.'%')
+         ->orWhere('place', 'like', '%'.$val.'%')
+         ->orWhere('dorsal', 'like', '%'.$val.'%')
+         ->orWhere('gender', 'like', '%'.$val.'%')
+         ->orWhere('time', 'like', '%'.$val.'%')
+         ->orWhere('pace', 'like', '%'.$val.'%');
+    }
 }

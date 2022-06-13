@@ -21,4 +21,7 @@ class MarkController extends Controller
     public function fillCategory($id) {
         return view('private.marks.fillCategory',compact('id'));
     }
+    public function endCategory($id) {
+        return view('private.marks.endCategory',compact('id'));
+    }
 }

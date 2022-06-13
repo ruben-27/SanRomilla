@@ -100,5 +100,5 @@ Route::get('/admin/startCategory/{id}', [MarkController::class, 'startCategory']
 Route::get('/admin/fillCategory/{id}', [MarkController::class, 'fillCategory'])
     ->middleware(['auth'])->name('fillCategory');
 
-Route::post('/admin/markDatatable', [MarkController::class, 'markDatatable'])
-    ->middleware(['auth'])->name('markDatatable');
+Route::get('/admin/endCategory/{id}', [MarkController::class, 'endCategory'])
+    ->middleware(['auth'])->name('endCategory');

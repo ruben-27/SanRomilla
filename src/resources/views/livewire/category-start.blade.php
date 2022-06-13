@@ -10,9 +10,9 @@
                         <output id="display-area">00:00:00.00</output>
                     </div>
                     <div id="timers" class="{{$buttonView == "f" ? 'hidden' : ''}} mt-2 p-5 text-center lg:text-4xl text-2xl" >
-                            <button type="button" id="start" wire:click="changeView('c')" class="{{$buttonView == "n" ? "" : 'hidden'}} bg-yellow-400 hover:bg-yellow-500 shadow-sm rounded p-4 px-8 text-white">Start</button>
-                            <button id="stop" class="{{$buttonView == "c" ? "" : 'hidden'}} bg-yellow-400 hover:bg-yellow-500 shadow-sm rounded p-4 px-8 text-white">Nueva Marca</button>
-                            <button id="remove" wire:click="changeView('f')" class="{{$buttonView == "c" ? "" : 'hidden'}} bg-red-400 hover:bg-red-500 shadow-sm rounded p-4 px-8 text-white">Stop </button>
+                        <button type="button" id="start" wire:click="changeView('c')" class="{{$buttonView == "n" ? "" : 'hidden'}} bg-yellow-400 hover:bg-yellow-500 shadow-sm rounded p-4 px-8 text-white">Start</button>
+                        <button id="stop" class="{{$buttonView == "c" ? "" : 'hidden'}} bg-yellow-400 hover:bg-yellow-500 shadow-sm rounded p-4 px-8 text-white">Nueva Marca</button>
+                        <button id="remove" wire:click="changeView('f')" class="{{$buttonView == "c" ? "" : 'hidden'}} bg-red-400 hover:bg-red-500 shadow-sm rounded p-4 px-8 text-white">Stop </button>
                     </div>
                     <div id="endText" class="{{$buttonView == "f" ? "" : 'hidden'}} mt-2 p-5 text-gray-500 text-center lg:text-4xl text-2xl">La Categoría ha finalizado</div>
                     <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
