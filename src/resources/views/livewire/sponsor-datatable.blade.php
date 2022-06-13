@@ -86,7 +86,9 @@
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex items-center justify-center">
-                                        <a href="<?php echo $sponsor->url?>"><img class="w-10" src="<?php echo asset('storage/'."{$sponsor->image}")?>" alt=""></a>
+                                        <a href="{{$sponsor->url}}">
+                                            <img class="w-10" src="{{asset('storage/'.$sponsor->image)}}" alt="">
+                                        </a>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">

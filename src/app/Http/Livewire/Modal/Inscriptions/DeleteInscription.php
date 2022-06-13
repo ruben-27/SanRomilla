@@ -8,12 +8,14 @@ use LivewireUI\Modal\ModalComponent;
 class DeleteInscription extends ModalComponent
 {
     public $inscriptionId;
+    public $inscription;
 
     public function mount($inscriptionId)
     {
         // Gate::authorize('update', $id);
 
         $this->inscriptionId = $inscriptionId;
+        $this->inscription = Inscription::find($inscriptionId);
     }
 
     public function render()

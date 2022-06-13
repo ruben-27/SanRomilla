@@ -62,8 +62,8 @@
                 </select>
             </div>
         </form>
-        <p class="mt-3 text-sm text-gray-400">
-            Importe total {{$size != "n" ? $shirt_price + (is_numeric($amount) ? $amount : 0) : (is_numeric($amount) ? $amount : 0) + 0}}.
+        <p class="mt-3 text-sm text-gray-600">
+            Importe total <b>{{$size != "n" ? $shirt_price + (is_numeric($amount) ? $amount : 0) : (is_numeric($amount) ? $amount : 0) + 0}}€</b>.
         </p>
     </div>
     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

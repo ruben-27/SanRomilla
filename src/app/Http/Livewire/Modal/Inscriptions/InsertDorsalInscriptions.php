@@ -3,40 +3,45 @@
 namespace App\Http\Livewire\Modal\Inscriptions;
 
 use App\Models\Inscription;
+use Illuminate\Validation\Rule;
 use LivewireUI\Modal\ModalComponent;
 
 class InsertDorsalInscriptions extends ModalComponent
 {
     public $inscriptions;
 
-    public $dorsal = [];
-
-    protected function rules()
-    {
-        $array = [];
-        foreach ($this->inscriptions as $insc)
-            $array['dorsal.' . $insc->id] = ['required', 'digits_between:1,4'];
-        return $array;
-    }
+    public $dorsals = [];
 
 //    protected function rules()
 //    {
 //        $array = [];
 //        foreach ($this->inscriptions as $insc)
-//            $array['dorsal.' . $insc->id] = ['required', 'unique:inscriptions', 'digits_between:1,4'];
+//            $array['dorsals.' . $insc->id] = ['required', 'digits_between:1,4'];
 //        return $array;
 //    }
-//
-//    protected function messages()
-//    {
-//        $array = [];
-//        foreach ($this->inscriptions as $insc) {
-//            $array['dorsal.' . $insc->id . '.required'] = 'Debe introducir un dorsal.';
-//            $array['dorsal.' . $insc->id . '.unique'] = 'El dorsal que ha introducido ya está en uso.';
-//            $array['dorsal.' . $insc->id . '.digits_between'] = 'Debe introducir un número de 1 a 4 carácteres.';
-//        }
-//        return $array;
-//    }
+
+    protected function rules()
+    {
+        $array = [];
+        foreach ($this->inscriptions as $i => $insc)
+            $array['dorsals.' . $insc->id] = [
+                'required',
+                'digits_between:1,4',
+                Rule::where('dorsal', $this->dorsals)
+            ];
+        return $array;
+    }
+
+    protected function messages()
+    {
+        $array = [];
+        foreach ($this->inscriptions as $insc) {
+            $array['dorsals.' . $insc->id . '.required'] = 'Debe introducir un dorsal.';
+            $array['dorsals.' . $insc->id . '.unique'] = 'El dorsal que ha introducido ya está en uso.';
+            $array['dorsals.' . $insc->id . '.digits_between'] = 'Debe introducir un número de 1 a 4 carácteres.';
+        }
+        return $array;
+    }
 
     public function mount($inscription_number)
     {
