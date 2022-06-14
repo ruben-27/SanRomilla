@@ -121,23 +121,23 @@
 
                 <div class="grid grid-cols-1 mt-5">
                     <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Categoría</label>
-                    <select wire:model.debounce.500ms="category_id" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 disabled focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent" name="category" disabled>
-
-                        <option value="0">Categoría</option>
-                        @foreach ($categories as $category)
-                            <option value="{{$category->id}}" >{{$category->name}}</option>
-                        @endforeach
-
-                    </select>
+                    <input wire:model.debounce.500ms="categoryName" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" name="category" disabled/>
                 </div>
 
-                <div>
-                    <p>
-                        Total inscripción: <b>{{$donation}}€</b>.
-                    </p>
+                <div class="flex flex-col items-end justify-end mt-5">
+                    <div class="flex">
+                        <div class="flex items-center h-5">
+                            <input wire:model.debounce.500ms="remember" id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-0">
+                        </div>
+                        <label for="remember" class="ml-2 text-sm font-medium text-gray-900">
+                            Acepto los <a wire:click="$emit('openModal', 'terms-of-use')" class="text-blue-600 hover:underline cursor-pointer">términos de uso</a>.
+                        </label>
+                    </div>
+                    @error('remember')
+                    <span class="text-red-500 text-xs mt-1">{{$message}}</span>
+                    @enderror
                 </div>
 
-                <div id="errorsDiv" class="text-red-600 font-bold"></div>
                 <div class='flex flex-col-reverse md:flex-row items-center justify-center md:gap-8 gap-4 pt-5 pb-5 mt-5'>
                     <a href="{{route('inscription')}}" class='w-auto bg-gray-500 hover:bg-gray-700 rounded uppercase shadow-xl font-medium text-white px-4 py-2' id="cancel">Cancelar</a>
                     <button class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' type="button" id="add">Otra Inscripción</button>

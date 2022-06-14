@@ -45,42 +45,42 @@
                 @enderror
             </div>
 
-            <div class="grid grid-cols-1 mt-5">
-                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-2">Roles</label>
-                <div class="md:flex flex-wrap">
-                    @foreach ($allRoles as $role)
-                        <section class="mx-auto p-5">
-                            <label for="{{$role->id}}" class="relative flex-inline items-center isolate p-4 rounded-2xl cursor-pointer">
-                                @if (isset($colaborator))
-                                    @php
-                                        $checked = false
-                                    @endphp
-                                    @foreach ($colaborator->roles()->get() as $colRole)
-                                        @if ($colRole->id == $role->id)
-                                            @php
-                                                $checked = true
-                                            @endphp
-                                        @endif
-                                    @endforeach
-                                    @if ($checked)
-                                        <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>
-                                    @else
-                                        <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
-                                    @endif
-                                    @php
-                                        $checked = false
-                                    @endphp
-                                @else
-                                    <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>
-                                @endif
+{{--            <div class="grid grid-cols-1 mt-5">--}}
+{{--                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-2">Roles</label>--}}
+{{--                <div class="md:flex flex-wrap">--}}
+{{--                    @foreach ($allRoles as $role)--}}
+{{--                        <section class="mx-auto p-5">--}}
+{{--                            <label for="{{$role->id}}" class="relative flex-inline items-center isolate p-4 rounded-2xl cursor-pointer">--}}
+{{--                                @if (isset($colaborator))--}}
+{{--                                    @php--}}
+{{--                                        $checked = false--}}
+{{--                                    @endphp--}}
+{{--                                    @foreach ($colaborator->roles()->get() as $colRole)--}}
+{{--                                        @if ($colRole->id == $role->id)--}}
+{{--                                            @php--}}
+{{--                                                $checked = true--}}
+{{--                                            @endphp--}}
+{{--                                        @endif--}}
+{{--                                    @endforeach--}}
+{{--                                    @if ($checked)--}}
+{{--                                        <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" checked name="roles[]" value="{{ $role->id }}"/>--}}
+{{--                                    @else--}}
+{{--                                        <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>--}}
+{{--                                    @endif--}}
+{{--                                    @php--}}
+{{--                                        $checked = false--}}
+{{--                                    @endphp--}}
+{{--                                @else--}}
+{{--                                    <input id="{{$role->id}}" type="checkbox" class="relative peer z-20 text-yellow-600 rounded-md focus:ring-0" name="roles[]" value="{{ $role->id }}"/>--}}
+{{--                                @endif--}}
 
-                                <span class="ml-2 relative z-20">{{ $role->public }}</span>
-                                <div class="absolute inset-0 bg-white peer-checked:bg-yellow-50 peer-checked:border-yellow-300 z-10 border rounded-2xl"></div>
-                            </label>
-                        </section>
-                    @endforeach
-                </div>
-            </div>
+{{--                                <span class="ml-2 relative z-20">{{ $role->public }}</span>--}}
+{{--                                <div class="absolute inset-0 bg-white peer-checked:bg-yellow-50 peer-checked:border-yellow-300 z-10 border rounded-2xl"></div>--}}
+{{--                            </label>--}}
+{{--                        </section>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </form>
     </div>
     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

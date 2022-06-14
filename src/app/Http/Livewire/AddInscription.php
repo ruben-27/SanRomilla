@@ -21,14 +21,17 @@ class AddInscription extends Component
     public $dorsal;
     public $size;
     public $amount;
-    public $category_id;
+    public $categoryName;
+    public $remember;
 
+    public $category;
+    public $categories;
     public $donation = 0;
     public $currentYear;
-    public $categories;
     public $shirt_price;
     public $shirt_benefit;
     protected $messages = [
+        'remember.required' => 'Debe aceptar los téminos de uso',
         '*.required' => 'Este campo es obligatorio.',
         'name.min' => 'Debe introducir al menos 2 carácteres.',
         'name.max' => 'El nombre es demasiado largo.',
@@ -49,7 +52,8 @@ class AddInscription extends Component
             'name' => ['required', 'min:2', 'max:80'],
             'last_name' => ['required', 'min:2', 'max:180'],
             'email' => ['required', 'email', 'max:180'],
-            'dni' => ['required',
+            'dni' => [
+                'required',
                 function($attribute, $value, $fail) {
                     $letra = substr($value, -1);
                     $numeros = substr($value, 0, -1);
@@ -69,7 +73,18 @@ class AddInscription extends Component
                 }
             ],
             'dorsal' => ['unique:inscriptions', 'max:4'],
-            'amount' => ['required', 'numeric', 'max:999']
+            'amount' => [
+                'required',
+                'numeric',
+                'max:999',
+                function($attribute, $value, $fail) {
+                    if ($value >= $this->donation)
+                        return true;
+                    $fail('La donación mínima es ' . $this->donation . '€');
+                    return false;
+                }
+            ],
+            'remember' => ['required']
         ];
     }
 
@@ -90,20 +105,26 @@ class AddInscription extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
-        if ($this->size != 'n')
-            $this->donation += $this->shirt_price;
+
+        // Set category
         if ($this->birthday != null) {
-            dd($this->birthday);
+            $birthdayYear = substr($this->birthday, 0, 4);
             foreach ($this->categories as $category) {
-                if($category->min_age == null && ($this->currentYear->year - $category->max_age) >= $this->birthday)
-                    $this->category_id = $category->id;
-                if($category->max_age == null && ($this->currentYear->year - $category->min_age) >= $this->birthday)
-                    $this->category_id = $category->id;
-                if ($category->min_age != null && $category->max_age != null)
-                    if (($this->currentYear->year - $category->min_age) <= $this->birthday && ($this->currentYear->year - $category->max_age) >= $this->birthday)
-                        $this->category_id = $category->id;
+                if($category->min_age == null && $birthdayYear >= ($this->currentYear->year - $category->max_age))
+                    $this->category = $category;
+                if($category->max_age == null && $birthdayYear <=($this->currentYear->year - $category->min_age))
+                    $this->category = $category;
+                if ($category->min_age != null && $category->max_age != null) {
+                    if (($this->currentYear->year - $category->min_age) >= $birthdayYear && $birthdayYear >= ($this->currentYear->year - $category->max_age)) {
+                        $this->category = $category;
+                    }
+                }
             }
-        } else $this->category_id = 0;
+        } else $this->categoryName = '';
+        if($this->category != null)
+            $this->categoryName = $this->category->name;
+
+        $this->donation = ($this->category == null ? 0 : $this->category->price) + ($this->size == 'n' || $this->size == null ? 0 : $this->shirt_price);
     }
 
     public function submit() {
