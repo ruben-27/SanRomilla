@@ -2,6 +2,9 @@
     <div class="min-h-screen flex justify-center font-sans overflow-hidden py-6">
         <div class="w-full">
             <div class=" my-6 overflow-x-auto">
+                <h1 class="text-2xl font-extrabold tracking-tight text-gray-700 text-center md:text-left sm:leading-none md:text-4xl">
+                    <span class="inline md:block">{{$category->name}}</span>
+                </h1>
                 <div class="relative overflow-x-auto">
                     <script>
 
@@ -9,10 +12,10 @@
                     <div class="mt-2 p-5 text-center lg:text-8xl text-4xl font-bold flex justify-center">
                         <output id="display-area">00:00:00.00</output>
                     </div>
-                    <div id="timers" class="{{$buttonView == "f" ? 'hidden' : ''}} mt-2 p-5 text-center lg:text-4xl text-2xl" >
-                        <button type="button" id="start" wire:click="changeView('c')" class="{{$buttonView == "n" ? "" : 'hidden'}} bg-yellow-400 hover:bg-yellow-500 shadow-sm rounded p-4 px-8 text-white">Start</button>
+                    <div id="timers" class="{{$buttonView == "f" ? 'hidden' : ''}} flex justify-around mt-2 p-5 text-center lg:text-4xl text-2xl" >
+                        <button type="button" id="start" wire:click="changeView('c')" class="{{$buttonView == "n" ? "" : 'hidden'}} bg-yellow-400 hover:bg-yellow-500 shadow-sm rounded p-4 px-8 text-white">Comenzar</button>
                         <button id="stop" class="{{$buttonView == "c" ? "" : 'hidden'}} bg-yellow-400 hover:bg-yellow-500 shadow-sm rounded p-4 px-8 text-white">Nueva Marca</button>
-                        <button id="remove" wire:click="changeView('f')" class="{{$buttonView == "c" ? "" : 'hidden'}} bg-red-400 hover:bg-red-500 shadow-sm rounded p-4 px-8 text-white">Stop </button>
+                        <button id="remove" wire:click="changeView('f')" class="{{$buttonView == "c" ? "" : 'hidden'}} bg-red-400 hover:bg-red-500 shadow-sm rounded p-4 px-8 text-white">Finalizar Categoría</button>
                     </div>
                     <div id="endText" class="{{$buttonView == "f" ? "" : 'hidden'}} mt-2 p-5 text-gray-500 text-center lg:text-4xl text-2xl">La Categoría ha finalizado</div>
                     <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
