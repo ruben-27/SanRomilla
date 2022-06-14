@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Http\Controllers\YearController;
 use App\Models\Category;
 use App\Models\GeneralData;
+use App\Models\Inscription;
 use App\Models\Year;
 use Livewire\Component;
 
@@ -129,5 +130,43 @@ class AddInscription extends Component
 
     public function submit() {
         $this->validate();
+
+        // Save inscription
+        $inscription = new Inscription();
+        $inscription->name = $this->name;
+        $inscription->last_name = $this->last_name;
+        $inscription->dni = $this->dni;
+        $inscription->email = $this->email;
+        $inscription->birthday = $this->birthday;
+        $inscription->gender = $this->gender;
+        $inscription->phone = $this->phone;
+        $inscription->amount = $this->amount;
+        $inscription->size = $this->size;
+        $inscription->category_id = $this->category->id;
+        if ($this->dorsal) {
+            $inscription->dorsal = $this->dorsal;
+            $inscription->paid = 1;
+        } else {
+            $inscription->dorsal = null;
+            $inscription->paid = 0;
+        }
+        $inscription->inscription_number = $this->generateUniqueCode();
+        $inscription->save();
+
+        // Update year amount raised
+        $year = Year::where('active', 1)->first();
+        $year->amount_raised += $this->amount;
+        $year->save();
+
+        $this->redirect(route('inscription'));
+    }
+
+    public function generateUniqueCode()
+    {
+        do {
+            $code = random_int(100000, 999999);
+        } while (Inscription::where("inscription_number", "=", $code)->first());
+
+        return $code;
     }
 }
