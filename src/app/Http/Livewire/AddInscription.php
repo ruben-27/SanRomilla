@@ -93,8 +93,9 @@ class AddInscription extends Component
         if ($this->size != 'n')
             $this->donation += $this->shirt_price;
         if ($this->birthday != null) {
+            dd($this->birthday);
             foreach ($this->categories as $category) {
-                if($category->min_age == null && ($this->currentYear->year - $category->max_age) <= $this->birthday)
+                if($category->min_age == null && ($this->currentYear->year - $category->max_age) >= $this->birthday)
                     $this->category_id = $category->id;
                 if($category->max_age == null && ($this->currentYear->year - $category->min_age) >= $this->birthday)
                     $this->category_id = $category->id;
@@ -102,9 +103,7 @@ class AddInscription extends Component
                     if (($this->currentYear->year - $category->min_age) <= $this->birthday && ($this->currentYear->year - $category->max_age) >= $this->birthday)
                         $this->category_id = $category->id;
             }
-        } else {
-            $this->category_id = 0;
-        }
+        } else $this->category_id = 0;
     }
 
     public function submit() {
