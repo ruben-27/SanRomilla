@@ -28,21 +28,15 @@
                 <div :class="isOpen ? 'flex' : 'hidden'"
                      class="flex-col mt-2 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
                     <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-white"
-                       href="#">San Romilla</a>
+                       href="#romilla">San Romilla</a>
                     <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-white"
-                       href="#">ONG</a>
+                       href="#ong">ONG</a>
                     <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-white"
-                       href="#">Ruta</a>
-                    <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-white"
-                       href="#">Horarios</a>
-                    <a class="text-sm font-medium text-gray-200 transition-colors duration-300 transform hover:text-white"
-                       href="#">Patrocinadores</a>
-                    <a class="px-4 py-1 text-sm font-medium text-center text-gray-200 transition-colors duration-300 transform border rounded hover:bg-yellow-600"
-                       href="#">Get In Touch</a>
+                       href="#sponsor">Patrocinadores</a>
                 </div>
             </nav>
 
-            <section class="flex items-center justify-center" style="height: 500px;">
+            <section class="flex items-center justify-center" style="height: 500px;" id="romilla">
                 <div class="text-center">
                     <p class="text-xl font-medium tracking-wider text-gray-300">VI SAN ROMILLA</p>
                     <h2 class="mt-6 text-3xl font-bold text-white md:text-5xl">
@@ -59,223 +53,120 @@
         </header>
 
 
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto">
-                <div class="items-center md:flex md:space-x-6">
-                    <div class="md:w-1/2">
-                        <h3 class="text-2xl font-semibold text-gray-800">Lorem ipsum dolor sit <br> amet, consectetur</h3>
-                        <p class="max-w-md mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <a href="#" class="block mt-8 text-indigo-700 underline">Experienced team</a>
+        <section class="pt-6 pb-4 md:pb-12 mt-72" id="sponsor">
+			<div class="mx-auto px-4">
+				<div class="flex flex-wrap justify-center text-center mb-12">
+					<div class="w-full lg:w-6/12 px-4">
+						<h4 class="text-3xl md:text-5xl text-black-500 font-semibold">Nuestros Patrocinadores</h4>
+					</div>
+				</div>
+				<div class="flex flex-wrap grid-cols-4">
+                    @foreach ($sponsors as $sponsor)
+                    <div class="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
+                        <div class="justify-center item-center my-12">
+                            <a href="{{$sponsor->url}}">
+                                <img class="w-2/6 mx-auto" src="{{asset('storage/'.$sponsor->image)}}" alt="">
+                            </a> 
+                        </div>
                     </div>
+                    @endforeach
+					</div>
+				</div>
+			</div>
+		</section>
 
-                    <div class="mt-8 md:mt-0 md:w-1/2">
-                        <div class="flex items-center justify-center">
-                            <div class="max-w-md">
-                                <img class="object-cover object-center w-full rounded-md shadow" style="height: 500px;"
-                                     src="https://images.unsplash.com/photo-1618346136472-090de27fe8b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=673&q=80">
-                            </div>
+        <div id="ong">
+            <div class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
+                <div class="bg-white lg:mx-8 lg:w-2/3 lg:flex lg:max-w-10xl lg:shadow-lg lg:rounded-lg">
+                    <div class="lg:w-1/2">
+                        <div class="h-64 bg-cover lg:rounded-lg lg:h-full w-1/2">
+                            <img src='https://aragonsolidario.org/wp-content/uploads/2021/02/Logo-entreculturas.png'>
+                        </div>
+                    </div>
+                    <div class="py-12 px-6 max-w-xl lg:max-w-5xl lg:w-1/2">
+                        <h2 class="text-3xl text-gray-800 font-bold">ONG Recaudadora</h2>
+                        <p class="mt-4 text-gray-600">{{$years->ong}}</p>
+                        <div class="mt-8">
+                            <a href="https://www.entreculturas.org/es/home" class="bg-gray-900 text-gray-100 px-5 py-3 font-semibold rounded">{{$years->ong_message}}</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto">
-                <div class="items-center md:flex md:space-x-6">
-                    <div class="md:w-1/2">
-                        <div class="flex items-center justify-center">
-                            <div class="max-w-md">
-                                <img class="object-cover object-center w-full rounded-md shadow" style="height: 500px;"
-                                     src="https://images.unsplash.com/photo-1616874535244-73aea5daadb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 md:mt-0 md:w-1/2">
-                        <h3 class="text-2xl font-semibold text-gray-800">Lorem ipsum dolor sit <br> amet, consectetur</h3>
-                        <p class="max-w-md mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <a href="#" class="block mt-8 text-indigo-700 underline">Experienced team</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto">
-                <h2 class="text-3xl font-semibold text-gray-800">Lorem ipsum dolor sit amet, <br> consectetur adipiscing</h2>
-                <p class="max-w-lg mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-                <div class="grid gap-8 mt-10 md:mt-20 md:grid-cols-2">
-                    <div class="flex space-x-4">
-                        <svg class="w-6 h-6 text-gray-500" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M47.6268 23.7062C48.2466 24.4484 48.2466 25.5277 47.6268 26.2699L44.4812 30.0372C43.803 30.8493 43.4742 31.8971 43.5669 32.9512L44.0044 37.9287C44.0912 38.9165 43.4411 39.8188 42.4765 40.0491L38.0619 41.1031C36.9808 41.3612 36.0559 42.0575 35.5089 43.025L33.2053 47.099C32.6961 47.9995 31.5844 48.3631 30.6415 47.9375L26.6498 46.1358C25.6003 45.6621 24.3976 45.6636 23.3493 46.14L19.3597 47.9531C18.4161 48.3819 17.3014 48.0189 16.7912 47.1168L14.4911 43.0489C13.9441 42.0814 13.0192 41.3851 11.9381 41.127L7.52286 40.0728C6.55849 39.8426 5.90838 38.9406 5.99496 37.9529L6.43346 32.9505C6.52583 31.8968 6.19706 30.8494 5.5191 30.0375L2.37029 26.2665C1.75138 25.5253 1.75043 24.4477 2.36803 23.7054L5.52362 19.9127C6.1988 19.1012 6.52582 18.0557 6.43339 17.0041L5.99624 12.0308C5.90922 11.0408 6.56225 10.1372 7.52946 9.90904L11.9298 8.87123C13.0153 8.61522 13.9446 7.91765 14.4935 6.94684L16.7947 2.87709C17.3039 1.97664 18.4156 1.61302 19.3585 2.03858L23.3544 3.8422C24.4007 4.31444 25.5993 4.31444 26.6456 3.8422L30.6415 2.03858C31.5844 1.61301 32.6961 1.97663 33.2053 2.87709L35.5089 6.95112C36.0559 7.9186 36.9808 8.61486 38.0619 8.87297L42.4765 9.92701C43.4411 10.1573 44.0912 11.0596 44.0044 12.0474L43.5669 17.0249C43.4742 18.079 43.803 19.1268 44.4812 19.939L47.6268 23.7062ZM25 37.9326C26.8075 37.9326 28.2727 36.4674 28.2727 34.6599V34.4275C28.2727 32.6201 26.8075 31.1548 25 31.1548C23.1925 31.1548 21.7273 32.6201 21.7273 34.4275V34.6599C21.7273 36.4674 23.1925 37.9326 25 37.9326ZM25 28.377C26.8075 28.377 28.2727 26.9117 28.2727 25.1042V15.3162C28.2727 13.5087 26.8075 12.0435 25 12.0435C23.1925 12.0435 21.7273 13.5087 21.7273 15.3162V25.1042C21.7273 26.9117 23.1925 28.377 25 28.377Z"
-                                stroke="currentColor" stroke-width="2" />
-                        </svg>
-
-                        <div>
-                            <h4 class="text-xl font-medium text-gray-800">Design concept</h4>
-                            <p class="max-w-lg mt-4 text-gray-600">Vitae nulla nunc euismod vel nunc euismod velpretium tellus
-                                accumsan nulla nunc euismod ve semper.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex space-x-4">
-                        <svg class="w-6 h-6 text-gray-500" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1 25C1 11.8023 11.8023 1 25 1C38.1977 1 49 11.8023 49 25C49 38.1977 38.1977 49 25 49C11.8023 49 1 38.1977 1 25ZM33.36 35.3573C34.7228 36.1959 36.5074 35.771 37.346 34.4082C38.1913 33.0346 37.7522 31.2351 36.3692 30.4053L28.221 25.5164C27.6186 25.155 27.25 24.504 27.25 23.8014V14.375C27.25 12.7872 25.9628 11.5 24.375 11.5C22.7872 11.5 21.5 12.7872 21.5 14.375V25.8236C21.5 27.2127 22.2206 28.5023 23.4036 29.2302L33.36 35.3573Z"
-                                stroke="currentColor" stroke-width="2" />
-                        </svg>
-
-                        <div>
-                            <h4 class="text-xl font-medium text-gray-800">Developing websites</h4>
-                            <p class="max-w-lg mt-4 text-gray-600">Vitae nulla euismod velpretium tellus accumsan nulla nunc
-                                euismod ve semper. Vitae nulla euismod velpretium tellus
-                                accumsan nulla nunc euismod ve semper. Vitae nulla euismod velpretium tellus accumsan nulla nunc
-                                euismod ve semper.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto">
-                <div class="px-8 py-12 bg-gray-800 rounded-md md:px-20 md:flex md:items-center md:justify-between">
-                    <div>
-                        <h3 class="text-2xl font-semibold text-white">Lorem ipsum dolor sit amet</h3>
-                        <p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-                            volutpat, viverra magna risus aliquam massa.</p>
-                    </div>
-
-                    <a class="block px-8 py-2 mt-6 text-lg font-medium text-center text-white transition-colors duration-300 transform bg-indigo-600 rounded md:mt-0 hover:bg-indigo-500"
-                       href="#">Get In Touch</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto">
-                <div class="md:flex md:justify-between">
-                    <h2 class="text-3xl font-semibold text-gray-800">Lorem ipsum dolor sit amet, consectetur <br> adipiscing
-                        elit, sed do eiusmod</h2>
-                    <a href="#" class="block mt-6 text-indigo-700 underline md:mt-0">Experienced team</a>
-                </div>
-
-                <div class="grid gap-8 mt-10 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="px-6 py-8 overflow-hidden bg-white rounded-md shadow-md">
-                        <h2 class="text-xl font-medium text-gray-800">Audio</h2>
-                        <p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-                            volutpat, viverra magna risus aliquam massa.</p>
-                    </div>
-
-                    <div class="px-6 py-8 overflow-hidden bg-white rounded-md shadow-md">
-                        <h2 class="text-xl font-medium text-gray-800">Audio</h2>
-                        <p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-                            volutpat,
-                            viverra magna risus aliquam massa.</p>
-                    </div>
-
-                    <div class="px-6 py-8 overflow-hidden bg-white rounded-md shadow-md">
-                        <h2 class="text-xl font-medium text-gray-800">Audio</h2>
-                        <p class="max-w-md mt-4 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing Ac aliquam ac
-                            volutpat,
-                            viverra magna risus aliquam massa.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto text-center">
-                <h2 class="text-3xl font-semibold text-gray-800">Lorem ipsum dolor sit amet, <br> consectetur adipiscing</h2>
-                <p class="max-w-lg mx-auto mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-
-                <img class="object-cover object-center w-full mt-16 rounded-md shadow h-80"
-                     src="https://images.unsplash.com/photo-1600069226367-412873fb0637?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto space-y-8 md:flex md:items-center md:space-y-0">
-                <div class="md:w-2/3">
-                    <div class="hidden md:flex md:items-center md:space-x-10">
-                        <img class="object-cover object-center rounded-md shadow w-72 h-72"
-                             src="https://images.unsplash.com/photo-1614030126544-b79b92e29e98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                        <img class="object-cover object-center w-64 rounded-md shadow h-96"
-                             src="https://images.unsplash.com/photo-1618506469810-282bef2b30b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-                    </div>
-                    <h2 class="text-3xl font-semibold text-gray-800 md:mt-6">Lorem ipsum dolor </h2>
-                    <p class="max-w-lg mt-4 text-gray-600">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse illum
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia
-                        deserunt mollit anim id est laborum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-                <div class="md:w-1/3">
-                    <img class="object-cover object-center w-full rounded-md shadow" style="height: 700px;"
-                         src="https://images.unsplash.com/photo-1593352216840-1aee13f45818?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white">
-            <div class="max-w-5xl px-6 py-16 mx-auto text-center">
-                <h2 class="text-3xl font-semibold text-gray-800">Our Leadership</h2>
-                <p class="max-w-lg mx-auto mt-4 text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.</p>
-
-                <div class="grid gap-8 mt-6 md:grid-cols-2 lg:grid-cols-4">
-                    <div>
-                        <img class="object-cover object-center w-full h-64 rounded-md shadow"
-                             src="https://images.unsplash.com/photo-1614030126544-b79b92e29e98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                        <h3 class="mt-2 font-medium text-gray-700">John Doe</h3>
-                        <p class="text-sm text-gray-600">CEO</p>
-                    </div>
-
-                    <div>
-                        <img class="object-cover object-center w-full h-64 rounded-md shadow"
-                             src="https://images.unsplash.com/photo-1614030126544-b79b92e29e98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                        <h3 class="mt-2 font-medium text-gray-700">John Doe</h3>
-                        <p class="text-sm text-gray-600">CEO</p>
-                    </div>
-
-                    <div>
-                        <img class="object-cover object-center w-full h-64 rounded-md shadow"
-                             src="https://images.unsplash.com/photo-1614030126544-b79b92e29e98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                        <h3 class="mt-2 font-medium text-gray-700">John Doe</h3>
-                        <p class="text-sm text-gray-600">CEO</p>
-                    </div>
-
-                    <div>
-                        <img class="object-cover object-center w-full h-64 rounded-md shadow"
-                             src="https://images.unsplash.com/photo-1614030126544-b79b92e29e98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
-                        <h3 class="mt-2 font-medium text-gray-700">John Doe</h3>
-                        <p class="text-sm text-gray-600">CEO</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </div> 
+        </div>
 
         <footer class="border-t">
-            <div class="container flex items-center justify-between px-6 py-8 mx-auto">
-                <p class="text-gray-500">© 2019-2021 All Rights Reserved.</p>
-                <p class="font-medium text-gray-700">Terms of Service</p>
-            </div>
+          <!-- Foooter -->
+            <section class="bg-white">
+                <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+                    <nav class="flex flex-wrap justify-center -mx-5 -my-2">
+                        <div class="px-5 py-2">
+                            <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                                About
+                            </a>
+                        </div>
+                        <div class="px-5 py-2">
+                            <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                                Blog
+                            </a>
+                        </div>
+                        <div class="px-5 py-2">
+                            <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                                Team
+                            </a>
+                        </div>
+                        <div class="px-5 py-2">
+                            <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                                Pricing
+                            </a>
+                        </div>
+                        <div class="px-5 py-2">
+                            <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                                Contact
+                            </a>
+                        </div>
+                        <div class="px-5 py-2">
+                            <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                                Terms
+                            </a>
+                        </div>
+                    </nav>
+                    <div class="flex justify-center mt-8 space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">GitHub</span>
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Dribbble</span>
+                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="mt-8 text-base leading-6 text-center text-gray-400">
+                        © 2021 SomeCompany, Inc. All rights reserved.
+                    </p>
+                </div>
+            </section>
         </footer>
     </div>
 </x-guest-layout>

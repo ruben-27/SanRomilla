@@ -8,6 +8,7 @@ use App\Http\Controllers\YearController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\MarkController;
+use App\Http\Controllers\landing\LandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,9 @@ use App\Http\Controllers\MarkController;
 */
 
 // Public
-Route::get('/', function () {
-    return view('public.index');
-})->name('welcome');
+
+Route::get('/', [LandingController::class, 'index'])
+    ->name('welcome');
 
 Route::get('/terms', function () {
     /*return Inscription::terms();*/
