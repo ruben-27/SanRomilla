@@ -35,6 +35,7 @@ class InsertDorsalInscription extends ModalComponent
     }
 
     public function submit() {
+        $this->validate();
         $this->inscription->dorsal = $this->validate()['dorsal'];
         $this->inscription->paid = 1;
         $this->inscription->save();
