@@ -110,5 +110,6 @@ class CategoryFill extends Component
             $mark->year_id = $this->currentYear->id;
             $mark->save();
         }
+        return view('private.mark.mark');
     }
 }

@@ -45,19 +45,6 @@ services:
         networks:
             - test-network
 
-#    phpmyadmin:
-#        image: phpmyadmin
-#        restart: always
-#        ports:
-#            - ${PHPMYADMIN_PORT_DB:-8080}:80
-#        environment:
-#            - PMA_ARBITRARY=1
-#            - PMA_HOST=test-db
-#            - PMA_USER=${DB_USERNAME:-homestead}
-#            - PMA_PASSWORD=${DB_PASSWORD:-secret}
-#        networks:
-#            - test-network
-
     phpmyadmin:
         image: phpmyadmin
         restart: always
@@ -65,12 +52,24 @@ services:
             - ${PHPMYADMIN_PORT_DB:-8080}:80
         environment:
             - PMA_ARBITRARY=1
-            - PMA_HOST=2daw.esvirgua.com
-            - PMA_DATABASE=user2daw_BD1-03
-            - PMA_USER=user2daw_03
-            - PMA_PASSWORD=Z~yIhDg@^IS_
+            - PMA_HOST=test-db
+            - PMA_USER=${DB_USERNAME:-homestead}
+            - PMA_PASSWORD=${DB_PASSWORD:-secret}
         networks:
             - test-network
+#   phpmyadmin:
+#       image: phpmyadmin
+#       restart: always
+#       ports:
+#           - ${PHPMYADMIN_PORT_DB:-8080}:80
+#       environment:
+#           - PMA_ARBITRARY=1
+#           - PMA_HOST=2daw.esvirgua.com
+#           - PMA_DATABASE=user2daw_BD1-03
+#           - PMA_USER=user2daw_03
+#           - PMA_PASSWORD=Z~yIhDg@^IS_
+#       networks:
+#           - test-network
 
     mailhog:
         image: mailhog/mailhog
