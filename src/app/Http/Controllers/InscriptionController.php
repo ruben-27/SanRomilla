@@ -64,7 +64,7 @@ class InscriptionController extends Controller
                 $message = explode(' ', $e->getMessage());
                 $dbCode = rtrim($message[4], ']');
                 $dbCode = trim($dbCode, '[');
-    
+
                 // codes specific to MySQL
                 switch ($dbCode)
                 {
@@ -76,14 +76,14 @@ class InscriptionController extends Controller
                         break;
                     case 1062:
                         $userMessage = 'El dorsal '.rtrim($message[7], ']'). ' ya esta introducido en la base de datos';
-                        break;    
+                        break;
                     default:
                         $userMessage = $dbCode;
                         break;
                 }
                 $userMessage = $userMessage;
             }
-            
+
             if(!$saved){
                 $exit = $userMessage;
             }
@@ -93,8 +93,7 @@ class InscriptionController extends Controller
     }
 
     public static function showInsert() {
-        $categories = Category::all();
-        return view('private.inscriptions.inscriptionForm',compact('categories'));
+        return view('private.inscriptions.inscriptionForm');
     }
 
 }

@@ -12,22 +12,32 @@ class InsertDorsalInscriptions extends ModalComponent
 
     public $dorsals = [];
 
-//    protected function rules()
-//    {
-//        $array = [];
-//        foreach ($this->inscriptions as $insc)
-//            $array['dorsals.' . $insc->id] = ['required', 'digits_between:1,4'];
-//        return $array;
-//    }
-
     protected function rules()
     {
         $array = [];
         foreach ($this->inscriptions as $i => $insc)
-            $array['dorsals.' . $insc->id] = [
+            $array['dorsals.' . $i] = [
                 'required',
                 'digits_between:1,4',
-                Rule::where('dorsal', $this->dorsals)
+                function($attribute, $value, $fail) {
+                    $count = Inscription::all()->where('dorsal', $value)->count();
+                    if ($count == 0)
+                        return true;
+                    $fail('El dorsal está en uso');
+                    return false;
+                },
+                function($attribute, $value, $fail) {
+                    $count = 0;
+                    foreach ($this->dorsals as $i => $dorsal){
+                        if ($attribute != 'dorsals.' . $i && $value == $dorsal) {
+                            $count++;
+                        }
+                    }
+                    if ($count == 0)
+                        return true;
+                    $fail('No se puede poner dos dorsales iguales');
+                    return false;
+                }
             ];
         return $array;
     }
@@ -35,10 +45,10 @@ class InsertDorsalInscriptions extends ModalComponent
     protected function messages()
     {
         $array = [];
-        foreach ($this->inscriptions as $insc) {
-            $array['dorsals.' . $insc->id . '.required'] = 'Debe introducir un dorsal.';
-            $array['dorsals.' . $insc->id . '.unique'] = 'El dorsal que ha introducido ya está en uso.';
-            $array['dorsals.' . $insc->id . '.digits_between'] = 'Debe introducir un número de 1 a 4 carácteres.';
+        foreach ($this->inscriptions as $i => $insc) {
+            $array['dorsals.' . $i . '.required'] = 'Debe introducir un dorsal.';
+            $array['dorsals.' . $i . '.unique'] = 'El dorsal que ha introducido ya está en uso.';
+            $array['dorsals.' . $i . '.digits_between'] = 'Debe introducir un número de 1 a 4 carácteres.';
         }
         return $array;
     }
@@ -61,8 +71,9 @@ class InsertDorsalInscriptions extends ModalComponent
     }
 
     public function submit() {
-        foreach ($this->inscriptions as $inscription){
-            $inscription->dorsal = $this->validate()['dorsal'][$inscription->id];
+        $this->validate();
+        foreach ($this->inscriptions as $i => $inscription){
+            $inscription->dorsal = $this->dorsals[$i];
             $inscription->paid = 1;
             $inscription->save();
         }

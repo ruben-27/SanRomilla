@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Year;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Mark;
@@ -11,14 +12,16 @@ class CategoryStart extends Component
 {
     use WithPagination;
     public $categoryId;
-    public $category; 
+    public $category;
     public $place;
     public $perPage = 10;
     public $buttonView;
     protected $listeners = [
         'stopTime'
     ];
-   //
+
+    public $currentYear;
+
    public function stopTime($value)
    {
        if(!is_null($value)) {
@@ -33,12 +36,16 @@ class CategoryStart extends Component
             $mark->pace = $pace;
             $mark->category_id = $this->categoryId;
             $mark->save();
-       }    
+       }
    }
     public function render()
     {
+        $this->currentYear = Year::where('active', 1)->first();
         $this->category = Category::where('id',$this->categoryId)->first();
-        $marks = Mark::query()->where('category_id',$this->categoryId)->paginate($this->perPage);
+        $marks = Mark::query()->where('category_id',$this->categoryId)
+            ->where('year_id', $this->currentYear->id)
+            ->orWhere('year_id', null)
+            ->paginate($this->perPage);
         $this->place = count($marks);
         $this->buttonView = $this->category->status;
         return view('livewire.category-start',compact("marks"));
@@ -54,7 +61,7 @@ class CategoryStart extends Component
         } else  {
             $this->category->status = "c";
         }
-        
+
         $this->category->save();
     }
     public function delete($id) {

@@ -11,7 +11,8 @@ class MarkController extends Controller
 {
     public function index() {
         $categories = Category::all();
-        return view('private.marks.mark',compact('categories'));
+        $year = YearController::getActiveYear();
+        return view('private.marks.mark',compact('categories', 'year'));
     }
 
     public function startCategory($id) {

@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             YearSeeder::class,
             CategorySeeder::class
         ]);
-        
+
         // Factories
         User::Factory(10)->create();
         Donation::Factory(20)->create();

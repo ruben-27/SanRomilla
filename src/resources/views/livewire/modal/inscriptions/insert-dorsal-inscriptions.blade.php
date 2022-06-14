@@ -20,15 +20,15 @@
             </div>
         </div>
         <form wire:submit.prevent="submit()" class="pt-6">
-            @foreach($inscriptions as $insc)
+            @foreach($inscriptions as $i => $insc)
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 border-1 border-b border-gray-300 pb-3 mb-3 last:border-0 last:pb-0 last:mb-0">
                     <div>
                         <label class="uppercase text-sm text-gray-500 text-light font-bold">{{$insc->name}} {{$insc->last_name}}</label>
                     </div>
                     <div>
                         <label class="uppercase text-xs text-gray-500 text-light font-semibold">Añadir Dorsal</label>
-                        <input wire:model.debounce.500ms="dorsals.{{$insc->id}}" name="dorsal.{{$insc->id}}" class="w-full py-1 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Dorsal"/>
-                        @error('dorsals.'.$insc->id)
+                        <input wire:model.debounce.500ms="dorsals.{{$i}}" name="dorsal.{{$i}}" class="w-full py-1 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" placeholder="Dorsal"/>
+                        @error('dorsals.'.$i)
                         <span class="text-red-500 text-xs mt-1">{{$message}}</span>
                         @enderror
                     </div>
