@@ -12,6 +12,7 @@ use Livewire\Component;
 class AddInscription extends Component
 {
     // Inputs
+    public $inscripId = 1;
     public $name;
     public $last_name;
     public $email;
@@ -23,14 +24,19 @@ class AddInscription extends Component
     public $size;
     public $amount;
     public $categoryName;
-    public $remember;
 
     public $category;
-    public $categories;
+    public $remember;
     public $donation = 0;
+    public $emptyForm = true;
+
+    // For all
+    public $inscriptions = [];
+    public $categories;
     public $currentYear;
     public $shirt_price;
     public $shirt_benefit;
+
     protected $messages = [
         'remember.required' => 'Debe aceptar los téminos de uso',
         '*.required' => 'Este campo es obligatorio.',
@@ -106,6 +112,7 @@ class AddInscription extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+        $this->emptyForm = false;
 
         // Set category
         if ($this->birthday != null) {
@@ -126,6 +133,130 @@ class AddInscription extends Component
             $this->categoryName = $this->category->name;
 
         $this->donation = ($this->category == null ? 0 : $this->category->price) + ($this->size == 'n' || $this->size == null ? 0 : $this->shirt_price);
+    }
+
+    // Inscriptions
+
+    public function otherInscription() {
+        $this->validate();
+        // Validate if already exists
+        $exists = $this->validateIfExists($this->inscripId);
+        // If not, store it
+        if (!$exists)
+            $this->addInscription();
+
+        $this->resetActiveInputs();
+        $this->emptyForm = true;
+
+    }
+
+    public function changeInscription($id) {
+        if (!$this->emptyForm) {
+            $this->validate();
+            // Validate if already exists
+            $exists = $this->validateIfExists($this->inscripId);
+            // If not, store it
+            if (!$exists)
+                $this->addInscription();
+        }
+        $this->setActiveInputs($id);
+    }
+
+    public function deleteInscription($id) {
+        foreach ($this->inscriptions as $key => $inscription) {
+            if ($id == $inscription['inscripId'])
+                \array_splice($this->inscriptions, $key, 1);
+        }
+        if (count($this->inscriptions) > $id - 1)
+            for($i = $id - 1; $i < count($this->inscriptions); $i++) {
+                $this->inscriptions[$i]['inscripId'] = $this->inscriptions[$i]['inscripId'] - 1;
+            }
+    }
+
+    public function validateIfExists($id) {
+        foreach ($this->inscriptions as $key => $inscription)
+            if ($inscription['inscripId'] == $id) {
+                $this->inscriptions[$key] = $this->updateInscription();
+                return true;
+            }
+        return false;
+    }
+
+    public function addInscription() {
+        $this->inscriptions[] = [
+            'inscripId' => $this->inscripId,
+            'name' => $this->name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'dni' => $this->dni,
+            'phone' => $this->phone,
+            'birthday' => $this->birthday,
+            'gender' => $this->gender,
+            'dorsal' => $this->dorsal,
+            'size' => $this->size,
+            'amount' => $this->amount,
+            'categoryName' => $this->categoryName,
+            'category' => $this->category,
+            'donation' => $this->donation
+        ];
+    }
+
+    public function updateInscription() {
+        return [
+            'inscripId' => $this->inscripId,
+            'name' => $this->name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'dni' => $this->dni,
+            'phone' => $this->phone,
+            'birthday' => $this->birthday,
+            'gender' => $this->gender,
+            'dorsal' => $this->dorsal,
+            'size' => $this->size,
+            'amount' => $this->amount,
+            'categoryName' => $this->categoryName,
+            'category' => $this->category,
+            'donation' => $this->donation
+        ];
+    }
+
+    public function setActiveInputs($id) {
+        foreach ($this->inscriptions as $inscript)
+            if ($inscript['inscripId'] == $id) {
+                $inscription = $inscript;
+            }
+        $this->inscripId = $inscription['inscripId'];
+        $this->name = $inscription['name'];
+        $this->last_name = $inscription['last_name'];
+        $this->email = $inscription['email'];
+        $this->dni = $inscription['dni'];
+        $this->phone = $inscription['phone'];
+        $this->birthday = $inscription['birthday'];
+        $this->gender = $inscription['gender'];
+        $this->dorsal = $inscription['dorsal'];
+        $this->size = $inscription['size'];
+        $this->amount = $inscription['amount'];
+        $this->categoryName = $inscription['categoryName'];
+        $this->category = $inscription['category'];
+        $this->donation =$inscription['donation'];
+    }
+
+    public function resetActiveInputs() {
+        // Restore active inputs
+        $this->inscripId = count($this->inscriptions) + 1;
+        $this->name = '';
+        $this->last_name = '';
+        $this->email = '';
+        $this->dni = '';
+        $this->phone = '';
+        $this->birthday = '';
+        $this->gender = 'n';
+        $this->dorsal = '';
+        $this->size = '';
+        $this->amount = '';
+        $this->categoryName = '';
+        $this->category = '';
+        $this->donation = 0;
     }
 
     public function submit() {

@@ -73,9 +73,9 @@ class AddColaborator extends ModalComponent
         $this->colaborator->last_name = $this->last_name;
         $this->colaborator->email = $this->email;
         $this->colaborator->save();
-        foreach ($this->roles as $role) {
-            $this->colaborator->roles()->sync($role, 'detach');
-        }
+//        foreach ($this->roles as $role) {
+//            $this->colaborator->roles()->sync($role, 'detach');
+//        }
         $this->closeModal();
         $this->emit('refreshParent');
     }
