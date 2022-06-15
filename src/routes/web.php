@@ -25,6 +25,9 @@ use App\Http\Controllers\landing\LandingController;
 
 Route::get('/', [LandingController::class, 'index'])
     ->name('welcome');
+Route::get('/inscribete', function () {
+    return view('public.inscription');
+})->name('publicInscription');
 
 Route::get('/terms', function () {
     /*return Inscription::terms();*/

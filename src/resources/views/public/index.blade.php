@@ -44,10 +44,12 @@
                         benéfica San Romilla!
                     </h2>
 
+                    @if($years)
                     <div class="flex justify-center mt-8">
                         <a class="px-8 py-2 text-lg font-medium text-white transition-colors duration-300 transform bg-yellow-500 rounded hover:bg-yellow-600"
-                           href="#">Inscríbete</a>
+                           href="{{route('publicInscription')}}">Inscríbete</a>
                     </div>
+                    @endif
                 </div>
             </section>
         </header>
@@ -66,7 +68,7 @@
                         <div class="justify-center item-center my-12">
                             <a href="{{$sponsor->url}}">
                                 <img class="w-2/6 mx-auto" src="{{asset('storage/'.$sponsor->image)}}" alt="">
-                            </a> 
+                            </a>
                         </div>
                     </div>
                     @endforeach
@@ -75,6 +77,7 @@
 			</div>
 		</section>
 
+        @if($years)
         <div id="ong">
             <div class="bg-gray-100 lg:py-12 lg:flex lg:justify-center">
                 <div class="bg-white lg:mx-8 lg:w-2/3 lg:flex lg:max-w-10xl lg:shadow-lg lg:rounded-lg">
@@ -91,8 +94,9 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
+        @endif
 
         <footer class="border-t">
           <!-- Foooter -->
@@ -101,7 +105,7 @@
                     <nav class="flex flex-wrap justify-center -mx-5 -my-2">
                         <div class="px-5 py-2">
                             <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                                About
+                                Sobre Nosotros
                             </a>
                         </div>
                         <div class="px-5 py-2">
@@ -111,22 +115,22 @@
                         </div>
                         <div class="px-5 py-2">
                             <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                                Team
+                                Equipo
                             </a>
                         </div>
                         <div class="px-5 py-2">
                             <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                                Pricing
+                                Precios
                             </a>
                         </div>
                         <div class="px-5 py-2">
                             <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                                Contact
+                                Contacto
                             </a>
                         </div>
                         <div class="px-5 py-2">
                             <a href="#" class="text-base leading-6 text-gray-500 hover:text-gray-900">
-                                Terms
+                                Términos
                             </a>
                         </div>
                     </nav>
@@ -163,7 +167,7 @@
                         </a>
                     </div>
                     <p class="mt-8 text-base leading-6 text-center text-gray-400">
-                        © 2021 SomeCompany, Inc. All rights reserved.
+                        © 2022 San Romilla &nbsp;&nbsp;&nbsp; Todos los derechos reservados.
                     </p>
                 </div>
             </section>

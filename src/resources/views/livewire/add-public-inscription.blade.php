@@ -91,13 +91,6 @@
                 <hr />
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-5 ">
                     <div class="grid grid-cols-1">
-                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Dorsal</label>
-                        <input wire:model.debounce.500ms="dorsal" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="number" placeholder="Dorsal" name="dorsal"/>
-                        @error('dorsal')
-                        <span class="text-red-500 text-xs mt-1">{{$message}}</span>
-                        @enderror
-                    </div>
-                    <div class="grid grid-cols-1">
                         <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Talla Camiseta</label>
                         <select wire:model.debounce.500ms="size" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" name="size" name="size">
                             <option value="n">No quiere</option>
@@ -117,11 +110,10 @@
                         <span class="text-red-500 text-xs mt-1">{{$message}}</span>
                         @enderror
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 mt-5">
-                    <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Categoría</label>
-                    <input wire:model.debounce.500ms="categoryName" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" name="category" disabled/>
+                    <div class="grid grid-cols-1">
+                        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Categoría</label>
+                        <input wire:model.debounce.500ms="categoryName" class="py-2 px-3 rounded-lg border-1 border-gray-200 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent placeholder:text-gray-300" type="text" name="category" disabled/>
+                    </div>
                 </div>
 
                 <div class="flex flex-col items-end justify-end mt-5">
@@ -139,7 +131,7 @@
                 </div>
 
                 <div class='flex flex-col-reverse md:flex-row items-center justify-center md:gap-8 gap-4 pt-5 pb-5 mt-5'>
-                    <a href="{{route('inscription')}}" class='w-auto bg-gray-500 hover:bg-gray-700 rounded uppercase shadow-xl font-medium text-white px-4 py-2' id="cancel">Cancelar</a>
+                    <a href="{{route('welcome')}}" class='w-auto bg-gray-500 hover:bg-gray-700 rounded uppercase shadow-xl font-medium text-white px-4 py-2' id="cancel">Cancelar</a>
                     <button wire:click="otherInscription()" class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' type="button" id="add">Otra Inscripción</button>
                     <button wire:click="submit()" class='w-auto bg-yellow-500 hover:bg-yellow-600 rounded shadow-xl uppercase font-medium text-white px-4 py-2' type="button">Finalizar Inscripciones</button>
                 </div>
@@ -159,27 +151,27 @@
     </div>
 
     @if(count($inscriptions) > 0)
-    <div id="sidebar-inscriptions" class="flex flex-col items-center w-36 h-full bg-white fixed right-0 top-16 shadow" >
-        @foreach($inscriptions as $key => $inscription)
-            <div class="group w-full relative hover:bg-gray-200 border border-b-gray-300 {{$inscription['inscripId'] == $inscripId ? 'bg-gray-100' : ''}}">
-                <a wire:click="changeInscription({{$inscription['inscripId']}})" class="flex justify-between w-full p-3 text-xs text-left cursor-default">
-                    <div>
-                        <div class="font-bold text-sm">{{$inscription['name']}}</div>
-                        <div>{{$inscription['dni']}}</div>
-                    </div>
-                </a>
-                <button wire:click="deleteInscription({{$inscription['inscripId']}})" type="button" class="absolute top-1/2 right-0 transform -translate-y-1/2 mr-4 invisible group-hover:visible text-red-400 z-20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-        @endforeach
-        <button wire:click="otherInscription()" type="button" id="addNewInscription" class="mt-5 text-gray-500 hover:text-gray-400">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-        </button>
-    </div>
+        <div id="sidebar-inscriptions" class="flex flex-col items-center w-36 h-full bg-white fixed right-0 top-16 shadow" >
+            @foreach($inscriptions as $key => $inscription)
+                <div class="group w-full relative hover:bg-gray-200 border border-b-gray-300 {{$inscription['inscripId'] == $inscripId ? 'bg-gray-100' : ''}}">
+                    <a wire:click="changeInscription({{$inscription['inscripId']}})" class="flex justify-between w-full p-3 text-xs text-left cursor-default">
+                        <div>
+                            <div class="font-bold text-sm">{{$inscription['name']}}</div>
+                            <div>{{$inscription['dni']}}</div>
+                        </div>
+                    </a>
+                    <button wire:click="deleteInscription({{$inscription['inscripId']}})" type="button" class="absolute top-1/2 right-0 transform -translate-y-1/2 mr-4 invisible group-hover:visible text-red-400 z-20">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            @endforeach
+            <button wire:click="otherInscription()" type="button" id="addNewInscription" class="mt-5 text-gray-500 hover:text-gray-400">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </button>
+        </div>
     @endif
 </div>

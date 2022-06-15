@@ -9,7 +9,7 @@ use App\Models\Inscription;
 use App\Models\Year;
 use Livewire\Component;
 
-class AddInscription extends Component
+class AddPublicInscription extends Component
 {
     // Inputs
     public $inscripId = 1;
@@ -20,7 +20,6 @@ class AddInscription extends Component
     public $phone;
     public $birthday;
     public $gender = 'n';
-    public $dorsal;
     public $size;
     public $amount;
     public $categoryName;
@@ -49,22 +48,21 @@ class AddInscription extends Component
         'birthday.date' => 'Introduzca una fecha válida.',
         'birthday.before' => 'Introduzca una fecha válida.',
         'birthday.before' => 'Introduzca una fecha válida.',
-        'dorsal.unique' => 'El dorsal ya está en uso.',
-        'dorsal.max' => 'Debe introducir un número de 1 a 4 carácteres.',
         'amount.max' => 'La donación es demasiado grande.'
     ];
 
-    protected function rules() {
+    protected function rules()
+    {
         return [
             'name' => ['required', 'min:2', 'max:80'],
             'last_name' => ['required', 'min:2', 'max:180'],
             'email' => ['required', 'email', 'max:180'],
             'dni' => [
                 'required',
-                function($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) {
                     $letra = substr($value, -1);
                     $numeros = substr($value, 0, -1);
-                    if (substr("TRWAGMYFPDXBNJZSQVHLCKE", ((int) $numeros) % 23, 1) == $letra && strlen($letra) == 1 && strlen($numeros) == 8 )
+                    if (substr("TRWAGMYFPDXBNJZSQVHLCKE", ((int)$numeros) % 23, 1) == $letra && strlen($letra) == 1 && strlen($numeros) == 8)
                         return true;
                     $fail('Introduzca un DNI válido.');
                     return false;
@@ -72,19 +70,18 @@ class AddInscription extends Component
             ],
             'birthday' => ['required', 'date', 'before:tomorrow'],
             'gender' => [
-                function($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) {
                     if ($value != "n")
                         return true;
                     $fail('Este campo es obligatorio.');
                     return false;
                 }
             ],
-            'dorsal' => ['max:4', 'unique:inscriptions,dorsal,' . null],
             'amount' => [
                 'required',
                 'numeric',
                 'max:999',
-                function($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) {
                     if ($value >= $this->donation)
                         return true;
                     $fail('La donación mínima es ' . $this->donation . '€');
@@ -98,7 +95,7 @@ class AddInscription extends Component
     public function render()
     {
         $this->categories = Category::all();
-        return view('livewire.add-inscription');
+        return view('livewire.add-public-inscription');
     }
 
     public function mount()
@@ -118,9 +115,9 @@ class AddInscription extends Component
         if ($this->birthday != null) {
             $birthdayYear = substr($this->birthday, 0, 4);
             foreach ($this->categories as $category) {
-                if($category->min_age == null && $birthdayYear >= ($this->currentYear->year - $category->max_age))
+                if ($category->min_age == null && $birthdayYear >= ($this->currentYear->year - $category->max_age))
                     $this->category = $category;
-                if($category->max_age == null && $birthdayYear <=($this->currentYear->year - $category->min_age))
+                if ($category->max_age == null && $birthdayYear <= ($this->currentYear->year - $category->min_age))
                     $this->category = $category;
                 if ($category->min_age != null && $category->max_age != null) {
                     if (($this->currentYear->year - $category->min_age) >= $birthdayYear && $birthdayYear >= ($this->currentYear->year - $category->max_age)) {
@@ -129,7 +126,7 @@ class AddInscription extends Component
                 }
             }
         } else $this->categoryName = '';
-        if($this->category != null)
+        if ($this->category != null)
             $this->categoryName = $this->category->name;
 
         $this->donation = ($this->category == null ? 0 : $this->category->price) + ($this->size == 'n' || $this->size == null ? 0 : $this->shirt_price);
@@ -137,7 +134,8 @@ class AddInscription extends Component
 
     // Inscriptions
 
-    public function otherInscription() {
+    public function otherInscription()
+    {
         $this->validate();
         // Validate if already exists
         $exists = $this->validateIfExists($this->inscripId);
@@ -150,7 +148,8 @@ class AddInscription extends Component
 
     }
 
-    public function changeInscription($id) {
+    public function changeInscription($id)
+    {
         if (!$this->emptyForm) {
             $this->validate();
             // Validate if already exists
@@ -162,18 +161,20 @@ class AddInscription extends Component
         $this->setActiveInputs($id);
     }
 
-    public function deleteInscription($id) {
+    public function deleteInscription($id)
+    {
         foreach ($this->inscriptions as $key => $inscription) {
             if ($id == $inscription['inscripId'])
                 \array_splice($this->inscriptions, $key, 1);
         }
         if (count($this->inscriptions) > $id - 1)
-            for($i = $id - 1; $i < count($this->inscriptions); $i++) {
+            for ($i = $id - 1; $i < count($this->inscriptions); $i++) {
                 $this->inscriptions[$i]['inscripId'] = $this->inscriptions[$i]['inscripId'] - 1;
             }
     }
 
-    public function validateIfExists($id) {
+    public function validateIfExists($id)
+    {
         foreach ($this->inscriptions as $key => $inscription)
             if ($inscription['inscripId'] == $id) {
                 $this->inscriptions[$key] = $this->updateInscription();
@@ -182,7 +183,8 @@ class AddInscription extends Component
         return false;
     }
 
-    public function addInscription() {
+    public function addInscription()
+    {
         $this->inscriptions[] = [
             'inscripId' => $this->inscripId,
             'name' => $this->name,
@@ -192,7 +194,6 @@ class AddInscription extends Component
             'phone' => $this->phone,
             'birthday' => $this->birthday,
             'gender' => $this->gender,
-            'dorsal' => $this->dorsal,
             'size' => $this->size,
             'amount' => $this->amount,
             'categoryName' => $this->categoryName,
@@ -201,7 +202,8 @@ class AddInscription extends Component
         ];
     }
 
-    public function updateInscription() {
+    public function updateInscription()
+    {
         return [
             'inscripId' => $this->inscripId,
             'name' => $this->name,
@@ -211,7 +213,6 @@ class AddInscription extends Component
             'phone' => $this->phone,
             'birthday' => $this->birthday,
             'gender' => $this->gender,
-            'dorsal' => $this->dorsal,
             'size' => $this->size,
             'amount' => $this->amount,
             'categoryName' => $this->categoryName,
@@ -220,7 +221,8 @@ class AddInscription extends Component
         ];
     }
 
-    public function setActiveInputs($id) {
+    public function setActiveInputs($id)
+    {
         foreach ($this->inscriptions as $inscript)
             if ($inscript['inscripId'] == $id) {
                 $inscription = $inscript;
@@ -233,15 +235,15 @@ class AddInscription extends Component
         $this->phone = $inscription['phone'];
         $this->birthday = $inscription['birthday'];
         $this->gender = $inscription['gender'];
-        $this->dorsal = $inscription['dorsal'];
         $this->size = $inscription['size'];
         $this->amount = $inscription['amount'];
         $this->categoryName = $inscription['categoryName'];
         $this->category = $inscription['category'];
-        $this->donation =$inscription['donation'];
+        $this->donation = $inscription['donation'];
     }
 
-    public function resetActiveInputs() {
+    public function resetActiveInputs()
+    {
         // Restore active inputs
         $this->inscripId = count($this->inscriptions) + 1;
         $this->name = '';
@@ -251,7 +253,6 @@ class AddInscription extends Component
         $this->phone = '';
         $this->birthday = '';
         $this->gender = 'n';
-        $this->dorsal = '';
         $this->size = '';
         $this->amount = '';
         $this->categoryName = '';
@@ -259,7 +260,8 @@ class AddInscription extends Component
         $this->donation = 0;
     }
 
-    public function submit() {
+    public function submit()
+    {
         $this->validate();
         $exists = $this->validateIfExists($this->inscripId);
         if (!$exists)
@@ -282,13 +284,8 @@ class AddInscription extends Component
                 $inscription->amount = $inscrip['amount'];
                 $inscription->size = $inscrip['size'];
                 $inscription->category_id = $inscrip['category']['id'];
-                if ($inscrip['dorsal']) {
-                    $inscription->dorsal = $inscrip['dorsal'];
-                    $inscription->paid = 1;
-                } else {
-                    $inscription->dorsal = null;
-                    $inscription->paid = 0;
-                }
+                $inscription->dorsal = null;
+                $inscription->paid = 0;
                 $inscription->inscription_number = $inscriptionNumber;
                 $inscription->save();
             }
@@ -303,7 +300,8 @@ class AddInscription extends Component
         return true;
     }
 
-    public function saveInscription($inscriptionNumber) {
+    public function saveInscription($inscriptionNumber)
+    {
         $inscription = new Inscription();
         $inscription->name = $this->name;
         $inscription->last_name = $this->last_name;
@@ -315,13 +313,8 @@ class AddInscription extends Component
         $inscription->amount = $this->amount;
         $inscription->size = $this->size;
         $inscription->category_id = $this->category->id;
-        if ($this->dorsal) {
-            $inscription->dorsal = $this->dorsal;
-            $inscription->paid = 1;
-        } else {
-            $inscription->dorsal = null;
-            $inscription->paid = 0;
-        }
+        $inscription->dorsal = null;
+        $inscription->paid = 0;
         $inscription->inscription_number = $inscriptionNumber;
         $inscription->save();
     }
