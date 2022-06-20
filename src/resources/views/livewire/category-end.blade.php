@@ -62,11 +62,17 @@
                             {{-- Table --}}
                             <table class="min-w-max w-full table-auto">
                                 <thead>
-                                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal cursor-pointer">
                                         <th wire:click="sortBy('place')" class="py-3 px-6 text-center">
                                             <div class="flex justify-center">
                                                 Puesto
                                                 @include('partials._sort-icon', ['field'=>'place'])
+                                            </div>
+                                        </th>
+                                        <th wire:click="sortBy('dorsal')" class="py-3 px-6 text-center cursor-pointer">
+                                            <div class="flex justify-center">
+                                                Dorsal
+                                                @include('partials._sort-icon', ['field'=>'dorsal'])
                                             </div>
                                         </th>
                                         <th wire:click="sortBy('name')" class="py-3 px-6 text-center cursor-pointer">
@@ -102,6 +108,11 @@
                                         <td class="py-3 px-6 text-center">
                                             <div class="flex items-center justify-center">
                                                 <span>{{$mark->place}}</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-6 text-center">
+                                            <div class="flex items-center justify-center">
+                                                <span>{{$mark->dorsal}}</span>
                                             </div>
                                         </td>
                                         <td class="py-3 px-6 text-center">

@@ -82,7 +82,6 @@ class CategoryFill extends Component
         $this->category = Category::where('id',$this->categoryId)->first();
         $this->marks = Mark::where('category_id',$this->categoryId)
             ->where('year_id', $this->currentYear->id)
-            ->orWhere('year_id', null)
             ->get();
         $this->place = count($this->marks);
         $this->buttonView = $this->category->status;
@@ -110,6 +109,6 @@ class CategoryFill extends Component
             $mark->year_id = $this->currentYear->id;
             $mark->save();
         }
-        return view('private.mark.mark');
+        $this->redirect(route('clasification'));
     }
 }

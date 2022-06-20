@@ -151,7 +151,7 @@
     </div>
 
     @if(count($inscriptions) > 0)
-        <div id="sidebar-inscriptions" class="flex flex-col items-center w-36 h-full bg-white fixed right-0 top-16 shadow" >
+        <div id="sidebar-inscriptions" class="flex flex-col items-center w-36 h-full bg-white fixed right-0 top-0 shadow" >
             @foreach($inscriptions as $key => $inscription)
                 <div class="group w-full relative hover:bg-gray-200 border border-b-gray-300 {{$inscription['inscripId'] == $inscripId ? 'bg-gray-100' : ''}}">
                     <a wire:click="changeInscription({{$inscription['inscripId']}})" class="flex justify-between w-full p-3 text-xs text-left cursor-default">

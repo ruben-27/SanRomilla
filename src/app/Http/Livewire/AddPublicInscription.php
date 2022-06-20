@@ -27,7 +27,7 @@ class AddPublicInscription extends Component
     public $category;
     public $remember;
     public $donation = 0;
-    public $emptyForm = true;
+    public $emptyForm = false;
 
     // For all
     public $inscriptions = [];
@@ -262,10 +262,12 @@ class AddPublicInscription extends Component
 
     public function submit()
     {
-        $this->validate();
-        $exists = $this->validateIfExists($this->inscripId);
-        if (!$exists)
-            $this->addInscription();
+        if (!$this->emptyForm) {
+            $this->validate();
+            $exists = $this->validateIfExists($this->inscripId);
+            if (!$exists)
+                $this->addInscription();
+        }
 
         $inscriptionNumber = $this->generateUniqueCode();
         // Save inscription
@@ -292,12 +294,13 @@ class AddPublicInscription extends Component
         }
 
         // Update year amount raised
-        $year = Year::where('active', 1)->first();
-        $year->amount_raised += $this->amount;
-        $year->save();
+        if (!$this->emptyForm) {
+            $year = Year::where('active', 1)->first();
+            $year->amount_raised += $this->amount;
+            $year->save();
+        }
 
-        $this->redirect(route('inscription'));
-        return true;
+        $this->redirect(route('welcome'));
     }
 
     public function saveInscription($inscriptionNumber)

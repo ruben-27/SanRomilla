@@ -35,6 +35,7 @@ class CategoryStart extends Component
             $mark->time = $time;
             $mark->pace = $pace;
             $mark->category_id = $this->categoryId;
+            $mark->year_id = $this->currentYear->id;
             $mark->save();
        }
    }
@@ -44,7 +45,6 @@ class CategoryStart extends Component
         $this->category = Category::where('id',$this->categoryId)->first();
         $marks = Mark::query()->where('category_id',$this->categoryId)
             ->where('year_id', $this->currentYear->id)
-            ->orWhere('year_id', null)
             ->paginate($this->perPage);
         $this->place = count($marks);
         $this->buttonView = $this->category->status;
